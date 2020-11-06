@@ -52,6 +52,7 @@ namespace TracNghiem
 
         private void button_DN_Click(object sender, EventArgs e)
         {
+            string masv = "";
             if (radioButton_GiangVien.Checked)
             {
                 Program.isGV = true;//giang vien
@@ -73,6 +74,7 @@ namespace TracNghiem
                 }
                 Program.mlogin = "sv";
                 Program.password = "sv";
+                masv = textBox_TenDN.Text;
             }
 
             if (Program.KetNoi() == 0) return;
@@ -89,39 +91,41 @@ namespace TracNghiem
                 Program.myReader = Program.ExecSqlDataReader(strLenh);
                 if (Program.myReader == null) return;
                 Program.myReader.Read();
-
-                Program.username = Program.myReader.GetString(0);
-                if (Convert.IsDBNull(Program.username))
-                {
-                    MessageBox.Show("Login bạn nhập không có quyền truy cập dữ liệu", "", MessageBoxButtons.OK);
-                    return;
-                }
-                Program.mHoten= Program.myReader.GetString(1);
-                Program.mGroup= Program.myReader.GetString(2);
-                Program.myReader.Close();
-                Program.conn.Close();
-                Program.frmChinh.HienThiMenu();
             }
             else
             {
                 //sua lai ben sinh vien. sai cho Program.mlogin ko phai mã sv như trong sp
-                string strLenh = "EXEC SP_THONGTINDANGNHAP_SV '" + Program.mlogin + "'";
+                string strLenh = "EXEC SP_THONGTINDANGNHAP_SV '" + Program.mlogin + "', " + "'" + masv + "'";
 
                 Program.myReader = Program.ExecSqlDataReader(strLenh);
                 if (Program.myReader == null) return;
-                Program.myReader.Read();
 
-                Program.username = Program.myReader.GetString(0);
-                if (Convert.IsDBNull(Program.username))
+                if (Program.myReader.Read() == false)
                 {
-                    MessageBox.Show("Login bạn nhập không có quyền truy cập dữ liệu", "", MessageBoxButtons.OK);
+                    MessageBox.Show("Mã sinh viên không tồn tại!", "", MessageBoxButtons.OK);
+                    Program.mChinhanh = 0;
+                    Program.bds_dspm = new BindingSource();
+                    Program.mloginDN = "";
+                    Program.passwordDN = "";
+                    Program.mlogin = "";
+                    Program.password = "";
+                    Program.myReader.Close();
+                    Program.conn.Close();
                     return;
                 }
-                Program.mHoten = Program.myReader.GetString(1);
-                Program.mGroup = Program.myReader.GetString(2);
-                Program.myReader.Close();
-                Program.conn.Close();
             }
+
+            Program.username = Program.myReader.GetString(0);
+            if (Convert.IsDBNull(Program.username))
+            {
+                MessageBox.Show("Login bạn nhập không có quyền truy cập dữ liệu", "", MessageBoxButtons.OK);
+                return;
+            }
+            Program.mHoten = Program.myReader.GetString(1);
+            Program.mGroup = Program.myReader.GetString(2);
+            Program.myReader.Close();
+            Program.conn.Close();
+            Program.frmChinh.HienThiMenu();
         }
     }
 }

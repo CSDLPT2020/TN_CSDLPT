@@ -47,9 +47,18 @@ namespace TracNghiem
 
         public void HienThiMenu()
         {
-            toolStripStatusLabel_MaUser.Text = "Mã user: " + Program.username;
-            toolStripStatusLabel_HoTen.Text = "Họ tên: " + Program.mHoten;
-            toolStripStatusLabel_Nhom.Text = "Nhóm: " + Program.mGroup;
+            if (Program.isGV)
+            {
+                toolStripStatusLabel_MaUser.Text = "Mã giảng viên: " + Program.username;
+                toolStripStatusLabel_HoTen.Text = "Họ tên: " + Program.mHoten;
+                toolStripStatusLabel_Nhom.Text = "Nhóm: " + Program.mGroup;
+            }
+            else
+            {
+                toolStripStatusLabel_MaUser.Text = "Mã sinh viên: " + Program.username;
+                toolStripStatusLabel_HoTen.Text = "Họ tên: " + Program.mHoten;
+                toolStripStatusLabel_Nhom.Text = "Nhóm: " + Program.mGroup;
+            }
             //phan quyen
         }
     }
