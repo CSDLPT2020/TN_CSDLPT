@@ -121,7 +121,6 @@ namespace TracNghiem
                 Program.mGroup = Program.myReader.GetString(2);
                 Program.myReader.Close();
                 Program.conn.Close();
-                Program.frmChinh.HienThiMenu();
             }
         }
     }
