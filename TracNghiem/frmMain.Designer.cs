@@ -35,6 +35,7 @@
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem_TaoTaiKhoan = new DevExpress.XtraBars.BarButtonItem();
+            this.btnMonHoc = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage_HeThong = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -47,7 +48,8 @@
             this.toolStripStatusLabel_MaUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel_HoTen = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel_Nhom = new System.Windows.Forms.ToolStripStatusLabel();
-            this.btnMonHoc = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.btnKhoaGV = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
@@ -64,9 +66,10 @@
             this.barButtonItem1,
             this.barButtonItem3,
             this.barButtonItem_TaoTaiKhoan,
-            this.btnMonHoc});
+            this.btnMonHoc,
+            this.btnKhoaGV});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 12;
+            this.ribbonControl1.MaxItemId = 13;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage_HeThong,
@@ -104,6 +107,14 @@
             this.barButtonItem_TaoTaiKhoan.Name = "barButtonItem_TaoTaiKhoan";
             this.barButtonItem_TaoTaiKhoan.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_TaoTaiKhoan_ItemClick);
             // 
+            // btnMonHoc
+            // 
+            this.btnMonHoc.Caption = "Môn học";
+            this.btnMonHoc.Id = 11;
+            this.btnMonHoc.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnMonHoc.ImageOptions.SvgImage")));
+            this.btnMonHoc.Name = "btnMonHoc";
+            this.btnMonHoc.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnMonHoc_ItemClick);
+            // 
             // ribbonPage_HeThong
             // 
             this.ribbonPage_HeThong.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -119,7 +130,8 @@
             // ribbonPage2
             // 
             this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup2});
+            this.ribbonPageGroup2,
+            this.ribbonPageGroup4});
             this.ribbonPage2.Name = "ribbonPage2";
             this.ribbonPage2.Text = "ribbonPage2";
             // 
@@ -180,13 +192,19 @@
             this.toolStripStatusLabel_Nhom.Size = new System.Drawing.Size(45, 17);
             this.toolStripStatusLabel_Nhom.Text = "NHOM";
             // 
-            // btnMonHoc
+            // ribbonPageGroup4
             // 
-            this.btnMonHoc.Caption = "Môn học";
-            this.btnMonHoc.Id = 11;
-            this.btnMonHoc.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem2.ImageOptions.SvgImage")));
-            this.btnMonHoc.Name = "btnMonHoc";
-            this.btnMonHoc.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnMonHoc_ItemClick);
+            this.ribbonPageGroup4.ItemLinks.Add(this.btnKhoaGV);
+            this.ribbonPageGroup4.Name = "ribbonPageGroup4";
+            this.ribbonPageGroup4.Text = "ribbonPageGroup4";
+            // 
+            // btnKhoaGV
+            // 
+            this.btnKhoaGV.Caption = "Khoa-Giảng viên";
+            this.btnKhoaGV.Id = 12;
+            this.btnKhoaGV.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem2.ImageOptions.SvgImage")));
+            this.btnKhoaGV.Name = "btnKhoaGV";
+            this.btnKhoaGV.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnKhoaGV_ItemClick);
             // 
             // frmMain
             // 
@@ -230,6 +248,8 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_Nhom;
         private DevExpress.XtraBars.BarButtonItem barButtonItem_TaoTaiKhoan;
         private DevExpress.XtraBars.BarButtonItem btnMonHoc;
+        private DevExpress.XtraBars.BarButtonItem btnKhoaGV;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
     }
 }
 

@@ -32,6 +32,7 @@ namespace TracNghiem
         public static bool isGV = true; //false la sinh vien
 
         public static BindingSource bds_dspm = new BindingSource();  // giữ bdsPM khi đăng nhập
+
         public static frmMain frmChinh;
 
         public static int KetNoi()

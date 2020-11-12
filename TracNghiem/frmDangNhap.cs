@@ -83,7 +83,7 @@ namespace TracNghiem
             Program.bds_dspm = bdsPM;
             Program.mloginDN = Program.mlogin;
             Program.passwordDN = Program.password;
-            
+
             if(Program.isGV == true)
             {
                 string strLenh = "EXEC SP_THONGTINDANGNHAP_GV '" + Program.mlogin + "'";
@@ -94,7 +94,6 @@ namespace TracNghiem
             }
             else
             {
-                //sua lai ben sinh vien. sai cho Program.mlogin ko phai mã sv như trong sp
                 string strLenh = "EXEC SP_THONGTINDANGNHAP_SV '" + Program.mlogin + "', " + "'" + masv + "'";
 
                 Program.myReader = Program.ExecSqlDataReader(strLenh);

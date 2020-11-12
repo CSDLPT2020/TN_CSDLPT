@@ -13,7 +13,6 @@ namespace TracNghiem
     public partial class frmMonHoc : Form
     {
         int vitri = 0;
-        string macn = "";
         public frmMonHoc()
         {
             InitializeComponent();
@@ -69,9 +68,14 @@ namespace TracNghiem
             }
             catch (Exception ex)
             {
+                //môn học là nhân bản nên có thể check bằng exception của sql
                 if (ex.Message.Contains("PK_MAMH"))
                 {
                     MessageBox.Show("Lỗi mã môn học bị trùng","", MessageBoxButtons.OK);
+                }
+                else if (ex.Message.Contains("UN_TENMH"))
+                {
+                    MessageBox.Show("Lỗi tên môn học bị trùng", "", MessageBoxButtons.OK);
                 }
                 else MessageBox.Show("Lỗi ghi môn học.\n" + ex.Message, "", MessageBoxButtons.OK);
                 return;
@@ -146,11 +150,6 @@ namespace TracNghiem
             btnGhi.Enabled = btnUndo.Enabled = true;
             GridControl_MH.Enabled = true;
             btnReload.PerformClick();
-        }
-
-        private void GridControl_MH_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

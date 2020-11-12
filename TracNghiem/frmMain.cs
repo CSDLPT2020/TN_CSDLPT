@@ -94,5 +94,17 @@ namespace TracNghiem
                 f.Show();
             }
         }
+
+        private void btnKhoaGV_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(frmKhoa_GiaoVien));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frmKhoa_GiaoVien f = new frmKhoa_GiaoVien();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
     }
 }

@@ -61,16 +61,11 @@ namespace TracNghiem
             string strLenh = "EXEC SP_TAOTAIKHOAN '" +
                 textBox_LoginName.Text.Trim() + "', '" + textBox_Password.Text.Trim()
                 + "', '" + TextBox_Username.Text.Trim() + "', '" + role + "'";
-            try
-            {
-                Program.ExecSqlDataReader(strLenh);
-                MessageBox.Show("Tạo tài khoản thành công!", "", MessageBoxButtons.OK);
-                this.v_DS_GIAOVIENCHUACOTKTableAdapter.Fill(this.dS_DSGV_CHUATK.V_DS_GIAOVIENCHUACOTK);//reload
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Tạo tài khoản không thành công: "+ex.Message, "", MessageBoxButtons.OK);
-            }
+            Program.myReader = Program.ExecSqlDataReader(strLenh);
+            if (Program.myReader == null) return;
+            MessageBox.Show("Tạo tài khoản thành công!", "", MessageBoxButtons.OK);
+            this.v_DS_GIAOVIENCHUACOTKTableAdapter.Fill(this.dS_DSGV_CHUATK.V_DS_GIAOVIENCHUACOTK);//reload
+            Program.myReader.Close();
         }
     }
 }
