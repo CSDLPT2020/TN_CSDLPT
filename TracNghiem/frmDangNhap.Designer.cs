@@ -56,7 +56,7 @@
             // tENCNLabel
             // 
             tENCNLabel.AutoSize = true;
-            tENCNLabel.Location = new System.Drawing.Point(99, 88);
+            tENCNLabel.Location = new System.Drawing.Point(151, 129);
             tENCNLabel.Name = "tENCNLabel";
             tENCNLabel.Size = new System.Drawing.Size(34, 13);
             tENCNLabel.TabIndex = 0;
@@ -75,15 +75,16 @@
             this.groupControl1.Controls.Add(this.radioGroup_Roles);
             this.groupControl1.Controls.Add(tENCNLabel);
             this.groupControl1.Controls.Add(this.comboBox_TenCN);
-            this.groupControl1.Location = new System.Drawing.Point(41, 31);
+            this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(392, 377);
+            this.groupControl1.Size = new System.Drawing.Size(494, 431);
             this.groupControl1.TabIndex = 0;
             // 
             // button_DN
             // 
             this.button_DN.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.button_DN.Location = new System.Drawing.Point(149, 313);
+            this.button_DN.Location = new System.Drawing.Point(201, 354);
             this.button_DN.Name = "button_DN";
             this.button_DN.Size = new System.Drawing.Size(107, 30);
             this.button_DN.TabIndex = 10;
@@ -93,7 +94,7 @@
             // 
             // textBox_Pass
             // 
-            this.textBox_Pass.Location = new System.Drawing.Point(149, 255);
+            this.textBox_Pass.Location = new System.Drawing.Point(201, 296);
             this.textBox_Pass.Name = "textBox_Pass";
             this.textBox_Pass.Size = new System.Drawing.Size(170, 21);
             this.textBox_Pass.TabIndex = 9;
@@ -102,7 +103,7 @@
             // 
             // textBox_TenDN
             // 
-            this.textBox_TenDN.Location = new System.Drawing.Point(149, 208);
+            this.textBox_TenDN.Location = new System.Drawing.Point(201, 249);
             this.textBox_TenDN.Name = "textBox_TenDN";
             this.textBox_TenDN.Size = new System.Drawing.Size(170, 21);
             this.textBox_TenDN.TabIndex = 8;
@@ -110,7 +111,7 @@
             // label_pass
             // 
             this.label_pass.AutoSize = true;
-            this.label_pass.Location = new System.Drawing.Point(53, 258);
+            this.label_pass.Location = new System.Drawing.Point(105, 299);
             this.label_pass.Name = "label_pass";
             this.label_pass.Size = new System.Drawing.Size(53, 13);
             this.label_pass.TabIndex = 7;
@@ -119,7 +120,7 @@
             // label_LoginName
             // 
             this.label_LoginName.AutoSize = true;
-            this.label_LoginName.Location = new System.Drawing.Point(53, 208);
+            this.label_LoginName.Location = new System.Drawing.Point(105, 249);
             this.label_LoginName.Name = "label_LoginName";
             this.label_LoginName.Size = new System.Drawing.Size(61, 13);
             this.label_LoginName.TabIndex = 6;
@@ -129,7 +130,7 @@
             // 
             this.label_DN.AutoSize = true;
             this.label_DN.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_DN.Location = new System.Drawing.Point(18, 39);
+            this.label_DN.Location = new System.Drawing.Point(70, 80);
             this.label_DN.Name = "label_DN";
             this.label_DN.Size = new System.Drawing.Size(351, 25);
             this.label_DN.TabIndex = 5;
@@ -138,7 +139,7 @@
             // radioButton_SinhVien
             // 
             this.radioButton_SinhVien.AutoSize = true;
-            this.radioButton_SinhVien.Location = new System.Drawing.Point(233, 135);
+            this.radioButton_SinhVien.Location = new System.Drawing.Point(285, 176);
             this.radioButton_SinhVien.Name = "radioButton_SinhVien";
             this.radioButton_SinhVien.Size = new System.Drawing.Size(68, 17);
             this.radioButton_SinhVien.TabIndex = 4;
@@ -150,7 +151,7 @@
             // 
             this.radioButton_GiangVien.AutoSize = true;
             this.radioButton_GiangVien.Checked = true;
-            this.radioButton_GiangVien.Location = new System.Drawing.Point(93, 135);
+            this.radioButton_GiangVien.Location = new System.Drawing.Point(145, 176);
             this.radioButton_GiangVien.Name = "radioButton_GiangVien";
             this.radioButton_GiangVien.Size = new System.Drawing.Size(75, 17);
             this.radioButton_GiangVien.TabIndex = 3;
@@ -161,7 +162,7 @@
             // 
             // radioGroup_Roles
             // 
-            this.radioGroup_Roles.Location = new System.Drawing.Point(84, 123);
+            this.radioGroup_Roles.Location = new System.Drawing.Point(136, 164);
             this.radioGroup_Roles.Name = "radioGroup_Roles";
             this.radioGroup_Roles.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.radioGroup_Roles.Properties.Appearance.Options.UseBackColor = true;
@@ -174,7 +175,7 @@
             this.comboBox_TenCN.DisplayMember = "TENCN";
             this.comboBox_TenCN.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_TenCN.FormattingEnabled = true;
-            this.comboBox_TenCN.Location = new System.Drawing.Point(149, 85);
+            this.comboBox_TenCN.Location = new System.Drawing.Point(201, 126);
             this.comboBox_TenCN.Name = "comboBox_TenCN";
             this.comboBox_TenCN.Size = new System.Drawing.Size(121, 21);
             this.comboBox_TenCN.TabIndex = 1;

@@ -60,6 +60,39 @@ namespace TracNghiem
                 toolStripStatusLabel_Nhom.Text = "Nhóm: " + Program.mGroup;
             }
             //phan quyen
+            if (Program.isGV)
+            {
+                barButtonItem_TaoTaiKhoan.Enabled = true;
+
+            }
+            else{
+                barButtonItem_TaoTaiKhoan.Enabled = false;
+
+            }
+        }
+
+        private void barButtonItem_TaoTaiKhoan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(frmTaoTaiKhoan));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frmTaoTaiKhoan f = new frmTaoTaiKhoan();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void btnMonHoc_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(frmMonHoc));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frmMonHoc f = new frmMonHoc();
+                f.MdiParent = this;
+                f.Show();
+            }
         }
     }
 }
