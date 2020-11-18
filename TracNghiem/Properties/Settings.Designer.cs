@@ -43,5 +43,16 @@ namespace TracNghiem.Properties {
                 return ((string)(this["TN_CSDLPTConnectionString1"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DUY-COMPUTER\\MSSQLSERVER1;Initial Catalog=TN_CSDLPT;Persist Security " +
+            "Info=True;User ID=KDT")]
+        public string TN_CSDLPTConnectionString2 {
+            get {
+                return ((string)(this["TN_CSDLPTConnectionString2"]));
+            }
+        }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,7 @@ namespace TracNghiem
         private void frmKhoa_GiaoVien_Load(object sender, EventArgs e)
         {
             DS.EnforceConstraints = false;
+
             this.kHOATableAdapter.Connection.ConnectionString = Program.connstr;
             this.kHOATableAdapter.Fill(this.DS.KHOA);
 
@@ -30,7 +32,13 @@ namespace TracNghiem
             this.lOPTableAdapter.Connection.ConnectionString = Program.connstr;
             this.lOPTableAdapter.Fill(this.DS.LOP);
 
-            macn = ((DataRowView)bdsKhoa[0])["MACS"].ToString();
+            this.bODETableAdapter.Connection.ConnectionString = Program.connstr;
+            this.bODETableAdapter.Fill(this.DS.BODE);
+
+            this.gIAOVIEN_DANGKYTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.gIAOVIEN_DANGKYTableAdapter.Fill(this.DS.GIAOVIEN_DANGKY);
+
+            macn = GetMaCS();
             comboBox_CN.DataSource = Program.bds_dspm;  // sao chép bds_dspm đã load ở form đăng nhập  qua
             comboBox_CN.DisplayMember = "TENCN";
             comboBox_CN.ValueMember = "TENSERVER";
@@ -40,8 +48,23 @@ namespace TracNghiem
             {
                 comboBox_CN.Enabled = false;
             }
+            else if (Program.mGroup.Equals("Truong"))
+            {
+                comboBox_CN.Enabled = true;
+                bar2.Visible = false;
+            }
         }
 
+        public static string GetMaCS()
+        {
+            DataTable dt = new DataTable();
+            BindingSource bds = new BindingSource();
+
+            dt = Program.ExecSqlDataTable("SELECT MACS FROM COSO");
+            bds.DataSource = dt;
+
+            return ((DataRowView)bds[0])["MACS"].ToString();
+        }
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -85,7 +108,7 @@ namespace TracNghiem
                     MessageBox.Show("Lỗi xóa khoa. Bạn hãy xóa lại\n" + ex.Message, "",
                         MessageBoxButtons.OK);
                     this.kHOATableAdapter.Fill(this.DS.KHOA);
-                    bdsKhoa.Position = bdsKhoa.Find("MAMH", makh);
+                    bdsKhoa.Position = bdsKhoa.Find("MAKH", makh);
                     return;
                 }
             }
@@ -106,9 +129,22 @@ namespace TracNghiem
                 TextBox_TenKH.Focus();
                 return;
             }
-            
-            //check ma, ten khoa ko trung tren 2 site o site tra cuu
 
+            if (btnThem.Enabled == false) //dang them moi check
+            {
+                //check ma, ten khoa ko trung tren 2 site o site tra cuu
+                string strLenh = "EXEC SP_CHECKKHOA_TRACUU N'" + TextBox_MaKH.Text.Trim() + "', N'"
+                    + TextBox_TenKH.Text.Trim() + "'";
+                int kq = Program.ExecSqlNonQuery(strLenh);
+                if (kq == 1 || kq == 2) return;
+            }
+            else //sua
+            {
+                //thieu sua khoa?????????????????????
+
+
+            }
+            //bat dau ghi
             try
             {
                 bdsKhoa.EndEdit();
@@ -138,6 +174,7 @@ namespace TracNghiem
             try
             {
                 this.kHOATableAdapter.Fill(this.DS.KHOA);
+                this.gIAOVIENTableAdapter.Fill(this.DS.GIAOVIEN);
             }
             catch (Exception ex)
             {
@@ -157,6 +194,7 @@ namespace TracNghiem
 
         private void comboBox_CN_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (comboBox_CN.SelectedIndex==-1) return;
             if (comboBox_CN.SelectedValue.ToString() == "System.Data.DataRowView")
                 return;
             Program.servername = comboBox_CN.SelectedValue.ToString();
@@ -181,7 +219,103 @@ namespace TracNghiem
                 this.gIAOVIENTableAdapter.Fill(this.DS.GIAOVIEN);
                 this.lOPTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.lOPTableAdapter.Fill(this.DS.LOP);
-                macn = ((DataRowView)bdsKhoa[0])["MACS"].ToString();
+                this.bODETableAdapter.Connection.ConnectionString = Program.connstr;
+                this.bODETableAdapter.Fill(this.DS.BODE);
+                this.gIAOVIEN_DANGKYTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.gIAOVIEN_DANGKYTableAdapter.Fill(this.DS.GIAOVIEN_DANGKY);
+                macn = GetMaCS();
+            }
+        }
+
+        private void themGVToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bdsGV.AddNew();
+            themGVToolStripMenuItem.Enabled = false;
+            xoaGVToolStripMenuItem.Enabled = false;
+
+        }
+
+        private void xoaGVToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            String magv = "";
+            if (bdsBoDe.Count > 0)
+            {
+                MessageBox.Show("Không thể xóa giảng viên này vì đã soạn đề", "",
+                       MessageBoxButtons.OK);
+                return;
+            }
+            if (bdsGVDK.Count > 0)
+            {
+                MessageBox.Show("Không thể xóa giảng viên này vì đã đăng ký thi", "",
+                       MessageBoxButtons.OK);
+                return;
+            }
+            if (MessageBox.Show("Bạn có thật sự muốn xóa giảng viên này ? ", "Xác nhận",
+                       MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                try
+                {
+                    magv = ((DataRowView)bdsGV[bdsGV.Position])["MAGV"].ToString(); // giữ lại để khi xóa bij lỗi thì ta sẽ quay về lại
+                    bdsGV.RemoveCurrent();
+                    this.gIAOVIENTableAdapter.Connection.ConnectionString = Program.connstr;
+                    this.gIAOVIENTableAdapter.Update(this.DS.GIAOVIEN);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi xóa giảng viên. Bạn hãy xóa lại\n" + ex.Message, "",
+                        MessageBoxButtons.OK);
+                    this.gIAOVIENTableAdapter.Fill(this.DS.GIAOVIEN);
+                    bdsGV.Position = bdsGV.Find("MAGV", magv);
+                    return;
+                }
+            }
+            if (bdsGV.Count == 0) xoaGVToolStripMenuItem.Enabled = false;
+        }
+
+        private void ghiGVToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //dang them
+            if (themGVToolStripMenuItem.Enabled == false)
+            {
+                int index = bdsGV.Count - 1;
+                //check thong tin giang vien moi nhap vao
+                string maGV = this.DataGridView_GiaoVien.Rows[index].Cells[0].Value.ToString();
+
+                if (string.IsNullOrEmpty(maGV.Trim()))
+                {
+                    MessageBox.Show("Mã giảng viên không được để trống", "", MessageBoxButtons.OK);
+                    return;
+                }
+            }
+            //ghi
+            try
+            {
+                bdsGV.EndEdit();
+                bdsGV.ResetCurrentItem();
+                this.gIAOVIENTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.gIAOVIENTableAdapter.Update(this.DS.GIAOVIEN);
+            }
+            catch (Exception ex)
+            {
+                this.bdsGV.RemoveCurrent();
+                if (ex.Message.Contains("PK_GIAOVIEN"))
+                {
+                    MessageBox.Show("Lỗi mã giảng viên bị trùng", "", MessageBoxButtons.OK);
+                }
+                else MessageBox.Show("Lỗi ghi giảng viên.\n" + ex.Message, "", MessageBoxButtons.OK);
+                return;
+            }
+            themGVToolStripMenuItem.Enabled = true;
+            xoaGVToolStripMenuItem.Enabled = true;
+        }
+
+        private void thoatToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (themGVToolStripMenuItem.Enabled == false)
+            {
+                this.bdsGV.RemoveCurrent();
+                themGVToolStripMenuItem.Enabled = true;
+                xoaGVToolStripMenuItem.Enabled = true;
             }
         }
     }

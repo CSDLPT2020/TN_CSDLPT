@@ -66,12 +66,24 @@
             this.bdsGV = new System.Windows.Forms.BindingSource(this.components);
             this.bdsLop = new System.Windows.Forms.BindingSource(this.components);
             this.lOPTableAdapter = new TracNghiem.DSTableAdapters.LOPTableAdapter();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataGridView_GiaoVien = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.themGVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.xoaGVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.ghiGVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.thoatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dS_DSPM = new TracNghiem.DS_DSPM();
+            this.bdsGVDK = new System.Windows.Forms.BindingSource(this.components);
+            this.gIAOVIEN_DANGKYTableAdapter = new TracNghiem.DSTableAdapters.GIAOVIEN_DANGKYTableAdapter();
+            this.bdsBoDe = new System.Windows.Forms.BindingSource(this.components);
+            this.bODETableAdapter = new TracNghiem.DSTableAdapters.BODETableAdapter();
             mAKHLabel = new System.Windows.Forms.Label();
             tENKHLabel = new System.Windows.Forms.Label();
             mACSLabel = new System.Windows.Forms.Label();
@@ -87,6 +99,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.bdsGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsLop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView_GiaoVien)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dS_DSPM)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsGVDK)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsBoDe)).BeginInit();
             this.SuspendLayout();
             // 
             // mAKHLabel
@@ -292,12 +308,14 @@
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.BANGDIEMTableAdapter = null;
             this.tableAdapterManager.BODETableAdapter = null;
+            this.tableAdapterManager.CHITIETBAITHITableAdapter = null;
             this.tableAdapterManager.COSOTableAdapter = null;
             this.tableAdapterManager.GIAOVIEN_DANGKYTableAdapter = null;
             this.tableAdapterManager.GIAOVIENTableAdapter = this.gIAOVIENTableAdapter;
             this.tableAdapterManager.KHOATableAdapter = this.kHOATableAdapter;
             this.tableAdapterManager.LOPTableAdapter = null;
             this.tableAdapterManager.MONHOCTableAdapter = null;
+            this.tableAdapterManager.SINHVIENTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = TracNghiem.DSTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // gIAOVIENTableAdapter
@@ -402,36 +420,6 @@
             // 
             this.lOPTableAdapter.ClearBeforeFill = true;
             // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "MAKH";
-            this.dataGridViewTextBoxColumn5.HeaderText = "MAKH";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "DIACHI";
-            this.dataGridViewTextBoxColumn4.HeaderText = "DIACHI";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "TEN";
-            this.dataGridViewTextBoxColumn3.HeaderText = "TEN";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "HO";
-            this.dataGridViewTextBoxColumn2.HeaderText = "HO";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "MAGV";
-            this.dataGridViewTextBoxColumn1.HeaderText = "MAGV";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
             // DataGridView_GiaoVien
             // 
             this.DataGridView_GiaoVien.AllowUserToAddRows = false;
@@ -444,12 +432,116 @@
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5});
+            this.DataGridView_GiaoVien.ContextMenuStrip = this.contextMenuStrip1;
             this.DataGridView_GiaoVien.DataSource = this.bdsGV;
             this.DataGridView_GiaoVien.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DataGridView_GiaoVien.Location = new System.Drawing.Point(514, 295);
             this.DataGridView_GiaoVien.Name = "DataGridView_GiaoVien";
             this.DataGridView_GiaoVien.Size = new System.Drawing.Size(286, 346);
             this.DataGridView_GiaoVien.TabIndex = 7;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "MAGV";
+            this.dataGridViewTextBoxColumn1.HeaderText = "MAGV";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "HO";
+            this.dataGridViewTextBoxColumn2.HeaderText = "HO";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "TEN";
+            this.dataGridViewTextBoxColumn3.HeaderText = "TEN";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "DIACHI";
+            this.dataGridViewTextBoxColumn4.HeaderText = "DIACHI";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "MAKH";
+            this.dataGridViewTextBoxColumn5.HeaderText = "MAKH";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.themGVToolStripMenuItem,
+            this.xoaGVToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.ghiGVToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.thoatToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 126);
+            // 
+            // themGVToolStripMenuItem
+            // 
+            this.themGVToolStripMenuItem.Name = "themGVToolStripMenuItem";
+            this.themGVToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.themGVToolStripMenuItem.Text = "Thêm giảng viên";
+            this.themGVToolStripMenuItem.Click += new System.EventHandler(this.themGVToolStripMenuItem_Click);
+            // 
+            // xoaGVToolStripMenuItem
+            // 
+            this.xoaGVToolStripMenuItem.Name = "xoaGVToolStripMenuItem";
+            this.xoaGVToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.xoaGVToolStripMenuItem.Text = "Xóa giảng viên";
+            this.xoaGVToolStripMenuItem.Click += new System.EventHandler(this.xoaGVToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            // 
+            // ghiGVToolStripMenuItem
+            // 
+            this.ghiGVToolStripMenuItem.Name = "ghiGVToolStripMenuItem";
+            this.ghiGVToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ghiGVToolStripMenuItem.Text = "Ghi";
+            this.ghiGVToolStripMenuItem.Click += new System.EventHandler(this.ghiGVToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            // 
+            // thoatToolStripMenuItem
+            // 
+            this.thoatToolStripMenuItem.Name = "thoatToolStripMenuItem";
+            this.thoatToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.thoatToolStripMenuItem.Text = "Thoát";
+            this.thoatToolStripMenuItem.Click += new System.EventHandler(this.thoatToolStripMenuItem_Click);
+            // 
+            // dS_DSPM
+            // 
+            this.dS_DSPM.DataSetName = "DS_DSPM";
+            this.dS_DSPM.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // bdsGVDK
+            // 
+            this.bdsGVDK.DataMember = "FK_GIAOVIEN_DANGKY_GIAOVIEN1";
+            this.bdsGVDK.DataSource = this.bdsGV;
+            // 
+            // gIAOVIEN_DANGKYTableAdapter
+            // 
+            this.gIAOVIEN_DANGKYTableAdapter.ClearBeforeFill = true;
+            // 
+            // bdsBoDe
+            // 
+            this.bdsBoDe.DataMember = "FK_BODE_GIAOVIEN";
+            this.bdsBoDe.DataSource = this.bdsGV;
+            // 
+            // bODETableAdapter
+            // 
+            this.bODETableAdapter.ClearBeforeFill = true;
             // 
             // frmKhoa_GiaoVien
             // 
@@ -465,7 +557,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "frmKhoa_GiaoVien";
-            this.Text = "z";
+            this.Text = "frmKhoa_GiaoVien";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmKhoa_GiaoVien_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
@@ -482,6 +574,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.bdsGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsLop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView_GiaoVien)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dS_DSPM)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsGVDK)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsBoDe)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -510,9 +606,6 @@
         private DevExpress.XtraGrid.GridControl GridControl_Khoa;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraEditors.GroupControl groupControl2;
-        private DevExpress.XtraGrid.Columns.GridColumn colMAKH;
-        private DevExpress.XtraGrid.Columns.GridColumn colTENKH;
-        private DevExpress.XtraGrid.Columns.GridColumn colMACS;
         private DSTableAdapters.GIAOVIENTableAdapter gIAOVIENTableAdapter;
         private System.Windows.Forms.BindingSource bdsGV;
         private System.Windows.Forms.ComboBox comboBox_CN;
@@ -523,10 +616,25 @@
         private System.Windows.Forms.BindingSource bdsLop;
         private DSTableAdapters.LOPTableAdapter lOPTableAdapter;
         private System.Windows.Forms.DataGridView DataGridView_GiaoVien;
+        private DevExpress.XtraGrid.Columns.GridColumn colMAKH;
+        private DevExpress.XtraGrid.Columns.GridColumn colTENKH;
+        private DevExpress.XtraGrid.Columns.GridColumn colMACS;
+        private DS_DSPM dS_DSPM;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem themGVToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem xoaGVToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem ghiGVToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.BindingSource bdsGVDK;
+        private DSTableAdapters.GIAOVIEN_DANGKYTableAdapter gIAOVIEN_DANGKYTableAdapter;
+        private System.Windows.Forms.BindingSource bdsBoDe;
+        private DSTableAdapters.BODETableAdapter bODETableAdapter;
+        private System.Windows.Forms.ToolStripMenuItem thoatToolStripMenuItem;
     }
 }

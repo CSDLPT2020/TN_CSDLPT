@@ -29,9 +29,10 @@ namespace TracNghiem
 
         private void comboBox_TenCN_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (comboBox_TenCN.SelectedIndex == -1) return;
             try
             {
-                Program.servername = (string)comboBox_TenCN.SelectedValue;
+                Program.servername = comboBox_TenCN.SelectedValue.ToString();
             }
             catch(Exception) { }
         }
@@ -125,6 +126,7 @@ namespace TracNghiem
             Program.myReader.Close();
             Program.conn.Close();
             Program.frmChinh.HienThiMenu();
+            this.Visible = false;
         }
     }
 }
