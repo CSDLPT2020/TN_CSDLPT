@@ -21,6 +21,7 @@ namespace TracNghiem
         }
         private void frmKhoa_GiaoVien_Load(object sender, EventArgs e)
         {
+            //nhac nho chuyen ve trang thai cu truoc khi mo form loi nhom Truong
             DS.EnforceConstraints = false;
 
             this.kHOATableAdapter.Connection.ConnectionString = Program.connstr;
@@ -38,7 +39,7 @@ namespace TracNghiem
             this.gIAOVIEN_DANGKYTableAdapter.Connection.ConnectionString = Program.connstr;
             this.gIAOVIEN_DANGKYTableAdapter.Fill(this.DS.GIAOVIEN_DANGKY);
 
-            macn = GetMaCS();
+            macn = Program.GetMaCS();
             comboBox_CN.DataSource = Program.bds_dspm;  // sao chép bds_dspm đã load ở form đăng nhập  qua
             comboBox_CN.DisplayMember = "TENCN";
             comboBox_CN.ValueMember = "TENSERVER";
@@ -53,17 +54,6 @@ namespace TracNghiem
                 comboBox_CN.Enabled = true;
                 bar2.Visible = false;
             }
-        }
-
-        public static string GetMaCS()
-        {
-            DataTable dt = new DataTable();
-            BindingSource bds = new BindingSource();
-
-            dt = Program.ExecSqlDataTable("SELECT MACS FROM COSO");
-            bds.DataSource = dt;
-
-            return ((DataRowView)bds[0])["MACS"].ToString();
         }
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -140,9 +130,10 @@ namespace TracNghiem
             }
             else //sua
             {
-                //thieu sua khoa?????????????????????
-
-
+                string strLenh = "EXEC SP_CHECKKHOA_PM N'" + TextBox_MaKH.Text.Trim() + "', N'"
+                    + TextBox_TenKH.Text.Trim() + "'";
+                int kq = Program.ExecSqlNonQuery(strLenh);
+                if (kq == 1 || kq == 2) return;
             }
             //bat dau ghi
             try
@@ -154,7 +145,15 @@ namespace TracNghiem
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi ghi khoa.\n" + ex.Message, "", MessageBoxButtons.OK);
+                if (ex.Message.Contains("PK_KHOA"))
+                {
+                    MessageBox.Show("Lỗi mã khoa bị trùng", "", MessageBoxButtons.OK);
+                }
+                else if (ex.Message.Contains("UN_TENKH"))
+                {
+                    MessageBox.Show("Lỗi tên khoa bị trùng", "", MessageBoxButtons.OK);
+                }
+                else MessageBox.Show("Lỗi ghi khoa.\n" + ex.Message, "", MessageBoxButtons.OK);
                 return;
             }
             GridControl_Khoa.Enabled = true;
@@ -223,7 +222,7 @@ namespace TracNghiem
                 this.bODETableAdapter.Fill(this.DS.BODE);
                 this.gIAOVIEN_DANGKYTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.gIAOVIEN_DANGKYTableAdapter.Fill(this.DS.GIAOVIEN_DANGKY);
-                macn = GetMaCS();
+                macn = Program.GetMaCS();
             }
         }
 
@@ -259,6 +258,24 @@ namespace TracNghiem
                     bdsGV.RemoveCurrent();
                     this.gIAOVIENTableAdapter.Connection.ConnectionString = Program.connstr;
                     this.gIAOVIENTableAdapter.Update(this.DS.GIAOVIEN);
+
+                    //xoa tai khoan xong sau khi xoa giang vien thanh cong
+                    //check giang vien co tk
+                    string strLenh = "EXEC SP_CHECKTAIKHOAN N'" + magv + "'";
+                    Program.myReader = Program.ExecSqlDataReader(strLenh);
+                    if (Program.myReader == null) { }
+                    if (Program.myReader.Read() == true)
+                    {
+                        string logName = Program.myReader.GetString(0);
+                        Program.myReader.Close();
+                        string strLenh1 = "EXEC SP_XOATAIKHOAN N'" + logName + "', N'"
+                            + magv + "'";
+                        int i = Program.ExecSqlNonQuery(strLenh1);
+                        if (i == 0)
+                        {
+                            MessageBox.Show("Đã xóa tài khoản của giảng viên!", "", MessageBoxButtons.OK);
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -280,6 +297,16 @@ namespace TracNghiem
                 int index = bdsGV.Count - 1;
                 //check thong tin giang vien moi nhap vao
                 string maGV = this.DataGridView_GiaoVien.Rows[index].Cells[0].Value.ToString();
+
+                if (string.IsNullOrEmpty(maGV.Trim()))
+                {
+                    MessageBox.Show("Mã giảng viên không được để trống", "", MessageBoxButtons.OK);
+                    return;
+                }
+            }
+            else
+            {
+                string maGV = this.DataGridView_GiaoVien.Rows[bdsGV.Position].Cells[0].Value.ToString();
 
                 if (string.IsNullOrEmpty(maGV.Trim()))
                 {

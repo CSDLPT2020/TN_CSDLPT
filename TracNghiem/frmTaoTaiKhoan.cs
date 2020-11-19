@@ -19,6 +19,22 @@ namespace TracNghiem
 
         private void frmTaoTaiKhoan_Load(object sender, EventArgs e)
         {
+            //set ve tai khoan cu
+            comboBox_CN.DataSource = Program.bds_dspm;  // sao chép bds_dspm đã load ở form đăng nhập  qua
+            comboBox_CN.DisplayMember = "TENCN";
+            comboBox_CN.ValueMember = "TENSERVER";
+            comboBox_CN.SelectedIndex = Program.mChinhanh;
+            if (comboBox_CN.SelectedIndex == -1) return;
+            try
+            {
+                Program.servername = comboBox_CN.SelectedValue.ToString();
+            }
+            catch (Exception) { }
+            Program.mlogin = Program.mloginDN;
+            Program.password = Program.passwordDN;
+            if (Program.KetNoi() == 0)
+                MessageBox.Show("Lỗi kết nối về chi nhánh mới", "", MessageBoxButtons.OK);
+
             // TODO: This line of code loads data into the 'dS_DSGV_CHUATK.V_DS_GIAOVIENCHUACOTK' table. You can move, or remove it, as needed.
             this.v_DS_GIAOVIENCHUACOTKTableAdapter.Connection.ConnectionString = Program.connstr;
             this.v_DS_GIAOVIENCHUACOTKTableAdapter.Fill(this.dS_DSGV_CHUATK.V_DS_GIAOVIENCHUACOTK);

@@ -106,6 +106,18 @@ namespace TracNghiem
                 return ex.State; // trang thai lỗi gởi từ RAISERROR trong SQL Server qua
             }
         }
+
+        public static string GetMaCS()
+        {
+            DataTable dt = new DataTable();
+            BindingSource bds = new BindingSource();
+
+            dt = Program.ExecSqlDataTable("SELECT MACS FROM COSO");
+            bds.DataSource = dt;
+
+            return ((DataRowView)bds[0])["MACS"].ToString();
+        }
+
         [STAThread]
         static void Main()
         {

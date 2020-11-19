@@ -92,5 +92,17 @@ namespace TracNghiem
                 f.Show();
             }
         }
+
+        private void barButtonItem_LopSV_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(frmLop_SinhVien));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frmLop_SinhVien f = new frmLop_SinhVien();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
     }
 }

@@ -48,6 +48,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.v_DS_GIAOVIENCHUACOTKTableAdapter = new TracNghiem.DS_DSGV_CHUATKTableAdapters.V_DS_GIAOVIENCHUACOTKTableAdapter();
             this.tableAdapterManager = new TracNghiem.DS_DSGV_CHUATKTableAdapters.TableAdapterManager();
+            this.label5 = new System.Windows.Forms.Label();
+            this.comboBox_CN = new System.Windows.Forms.ComboBox();
             hOTENLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -60,7 +62,7 @@
             // 
             hOTENLabel.AutoSize = true;
             hOTENLabel.Font = new System.Drawing.Font("Tahoma", 12F);
-            hOTENLabel.Location = new System.Drawing.Point(99, 127);
+            hOTENLabel.Location = new System.Drawing.Point(99, 134);
             hOTENLabel.Name = "hOTENLabel";
             hOTENLabel.Size = new System.Drawing.Size(90, 19);
             hOTENLabel.TabIndex = 1;
@@ -68,6 +70,8 @@
             // 
             // groupControl1
             // 
+            this.groupControl1.Controls.Add(this.comboBox_CN);
+            this.groupControl1.Controls.Add(this.label5);
             this.groupControl1.Controls.Add(this.TextBox_Username);
             this.groupControl1.Controls.Add(this.button_DK);
             this.groupControl1.Controls.Add(this.radioButton_Giangvien);
@@ -214,7 +218,7 @@
             this.hOTENComboBox.DisplayMember = "HOTEN";
             this.hOTENComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.hOTENComboBox.FormattingEnabled = true;
-            this.hOTENComboBox.Location = new System.Drawing.Point(224, 127);
+            this.hOTENComboBox.Location = new System.Drawing.Point(224, 134);
             this.hOTENComboBox.Name = "hOTENComboBox";
             this.hOTENComboBox.Size = new System.Drawing.Size(168, 21);
             this.hOTENComboBox.TabIndex = 2;
@@ -224,7 +228,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 22F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(172, 49);
+            this.label1.Location = new System.Drawing.Point(170, 33);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(189, 35);
             this.label1.TabIndex = 0;
@@ -239,6 +243,26 @@
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.Connection = null;
             this.tableAdapterManager.UpdateOrder = TracNghiem.DS_DSGV_CHUATKTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.label5.Location = new System.Drawing.Point(99, 91);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(57, 19);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "CƠ SỞ";
+            // 
+            // comboBox_CN
+            // 
+            this.comboBox_CN.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_CN.Enabled = false;
+            this.comboBox_CN.FormattingEnabled = true;
+            this.comboBox_CN.Location = new System.Drawing.Point(224, 91);
+            this.comboBox_CN.Name = "comboBox_CN";
+            this.comboBox_CN.Size = new System.Drawing.Size(168, 21);
+            this.comboBox_CN.TabIndex = 16;
             // 
             // frmTaoTaiKhoan
             // 
@@ -280,5 +304,7 @@
         private System.Windows.Forms.RadioButton radioButton_Truong;
         private System.Windows.Forms.Button button_DK;
         private System.Windows.Forms.TextBox TextBox_Username;
+        private System.Windows.Forms.ComboBox comboBox_CN;
+        private System.Windows.Forms.Label label5;
     }
 }
