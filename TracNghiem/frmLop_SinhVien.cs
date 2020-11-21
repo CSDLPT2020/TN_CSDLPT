@@ -289,11 +289,18 @@ namespace TracNghiem
                 if (string.IsNullOrEmpty(maSV.Trim()))
                 {
                     MessageBox.Show("Mã sinh viên không được để trống", "", MessageBoxButtons.OK);
+                    DataGridView_SV.CurrentCell = this.DataGridView_SV.Rows[index].Cells[0];
+                    DataGridView_SV.BeginEdit(true);
                     return;
                 }
                 string strLenh = "EXEC SP_CHECKSV_TRACUU N'" + maSV.Trim() + "'";
                 int kq = Program.ExecSqlNonQuery(strLenh);
-                if (kq == 1) return;
+                if (kq == 1)
+                {
+                    DataGridView_SV.CurrentCell = this.DataGridView_SV.Rows[index].Cells[0];
+                    DataGridView_SV.BeginEdit(true);
+                    return;
+                }
             }
             else //sua
             {
@@ -302,11 +309,18 @@ namespace TracNghiem
                 if (string.IsNullOrEmpty(maSV.Trim()))
                 {
                     MessageBox.Show("Mã sinh viên không được để trống", "", MessageBoxButtons.OK);
+                    DataGridView_SV.CurrentCell = this.DataGridView_SV.Rows[bdsSV.Position].Cells[0];
+                    DataGridView_SV.BeginEdit(true);
                     return;
                 }
                 string strLenh = "EXEC SP_CHECKSV_PM N'" + maSV.Trim() + "'";
                 int kq = Program.ExecSqlNonQuery(strLenh);
-                if (kq == 1) return;
+                if (kq == 1)
+                {
+                    DataGridView_SV.CurrentCell = this.DataGridView_SV.Rows[bdsSV.Position].Cells[0];
+                    DataGridView_SV.BeginEdit(true);
+                    return;
+                }
             }
             //ghi
             try
@@ -318,12 +332,17 @@ namespace TracNghiem
             }
             catch (Exception ex)
             {
-                this.bdsSV.RemoveCurrent();
                 if (ex.Message.Contains("PK_SINHVIEN"))
                 {
                     MessageBox.Show("Lỗi mã sinh viên bị trùng", "", MessageBoxButtons.OK);
+                    DataGridView_SV.CurrentCell = this.DataGridView_SV.Rows[bdsSV.Position].Cells[0];
+                    DataGridView_SV.BeginEdit(true);
                 }
-                else MessageBox.Show("Lỗi ghi sinh viên.\n" + ex.Message, "", MessageBoxButtons.OK);
+                else
+                {
+                    this.bdsSV.RemoveCurrent();
+                    MessageBox.Show("Lỗi ghi sinh viên.\n" + ex.Message, "", MessageBoxButtons.OK);
+                }
                 return;
             }
             themSVToolStripMenuItem.Enabled = true;

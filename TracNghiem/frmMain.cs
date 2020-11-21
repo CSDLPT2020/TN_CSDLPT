@@ -9,6 +9,7 @@ namespace TracNghiem
         {
             InitializeComponent();
             barButtonItem_DN.PerformClick();
+            barButtonItem_DX.Enabled = false;
         }
 
         private Form CheckExists(Type ftype)
@@ -33,6 +34,8 @@ namespace TracNghiem
 
         public void HienThiMenu()
         {
+            barButtonItem_DX.Enabled = true;
+            barButtonItem_DN.Enabled = false;
             if (Program.isGV)
             {
                 toolStripStatusLabel_MaUser.Text = "Mã giảng viên: " + Program.username;
@@ -102,6 +105,27 @@ namespace TracNghiem
                 frmLop_SinhVien f = new frmLop_SinhVien();
                 f.MdiParent = this;
                 f.Show();
+            }
+        }
+
+        private void barButtonItem_BODE_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(frmNhapDe));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frmNhapDe f = new frmNhapDe();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void barButtonItem_DX_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (MessageBox.Show("Bạn có thật sự muốn đăng xuất khỏi tài khoản '"
+                +Program.mloginDN+"' ?", "Xác nhận", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                Application.Restart();
             }
         }
     }

@@ -151,3 +151,4 @@ C:\Users\Administrator\Source\Repos\TN_CSDLPT_2020\TracNghiem\bin\Debug\ru\DevEx
 C:\Users\Administrator\Source\Repos\TN_CSDLPT_2020\TracNghiem\obj\Debug\TracNghiem.frmMonHoc.resources
 C:\Users\Administrator\Source\Repos\TN_CSDLPT_2020\TracNghiem\obj\Debug\TracNghiem.frmKhoa_GiaoVien.resources
 C:\Users\Administrator\Source\Repos\TN_CSDLPT_2020\TracNghiem\obj\Debug\TracNghiem.frmLop_SinhVien.resources
+C:\Users\Administrator\Source\Repos\TN_CSDLPT_2020\TracNghiem\obj\Debug\TracNghiem.frmNhapDe.resources

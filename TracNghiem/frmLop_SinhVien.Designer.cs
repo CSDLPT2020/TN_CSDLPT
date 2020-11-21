@@ -75,9 +75,6 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bdsGVDK = new System.Windows.Forms.BindingSource(this.components);
-            this.bdsBangDiem = new System.Windows.Forms.BindingSource(this.components);
-            this.kHOATableAdapter = new TracNghiem.DSTableAdapters.KHOATableAdapter();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.themSVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xoaSVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -85,6 +82,9 @@
             this.ghiSVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.thoatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bdsGVDK = new System.Windows.Forms.BindingSource(this.components);
+            this.bdsBangDiem = new System.Windows.Forms.BindingSource(this.components);
+            this.kHOATableAdapter = new TracNghiem.DSTableAdapters.KHOATableAdapter();
             mALOPLabel = new System.Windows.Forms.Label();
             tENLOPLabel = new System.Windows.Forms.Label();
             mAKHLabel = new System.Windows.Forms.Label();
@@ -100,9 +100,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.bdsKH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsSV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView_SV)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsGVDK)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsBangDiem)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // mALOPLabel
@@ -496,6 +496,56 @@
             this.dataGridViewTextBoxColumn6.HeaderText = "MALOP";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.themSVToolStripMenuItem,
+            this.xoaSVToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.ghiSVToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.thoatToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(155, 104);
+            // 
+            // themSVToolStripMenuItem
+            // 
+            this.themSVToolStripMenuItem.Name = "themSVToolStripMenuItem";
+            this.themSVToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.themSVToolStripMenuItem.Text = "Thêm sinh viên";
+            this.themSVToolStripMenuItem.Click += new System.EventHandler(this.themSVToolStripMenuItem_Click);
+            // 
+            // xoaSVToolStripMenuItem
+            // 
+            this.xoaSVToolStripMenuItem.Name = "xoaSVToolStripMenuItem";
+            this.xoaSVToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.xoaSVToolStripMenuItem.Text = "Xóa sinh viên";
+            this.xoaSVToolStripMenuItem.Click += new System.EventHandler(this.xoaSVToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(151, 6);
+            // 
+            // ghiSVToolStripMenuItem
+            // 
+            this.ghiSVToolStripMenuItem.Name = "ghiSVToolStripMenuItem";
+            this.ghiSVToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.ghiSVToolStripMenuItem.Text = "Ghi";
+            this.ghiSVToolStripMenuItem.Click += new System.EventHandler(this.ghiSVToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(151, 6);
+            // 
+            // thoatToolStripMenuItem
+            // 
+            this.thoatToolStripMenuItem.Name = "thoatToolStripMenuItem";
+            this.thoatToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.thoatToolStripMenuItem.Text = "Thoát";
+            this.thoatToolStripMenuItem.Click += new System.EventHandler(this.thoatToolStripMenuItem_Click);
+            // 
             // bdsGVDK
             // 
             this.bdsGVDK.DataMember = "FK_GIAOVIEN_DANGKY_LOP";
@@ -509,56 +559,6 @@
             // kHOATableAdapter
             // 
             this.kHOATableAdapter.ClearBeforeFill = true;
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.themSVToolStripMenuItem,
-            this.xoaSVToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.ghiSVToolStripMenuItem,
-            this.toolStripSeparator2,
-            this.thoatToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 126);
-            // 
-            // themSVToolStripMenuItem
-            // 
-            this.themSVToolStripMenuItem.Name = "themSVToolStripMenuItem";
-            this.themSVToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.themSVToolStripMenuItem.Text = "Thêm sinh viên";
-            this.themSVToolStripMenuItem.Click += new System.EventHandler(this.themSVToolStripMenuItem_Click);
-            // 
-            // xoaSVToolStripMenuItem
-            // 
-            this.xoaSVToolStripMenuItem.Name = "xoaSVToolStripMenuItem";
-            this.xoaSVToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.xoaSVToolStripMenuItem.Text = "Xóa sinh viên";
-            this.xoaSVToolStripMenuItem.Click += new System.EventHandler(this.xoaSVToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
-            // 
-            // ghiSVToolStripMenuItem
-            // 
-            this.ghiSVToolStripMenuItem.Name = "ghiSVToolStripMenuItem";
-            this.ghiSVToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.ghiSVToolStripMenuItem.Text = "Ghi";
-            this.ghiSVToolStripMenuItem.Click += new System.EventHandler(this.ghiSVToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
-            // 
-            // thoatToolStripMenuItem
-            // 
-            this.thoatToolStripMenuItem.Name = "thoatToolStripMenuItem";
-            this.thoatToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.thoatToolStripMenuItem.Text = "Thoát";
-            this.thoatToolStripMenuItem.Click += new System.EventHandler(this.thoatToolStripMenuItem_Click);
             // 
             // frmLop_SinhVien
             // 
@@ -592,9 +592,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.bdsKH)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsSV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView_SV)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bdsGVDK)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsBangDiem)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

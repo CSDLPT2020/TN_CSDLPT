@@ -301,6 +301,8 @@ namespace TracNghiem
                 if (string.IsNullOrEmpty(maGV.Trim()))
                 {
                     MessageBox.Show("Mã giảng viên không được để trống", "", MessageBoxButtons.OK);
+                    DataGridView_GiaoVien.CurrentCell = this.DataGridView_GiaoVien.Rows[index].Cells[0];
+                    DataGridView_GiaoVien.BeginEdit(true);
                     return;
                 }
             }
@@ -311,6 +313,8 @@ namespace TracNghiem
                 if (string.IsNullOrEmpty(maGV.Trim()))
                 {
                     MessageBox.Show("Mã giảng viên không được để trống", "", MessageBoxButtons.OK);
+                    DataGridView_GiaoVien.CurrentCell = this.DataGridView_GiaoVien.Rows[bdsGV.Position].Cells[0];
+                    DataGridView_GiaoVien.BeginEdit(true);
                     return;
                 }
             }
@@ -324,12 +328,24 @@ namespace TracNghiem
             }
             catch (Exception ex)
             {
-                this.bdsGV.RemoveCurrent();
                 if (ex.Message.Contains("PK_GIAOVIEN"))
                 {
                     MessageBox.Show("Lỗi mã giảng viên bị trùng", "", MessageBoxButtons.OK);
+                    if (themGVToolStripMenuItem.Enabled == false)
+                    {
+                        DataGridView_GiaoVien.CurrentCell = this.DataGridView_GiaoVien.Rows[bdsGV.Count - 1].Cells[0];
+                    }
+                    else
+                    {
+                        DataGridView_GiaoVien.CurrentCell = this.DataGridView_GiaoVien.Rows[bdsGV.Position].Cells[0];
+                    }
+                    DataGridView_GiaoVien.BeginEdit(true);
                 }
-                else MessageBox.Show("Lỗi ghi giảng viên.\n" + ex.Message, "", MessageBoxButtons.OK);
+                else 
+                {
+                    this.bdsGV.RemoveCurrent();
+                    MessageBox.Show("Lỗi ghi giảng viên.\n" + ex.Message, "", MessageBoxButtons.OK);
+                }
                 return;
             }
             themGVToolStripMenuItem.Enabled = true;
