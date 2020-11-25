@@ -38,8 +38,8 @@
             System.Windows.Forms.Label cLabel;
             System.Windows.Forms.Label dLabel;
             System.Windows.Forms.Label dAP_ANLabel;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNhapDe));
             System.Windows.Forms.Label mAGVLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNhapDe));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.bar2 = new DevExpress.XtraBars.Bar();
@@ -71,6 +71,8 @@
             this.colDAP_AN = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMAGV = new DevExpress.XtraGrid.Columns.GridColumn();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.label_TD = new System.Windows.Forms.Label();
+            this.ComboBox_TD = new System.Windows.Forms.ComboBox();
             this.TextBox_MAGV = new System.Windows.Forms.TextBox();
             this.ComboBox_DA = new System.Windows.Forms.ComboBox();
             this.TextBox_D = new System.Windows.Forms.TextBox();
@@ -78,12 +80,9 @@
             this.TextBox_B = new System.Windows.Forms.TextBox();
             this.TextBox_A = new System.Windows.Forms.TextBox();
             this.TextBox_ND = new System.Windows.Forms.TextBox();
-            this.TextBox_MAMH = new System.Windows.Forms.TextBox();
             this.ComboBox_MAMH = new System.Windows.Forms.ComboBox();
             this.bdsMH = new System.Windows.Forms.BindingSource(this.components);
             this.TextBox_CH = new System.Windows.Forms.TextBox();
-            this.ComboBox_TD = new System.Windows.Forms.ComboBox();
-            this.label_TD = new System.Windows.Forms.Label();
             cAUHOILabel = new System.Windows.Forms.Label();
             mAMHLabel = new System.Windows.Forms.Label();
             tRINHDOLabel = new System.Windows.Forms.Label();
@@ -193,6 +192,16 @@
             dAP_ANLabel.Size = new System.Drawing.Size(66, 17);
             dAP_ANLabel.TabIndex = 17;
             dAP_ANLabel.Text = "DAP AN:";
+            // 
+            // mAGVLabel
+            // 
+            mAGVLabel.AutoSize = true;
+            mAGVLabel.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            mAGVLabel.Location = new System.Drawing.Point(38, 199);
+            mAGVLabel.Name = "mAGVLabel";
+            mAGVLabel.Size = new System.Drawing.Size(55, 17);
+            mAGVLabel.TabIndex = 19;
+            mAGVLabel.Text = "MAGV:";
             // 
             // barManager1
             // 
@@ -361,7 +370,7 @@
             this.GridControl_BODE.MainView = this.gridView1;
             this.GridControl_BODE.MenuManager = this.barManager1;
             this.GridControl_BODE.Name = "GridControl_BODE";
-            this.GridControl_BODE.Size = new System.Drawing.Size(1359, 183);
+            this.GridControl_BODE.Size = new System.Drawing.Size(1359, 209);
             this.GridControl_BODE.TabIndex = 5;
             this.GridControl_BODE.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -472,17 +481,42 @@
             this.groupControl1.Controls.Add(nOIDUNGLabel);
             this.groupControl1.Controls.Add(this.TextBox_ND);
             this.groupControl1.Controls.Add(tRINHDOLabel);
-            this.groupControl1.Controls.Add(this.TextBox_MAMH);
             this.groupControl1.Controls.Add(mAMHLabel);
             this.groupControl1.Controls.Add(this.ComboBox_MAMH);
             this.groupControl1.Controls.Add(cAUHOILabel);
             this.groupControl1.Controls.Add(this.TextBox_CH);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl1.Location = new System.Drawing.Point(0, 228);
+            this.groupControl1.Location = new System.Drawing.Point(0, 254);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1359, 260);
+            this.groupControl1.Size = new System.Drawing.Size(1359, 234);
             this.groupControl1.TabIndex = 6;
             this.groupControl1.Text = "groupControl1";
+            // 
+            // label_TD
+            // 
+            this.label_TD.AutoSize = true;
+            this.label_TD.Font = new System.Drawing.Font("Times New Roman", 11F);
+            this.label_TD.Location = new System.Drawing.Point(220, 147);
+            this.label_TD.Name = "label_TD";
+            this.label_TD.Size = new System.Drawing.Size(88, 17);
+            this.label_TD.TabIndex = 22;
+            this.label_TD.Text = "Chọn trình độ";
+            // 
+            // ComboBox_TD
+            // 
+            this.ComboBox_TD.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsBD, "TRINHDO", true));
+            this.ComboBox_TD.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox_TD.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.ComboBox_TD.FormattingEnabled = true;
+            this.ComboBox_TD.Items.AddRange(new object[] {
+            "A",
+            "B",
+            "C"});
+            this.ComboBox_TD.Location = new System.Drawing.Point(113, 142);
+            this.ComboBox_TD.Name = "ComboBox_TD";
+            this.ComboBox_TD.Size = new System.Drawing.Size(94, 26);
+            this.ComboBox_TD.TabIndex = 21;
+            this.ComboBox_TD.SelectedIndexChanged += new System.EventHandler(this.ComboBox_TD_SelectedIndexChanged);
             // 
             // TextBox_MAGV
             // 
@@ -556,30 +590,19 @@
             this.TextBox_ND.Size = new System.Drawing.Size(807, 25);
             this.TextBox_ND.TabIndex = 8;
             // 
-            // TextBox_MAMH
-            // 
-            this.TextBox_MAMH.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsBD, "MAMH", true));
-            this.TextBox_MAMH.Enabled = false;
-            this.TextBox_MAMH.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextBox_MAMH.Location = new System.Drawing.Point(113, 93);
-            this.TextBox_MAMH.Name = "TextBox_MAMH";
-            this.TextBox_MAMH.Size = new System.Drawing.Size(94, 25);
-            this.TextBox_MAMH.TabIndex = 5;
-            this.TextBox_MAMH.TextChanged += new System.EventHandler(this.TextBox_MAMH_TextChanged);
-            // 
             // ComboBox_MAMH
             // 
+            this.ComboBox_MAMH.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.bdsBD, "MAMH", true));
             this.ComboBox_MAMH.DataSource = this.bdsMH;
             this.ComboBox_MAMH.DisplayMember = "TENMH";
             this.ComboBox_MAMH.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBox_MAMH.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ComboBox_MAMH.FormattingEnabled = true;
-            this.ComboBox_MAMH.Location = new System.Drawing.Point(223, 93);
+            this.ComboBox_MAMH.Location = new System.Drawing.Point(113, 97);
             this.ComboBox_MAMH.Name = "ComboBox_MAMH";
-            this.ComboBox_MAMH.Size = new System.Drawing.Size(208, 25);
+            this.ComboBox_MAMH.Size = new System.Drawing.Size(238, 25);
             this.ComboBox_MAMH.TabIndex = 3;
             this.ComboBox_MAMH.ValueMember = "MAMH";
-            this.ComboBox_MAMH.SelectedIndexChanged += new System.EventHandler(this.ComboBox_MAMH_SelectedIndexChanged);
             // 
             // bdsMH
             // 
@@ -595,42 +618,6 @@
             this.TextBox_CH.Name = "TextBox_CH";
             this.TextBox_CH.Size = new System.Drawing.Size(94, 25);
             this.TextBox_CH.TabIndex = 1;
-            // 
-            // mAGVLabel
-            // 
-            mAGVLabel.AutoSize = true;
-            mAGVLabel.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            mAGVLabel.Location = new System.Drawing.Point(38, 199);
-            mAGVLabel.Name = "mAGVLabel";
-            mAGVLabel.Size = new System.Drawing.Size(55, 17);
-            mAGVLabel.TabIndex = 19;
-            mAGVLabel.Text = "MAGV:";
-            // 
-            // ComboBox_TD
-            // 
-            this.ComboBox_TD.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsBD, "TRINHDO", true));
-            this.ComboBox_TD.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComboBox_TD.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.ComboBox_TD.FormattingEnabled = true;
-            this.ComboBox_TD.Items.AddRange(new object[] {
-            "A",
-            "B",
-            "C"});
-            this.ComboBox_TD.Location = new System.Drawing.Point(113, 142);
-            this.ComboBox_TD.Name = "ComboBox_TD";
-            this.ComboBox_TD.Size = new System.Drawing.Size(94, 26);
-            this.ComboBox_TD.TabIndex = 21;
-            this.ComboBox_TD.SelectedIndexChanged += new System.EventHandler(this.ComboBox_TD_SelectedIndexChanged);
-            // 
-            // label_TD
-            // 
-            this.label_TD.AutoSize = true;
-            this.label_TD.Font = new System.Drawing.Font("Times New Roman", 11F);
-            this.label_TD.Location = new System.Drawing.Point(220, 147);
-            this.label_TD.Name = "label_TD";
-            this.label_TD.Size = new System.Drawing.Size(88, 17);
-            this.label_TD.TabIndex = 22;
-            this.label_TD.Text = "Chọn trình độ";
             // 
             // frmNhapDe
             // 
@@ -703,7 +690,6 @@
         private System.Windows.Forms.TextBox TextBox_B;
         private System.Windows.Forms.TextBox TextBox_A;
         private System.Windows.Forms.TextBox TextBox_ND;
-        private System.Windows.Forms.TextBox TextBox_MAMH;
         private System.Windows.Forms.ComboBox ComboBox_TD;
         private System.Windows.Forms.Label label_TD;
     }

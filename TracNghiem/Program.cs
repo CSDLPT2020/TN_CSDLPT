@@ -30,6 +30,11 @@ namespace TracNghiem
         public static int mChinhanh = 0; //co so da dang nhap phia ngoai login
 
         public static bool isGV = true; //false la sinh vien
+        public static string[] trinhDo = { 
+            "Đại học, chuyên ngành", 
+            "Đại học, không chuyên ngành",
+            "Cao đẳng"
+        };
 
         public static BindingSource bds_dspm = new BindingSource();  // giữ bdsPM khi đăng nhập
 

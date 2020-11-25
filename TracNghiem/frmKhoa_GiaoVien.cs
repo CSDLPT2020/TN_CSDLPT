@@ -130,6 +130,21 @@ namespace TracNghiem
             }
             else //sua
             {
+                //check site ht truoc
+                int viTriDangSua = bdsKhoa.Position;
+                int vt = bdsKhoa.Find("MAKH", TextBox_MaKH.Text);
+                int vt1 = bdsKhoa.Find("TENKH", TextBox_TenKH.Text);
+                if (viTriDangSua != vt && vt != -1) //trung
+                {
+                    MessageBox.Show("Lỗi mã khoa bị trùng ở site hiện tại", "SP", MessageBoxButtons.OK);
+                    return;
+                }
+                if (viTriDangSua != vt1 && vt1 != -1) //trung
+                {
+                    MessageBox.Show("Lỗi tên khoa bị trùng ở site hiện tại", "SP", MessageBoxButtons.OK);
+                    return;
+                }
+                //chuyen sang check site pm
                 string strLenh = "EXEC SP_CHECKKHOA_PM N'" + TextBox_MaKH.Text.Trim() + "', N'"
                     + TextBox_TenKH.Text.Trim() + "'";
                 int kq = Program.ExecSqlNonQuery(strLenh);

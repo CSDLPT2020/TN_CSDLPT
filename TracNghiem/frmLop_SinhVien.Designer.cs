@@ -64,7 +64,6 @@
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.ComboBox_MAKH = new System.Windows.Forms.ComboBox();
             this.bdsKH = new System.Windows.Forms.BindingSource(this.components);
-            this.TextBox_MAKH = new System.Windows.Forms.TextBox();
             this.TextBox_TENLOP = new System.Windows.Forms.TextBox();
             this.TextBox_MALOP = new System.Windows.Forms.TextBox();
             this.bdsSV = new System.Windows.Forms.BindingSource(this.components);
@@ -108,27 +107,30 @@
             // mALOPLabel
             // 
             mALOPLabel.AutoSize = true;
-            mALOPLabel.Location = new System.Drawing.Point(59, 65);
+            mALOPLabel.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            mALOPLabel.Location = new System.Drawing.Point(57, 47);
             mALOPLabel.Name = "mALOPLabel";
-            mALOPLabel.Size = new System.Drawing.Size(45, 13);
+            mALOPLabel.Size = new System.Drawing.Size(64, 17);
             mALOPLabel.TabIndex = 0;
             mALOPLabel.Text = "MALOP:";
             // 
             // tENLOPLabel
             // 
             tENLOPLabel.AutoSize = true;
-            tENLOPLabel.Location = new System.Drawing.Point(55, 125);
+            tENLOPLabel.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            tENLOPLabel.Location = new System.Drawing.Point(53, 107);
             tENLOPLabel.Name = "tENLOPLabel";
-            tENLOPLabel.Size = new System.Drawing.Size(49, 13);
+            tENLOPLabel.Size = new System.Drawing.Size(69, 17);
             tENLOPLabel.TabIndex = 2;
             tENLOPLabel.Text = "TENLOP:";
             // 
             // mAKHLabel
             // 
             mAKHLabel.AutoSize = true;
-            mAKHLabel.Location = new System.Drawing.Point(59, 190);
+            mAKHLabel.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            mAKHLabel.Location = new System.Drawing.Point(57, 161);
             mAKHLabel.Name = "mAKHLabel";
-            mAKHLabel.Size = new System.Drawing.Size(39, 13);
+            mAKHLabel.Size = new System.Drawing.Size(57, 17);
             mAKHLabel.TabIndex = 4;
             mAKHLabel.Text = "MAKH:";
             // 
@@ -378,7 +380,6 @@
             // 
             this.groupControl2.Controls.Add(this.ComboBox_MAKH);
             this.groupControl2.Controls.Add(mAKHLabel);
-            this.groupControl2.Controls.Add(this.TextBox_MAKH);
             this.groupControl2.Controls.Add(tENLOPLabel);
             this.groupControl2.Controls.Add(this.TextBox_TENLOP);
             this.groupControl2.Controls.Add(mALOPLabel);
@@ -392,46 +393,39 @@
             // 
             // ComboBox_MAKH
             // 
+            this.ComboBox_MAKH.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.bdsLop, "MAKH", true));
             this.ComboBox_MAKH.DataSource = this.bdsKH;
             this.ComboBox_MAKH.DisplayMember = "TENKH";
             this.ComboBox_MAKH.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox_MAKH.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ComboBox_MAKH.FormattingEnabled = true;
-            this.ComboBox_MAKH.Location = new System.Drawing.Point(237, 187);
+            this.ComboBox_MAKH.Location = new System.Drawing.Point(138, 158);
             this.ComboBox_MAKH.Name = "ComboBox_MAKH";
-            this.ComboBox_MAKH.Size = new System.Drawing.Size(121, 21);
+            this.ComboBox_MAKH.Size = new System.Drawing.Size(138, 25);
             this.ComboBox_MAKH.TabIndex = 7;
             this.ComboBox_MAKH.ValueMember = "MAKH";
-            this.ComboBox_MAKH.SelectedIndexChanged += new System.EventHandler(this.ComboBox_MAKH_SelectedIndexChanged);
             // 
             // bdsKH
             // 
             this.bdsKH.DataMember = "KHOA";
             this.bdsKH.DataSource = this.DS;
             // 
-            // TextBox_MAKH
-            // 
-            this.TextBox_MAKH.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsLop, "MAKH", true));
-            this.TextBox_MAKH.Enabled = false;
-            this.TextBox_MAKH.Location = new System.Drawing.Point(110, 187);
-            this.TextBox_MAKH.Name = "TextBox_MAKH";
-            this.TextBox_MAKH.Size = new System.Drawing.Size(121, 21);
-            this.TextBox_MAKH.TabIndex = 5;
-            this.TextBox_MAKH.TextChanged += new System.EventHandler(this.TextBox_MAKH_TextChanged);
-            // 
             // TextBox_TENLOP
             // 
             this.TextBox_TENLOP.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsLop, "TENLOP", true));
-            this.TextBox_TENLOP.Location = new System.Drawing.Point(110, 122);
+            this.TextBox_TENLOP.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextBox_TENLOP.Location = new System.Drawing.Point(138, 104);
             this.TextBox_TENLOP.Name = "TextBox_TENLOP";
-            this.TextBox_TENLOP.Size = new System.Drawing.Size(121, 21);
+            this.TextBox_TENLOP.Size = new System.Drawing.Size(138, 25);
             this.TextBox_TENLOP.TabIndex = 3;
             // 
             // TextBox_MALOP
             // 
             this.TextBox_MALOP.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsLop, "MALOP", true));
-            this.TextBox_MALOP.Location = new System.Drawing.Point(110, 62);
+            this.TextBox_MALOP.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextBox_MALOP.Location = new System.Drawing.Point(138, 44);
             this.TextBox_MALOP.Name = "TextBox_MALOP";
-            this.TextBox_MALOP.Size = new System.Drawing.Size(121, 21);
+            this.TextBox_MALOP.Size = new System.Drawing.Size(138, 25);
             this.TextBox_MALOP.TabIndex = 1;
             // 
             // bdsSV
@@ -643,7 +637,6 @@
         private System.Windows.Forms.BindingSource bdsBangDiem;
         private System.Windows.Forms.TextBox TextBox_TENLOP;
         private System.Windows.Forms.TextBox TextBox_MALOP;
-        private System.Windows.Forms.TextBox TextBox_MAKH;
         private System.Windows.Forms.BindingSource bdsKH;
         private DSTableAdapters.KHOATableAdapter kHOATableAdapter;
         private System.Windows.Forms.ComboBox ComboBox_MAKH;

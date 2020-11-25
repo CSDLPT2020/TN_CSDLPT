@@ -39,6 +39,12 @@ namespace TracNghiem
             this.kHOATableAdapter.Connection.ConnectionString = Program.connstr;
             this.kHOATableAdapter.Fill(this.DS.KHOA);
 
+            if (bdsLop.Count > 0)
+            {
+                //fix loi dong dau combobox
+                ComboBox_MAKH.SelectedValue = ((DataRowView)bdsLop[0])["MAKH"].ToString();
+            }
+
             macn = Program.GetMaCS();
             comboBox_CN.DataSource = Program.bds_dspm;  // sao chép bds_dspm đã load ở form đăng nhập  qua
             comboBox_CN.DisplayMember = "TENCN";
@@ -63,7 +69,6 @@ namespace TracNghiem
             bdsLop.AddNew();
 
             ComboBox_MAKH.SelectedIndex = 0;
-            TextBox_MAKH.Text = ComboBox_MAKH.SelectedValue.ToString();
 
             btnThem.Enabled = btnReload.Enabled = btnXoa.Enabled = false;
             btnGhi.Enabled = btnUndo.Enabled = true;
@@ -121,18 +126,18 @@ namespace TracNghiem
                 this.lOPTableAdapter.Fill(this.DS.LOP);
                 this.sINHVIENTableAdapter.Fill(this.DS.SINHVIEN);
                 this.kHOATableAdapter.Fill(this.DS.KHOA);
+
+                if (bdsLop.Count > 0)
+                {
+                    //fix loi dong dau combobox
+                    ComboBox_MAKH.SelectedValue = ((DataRowView)bdsLop[0])["MAKH"].ToString();
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi Reload :" + ex.Message, "", MessageBoxButtons.OK);
                 return;
             }
-        }
-
-        private void ComboBox_MAKH_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (ComboBox_MAKH.SelectedIndex == -1) return;
-            TextBox_MAKH.Text = ComboBox_MAKH.SelectedValue.ToString();
         }
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -196,6 +201,21 @@ namespace TracNghiem
             }
             else //sua
             {
+                //check site ht truoc
+                int viTriDangSua = bdsLop.Position;
+                int vt = bdsLop.Find("MALOP", TextBox_MALOP.Text);
+                int vt1 = bdsLop.Find("TENLOP", TextBox_TENLOP.Text);
+                if (viTriDangSua != vt && vt != -1) //trung
+                {
+                    MessageBox.Show("Lỗi mã lớp bị trùng ở site hiện tại", "SP", MessageBoxButtons.OK);
+                    return;
+                }
+                if (viTriDangSua != vt1 && vt1 != -1) //trung
+                {
+                    MessageBox.Show("Lỗi tên lớp bị trùng ở site hiện tại", "SP", MessageBoxButtons.OK);
+                    return;
+                }
+                //chuyen sang check site pm
                 string strLenh = "EXEC SP_CHECKLOP_PM N'" + TextBox_MALOP.Text.Trim() + "', N'"
                     + TextBox_TENLOP.Text.Trim() + "'";
                 int kq = Program.ExecSqlNonQuery(strLenh);
@@ -236,7 +256,7 @@ namespace TracNghiem
 
         private void TextBox_MAKH_TextChanged(object sender, EventArgs e)
         {
-            ComboBox_MAKH.SelectedValue = TextBox_MAKH.Text;
+            //ComboBox_MAKH.SelectedValue = TextBox_MAKH.Text;
         }
 
         private void themSVToolStripMenuItem_Click(object sender, EventArgs e)

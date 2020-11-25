@@ -75,6 +75,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DS_DSPM.xsd</DependentUpon>
     </Compile>
+    <Compile Include="frmChuanBiThi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChuanBiThi.Designer.cs">
+      <DependentUpon>frmChuanBiThi.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmKhoa_GiaoVien.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,8 +123,17 @@
     <Compile Include="frmTaoTaiKhoan.Designer.cs">
       <DependentUpon>frmTaoTaiKhoan.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmThi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmThi.Designer.cs">
+      <DependentUpon>frmThi.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmChuanBiThi.resx">
+      <DependentUpon>frmChuanBiThi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmKhoa_GiaoVien.resx">
       <DependentUpon>frmKhoa_GiaoVien.cs</DependentUpon>
     </EmbeddedResource>

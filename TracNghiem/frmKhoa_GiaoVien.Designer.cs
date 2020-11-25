@@ -108,27 +108,30 @@
             // mAKHLabel
             // 
             mAKHLabel.AutoSize = true;
-            mAKHLabel.Location = new System.Drawing.Point(66, 55);
+            mAKHLabel.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            mAKHLabel.Location = new System.Drawing.Point(69, 50);
             mAKHLabel.Name = "mAKHLabel";
-            mAKHLabel.Size = new System.Drawing.Size(39, 13);
+            mAKHLabel.Size = new System.Drawing.Size(57, 17);
             mAKHLabel.TabIndex = 0;
             mAKHLabel.Text = "MAKH:";
             // 
             // tENKHLabel
             // 
             tENKHLabel.AutoSize = true;
-            tENKHLabel.Location = new System.Drawing.Point(66, 117);
+            tENKHLabel.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            tENKHLabel.Location = new System.Drawing.Point(69, 112);
             tENKHLabel.Name = "tENKHLabel";
-            tENKHLabel.Size = new System.Drawing.Size(43, 13);
+            tENKHLabel.Size = new System.Drawing.Size(62, 17);
             tENKHLabel.TabIndex = 2;
             tENKHLabel.Text = "TENKH:";
             // 
             // mACSLabel
             // 
             mACSLabel.AutoSize = true;
-            mACSLabel.Location = new System.Drawing.Point(66, 176);
+            mACSLabel.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            mACSLabel.Location = new System.Drawing.Point(69, 171);
             mACSLabel.Name = "mACSLabel";
-            mACSLabel.Size = new System.Drawing.Size(39, 13);
+            mACSLabel.Size = new System.Drawing.Size(53, 17);
             mACSLabel.TabIndex = 4;
             mACSLabel.Text = "MACS:";
             // 
@@ -385,25 +388,28 @@
             // 
             this.TextBox_MaCS.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsKhoa, "MACS", true));
             this.TextBox_MaCS.Enabled = false;
-            this.TextBox_MaCS.Location = new System.Drawing.Point(115, 173);
+            this.TextBox_MaCS.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextBox_MaCS.Location = new System.Drawing.Point(147, 168);
             this.TextBox_MaCS.Name = "TextBox_MaCS";
-            this.TextBox_MaCS.Size = new System.Drawing.Size(100, 21);
+            this.TextBox_MaCS.Size = new System.Drawing.Size(119, 25);
             this.TextBox_MaCS.TabIndex = 5;
             // 
             // TextBox_TenKH
             // 
             this.TextBox_TenKH.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsKhoa, "TENKH", true));
-            this.TextBox_TenKH.Location = new System.Drawing.Point(115, 114);
+            this.TextBox_TenKH.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextBox_TenKH.Location = new System.Drawing.Point(147, 109);
             this.TextBox_TenKH.Name = "TextBox_TenKH";
-            this.TextBox_TenKH.Size = new System.Drawing.Size(100, 21);
+            this.TextBox_TenKH.Size = new System.Drawing.Size(119, 25);
             this.TextBox_TenKH.TabIndex = 3;
             // 
             // TextBox_MaKH
             // 
             this.TextBox_MaKH.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsKhoa, "MAKH", true));
-            this.TextBox_MaKH.Location = new System.Drawing.Point(115, 52);
+            this.TextBox_MaKH.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextBox_MaKH.Location = new System.Drawing.Point(147, 47);
             this.TextBox_MaKH.Name = "TextBox_MaKH";
-            this.TextBox_MaKH.Size = new System.Drawing.Size(100, 21);
+            this.TextBox_MaKH.Size = new System.Drawing.Size(119, 25);
             this.TextBox_MaKH.TabIndex = 1;
             // 
             // bdsGV

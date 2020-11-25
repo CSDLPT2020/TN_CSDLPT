@@ -56,9 +56,10 @@
             // tENCNLabel
             // 
             tENCNLabel.AutoSize = true;
-            tENCNLabel.Location = new System.Drawing.Point(151, 129);
+            tENCNLabel.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            tENCNLabel.Location = new System.Drawing.Point(151, 128);
             tENCNLabel.Name = "tENCNLabel";
-            tENCNLabel.Size = new System.Drawing.Size(34, 13);
+            tENCNLabel.Size = new System.Drawing.Size(44, 17);
             tENCNLabel.TabIndex = 0;
             tENCNLabel.Text = "Cơ sở";
             // 
@@ -94,35 +95,39 @@
             // 
             // textBox_Pass
             // 
-            this.textBox_Pass.Location = new System.Drawing.Point(201, 296);
+            this.textBox_Pass.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_Pass.Location = new System.Drawing.Point(201, 289);
             this.textBox_Pass.Name = "textBox_Pass";
-            this.textBox_Pass.Size = new System.Drawing.Size(170, 21);
+            this.textBox_Pass.Size = new System.Drawing.Size(170, 25);
             this.textBox_Pass.TabIndex = 9;
             this.textBox_Pass.Text = "123";
             this.textBox_Pass.UseSystemPasswordChar = true;
             // 
             // textBox_TenDN
             // 
-            this.textBox_TenDN.Location = new System.Drawing.Point(201, 249);
+            this.textBox_TenDN.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_TenDN.Location = new System.Drawing.Point(201, 242);
             this.textBox_TenDN.Name = "textBox_TenDN";
-            this.textBox_TenDN.Size = new System.Drawing.Size(170, 21);
+            this.textBox_TenDN.Size = new System.Drawing.Size(170, 25);
             this.textBox_TenDN.TabIndex = 8;
             // 
             // label_pass
             // 
             this.label_pass.AutoSize = true;
-            this.label_pass.Location = new System.Drawing.Point(105, 299);
+            this.label_pass.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_pass.Location = new System.Drawing.Point(105, 292);
             this.label_pass.Name = "label_pass";
-            this.label_pass.Size = new System.Drawing.Size(53, 13);
+            this.label_pass.Size = new System.Drawing.Size(66, 17);
             this.label_pass.TabIndex = 7;
             this.label_pass.Text = "Password";
             // 
             // label_LoginName
             // 
             this.label_LoginName.AutoSize = true;
-            this.label_LoginName.Location = new System.Drawing.Point(105, 249);
+            this.label_LoginName.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_LoginName.Location = new System.Drawing.Point(105, 242);
             this.label_LoginName.Name = "label_LoginName";
-            this.label_LoginName.Size = new System.Drawing.Size(61, 13);
+            this.label_LoginName.Size = new System.Drawing.Size(77, 17);
             this.label_LoginName.TabIndex = 6;
             this.label_LoginName.Text = "Login name";
             // 
@@ -139,9 +144,10 @@
             // radioButton_SinhVien
             // 
             this.radioButton_SinhVien.AutoSize = true;
-            this.radioButton_SinhVien.Location = new System.Drawing.Point(285, 176);
+            this.radioButton_SinhVien.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton_SinhVien.Location = new System.Drawing.Point(283, 182);
             this.radioButton_SinhVien.Name = "radioButton_SinhVien";
-            this.radioButton_SinhVien.Size = new System.Drawing.Size(68, 17);
+            this.radioButton_SinhVien.Size = new System.Drawing.Size(79, 21);
             this.radioButton_SinhVien.TabIndex = 4;
             this.radioButton_SinhVien.Text = "Sinh viên";
             this.radioButton_SinhVien.UseVisualStyleBackColor = true;
@@ -151,9 +157,10 @@
             // 
             this.radioButton_GiangVien.AutoSize = true;
             this.radioButton_GiangVien.Checked = true;
-            this.radioButton_GiangVien.Location = new System.Drawing.Point(145, 176);
+            this.radioButton_GiangVien.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton_GiangVien.Location = new System.Drawing.Point(143, 182);
             this.radioButton_GiangVien.Name = "radioButton_GiangVien";
-            this.radioButton_GiangVien.Size = new System.Drawing.Size(75, 17);
+            this.radioButton_GiangVien.Size = new System.Drawing.Size(88, 21);
             this.radioButton_GiangVien.TabIndex = 3;
             this.radioButton_GiangVien.TabStop = true;
             this.radioButton_GiangVien.Text = "Giảng viên";
@@ -162,10 +169,12 @@
             // 
             // radioGroup_Roles
             // 
-            this.radioGroup_Roles.Location = new System.Drawing.Point(136, 164);
+            this.radioGroup_Roles.Location = new System.Drawing.Point(134, 170);
             this.radioGroup_Roles.Name = "radioGroup_Roles";
             this.radioGroup_Roles.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.radioGroup_Roles.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioGroup_Roles.Properties.Appearance.Options.UseBackColor = true;
+            this.radioGroup_Roles.Properties.Appearance.Options.UseFont = true;
             this.radioGroup_Roles.Size = new System.Drawing.Size(235, 40);
             this.radioGroup_Roles.TabIndex = 2;
             // 
@@ -174,10 +183,11 @@
             this.comboBox_TenCN.DataSource = this.bdsPM;
             this.comboBox_TenCN.DisplayMember = "TENCN";
             this.comboBox_TenCN.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_TenCN.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox_TenCN.FormattingEnabled = true;
-            this.comboBox_TenCN.Location = new System.Drawing.Point(201, 126);
+            this.comboBox_TenCN.Location = new System.Drawing.Point(201, 125);
             this.comboBox_TenCN.Name = "comboBox_TenCN";
-            this.comboBox_TenCN.Size = new System.Drawing.Size(121, 21);
+            this.comboBox_TenCN.Size = new System.Drawing.Size(121, 25);
             this.comboBox_TenCN.TabIndex = 1;
             this.comboBox_TenCN.ValueMember = "TENSERVER";
             this.comboBox_TenCN.SelectedIndexChanged += new System.EventHandler(this.comboBox_TenCN_SelectedIndexChanged);

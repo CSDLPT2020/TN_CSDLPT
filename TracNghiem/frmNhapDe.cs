@@ -27,13 +27,11 @@ namespace TracNghiem
             this.mONHOCTableAdapter.Connection.ConnectionString = Program.connstr;
             this.mONHOCTableAdapter.Fill(this.DS.MONHOC);
 
-            ComboBox_MAMH.SelectedValue = TextBox_MAMH.Text;
-            
-        }
-
-        private void TextBox_MAMH_TextChanged(object sender, EventArgs e)
-        {
-            ComboBox_MAMH.SelectedValue = TextBox_MAMH.Text;
+            if (bdsBD.Count > 0)
+            {
+                //fix loi dong dau combobox
+                ComboBox_MAMH.SelectedValue = ((DataRowView)bdsBD[0])["MAMH"].ToString();
+            }
         }
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -43,6 +41,10 @@ namespace TracNghiem
             ComboBox_MAMH.SelectedIndex = 0;
             ComboBox_DA.SelectedIndex = -1;
             ComboBox_TD.SelectedIndex = -1;
+
+            btnThem.Enabled = btnReload.Enabled = btnXoa.Enabled = false;
+            btnGhi.Enabled = btnUndo.Enabled = true;
+            GridControl_BODE.Enabled = false;
         }
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -72,6 +74,18 @@ namespace TracNghiem
 
         private void btnGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (ComboBox_TD.SelectedIndex == -1)
+            {
+                MessageBox.Show("Bạn chưa chọn trình độ!", "", MessageBoxButtons.OK);
+                ComboBox_TD.Focus();
+                return;
+            }
+            if (ComboBox_DA.SelectedIndex == -1)
+            {
+                MessageBox.Show("Bạn chưa chọn đáp án!", "", MessageBoxButtons.OK);
+                ComboBox_DA.Focus();
+                return;
+            }
             try
             {
                 bdsBD.EndEdit();
@@ -107,7 +121,12 @@ namespace TracNghiem
             {
                 this.bODETableAdapter.Fill(this.DS.BODE);
                 this.mONHOCTableAdapter.Fill(this.DS.MONHOC);
-                ComboBox_MAMH.SelectedValue = TextBox_MAMH.Text;
+
+                if (bdsBD.Count > 0)
+                {
+                    //fix loi dong dau combobox
+                    ComboBox_MAMH.SelectedValue = ((DataRowView)bdsBD[0])["MAMH"].ToString();
+                }
             }
             catch (Exception ex)
             {
@@ -125,14 +144,9 @@ namespace TracNghiem
             btnReload.PerformClick();
         }
 
-        private void ComboBox_MAMH_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (ComboBox_MAMH.SelectedIndex == -1) return;
-            TextBox_MAMH.Text = ComboBox_MAMH.SelectedValue.ToString();
-        }
-
         private void TextBox_MAGV_TextChanged(object sender, EventArgs e)
         {
+            if (Program.mGroup == "Coso") return; //coso toan quyen
             if(TextBox_MAGV.Text.Trim() == Program.username)
             {
                 btnGhi.Enabled = true;
@@ -151,17 +165,9 @@ namespace TracNghiem
             {
                 label_TD.Text = "Chọn trình độ";
             }
-            else if(ComboBox_TD.SelectedIndex == 0)
+            else
             {
-                label_TD.Text = "Đại học, chuyên ngành";
-            }
-            else if (ComboBox_TD.SelectedIndex == 1)
-            {
-                label_TD.Text = "Đại học, không chuyên ngành";
-            }
-            else if (ComboBox_TD.SelectedIndex == 2)
-            {
-                label_TD.Text = "Cao đẳng";
+                label_TD.Text = Program.trinhDo[ComboBox_TD.SelectedIndex];
             }
         }
     }

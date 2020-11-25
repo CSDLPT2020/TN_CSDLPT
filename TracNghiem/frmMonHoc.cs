@@ -59,6 +59,29 @@ namespace TracNghiem
                 TextBox_TenMH.Focus();
                 return;
             }
+            if (btnThem.Enabled == false) //dang them moi check
+            {
+                string strLenh = "EXEC SP_CHECKMONHOC N'" + TextBox_MaMH.Text.Trim() + "', N'"
+                    + TextBox_TenMH.Text.Trim() + "'";
+                int kq = Program.ExecSqlNonQuery(strLenh);
+                if (kq == 1 || kq == 2) return;
+            }
+            else //sua
+            {
+                int viTriDangSua = bdsMH.Position;
+                int vt = bdsMH.Find("MAMH", TextBox_MaMH.Text);
+                int vt1 = bdsMH.Find("TENMH", TextBox_TenMH.Text);
+                if (viTriDangSua != vt && vt != -1) //trung
+                {
+                    MessageBox.Show("Lỗi mã môn học bị trùng", "SP", MessageBoxButtons.OK);
+                    return;
+                }
+                if (viTriDangSua != vt1 && vt1 != -1) //trung
+                {
+                    MessageBox.Show("Lỗi tên môn học bị trùng", "SP", MessageBoxButtons.OK);
+                    return;
+                }
+            }
             try
             {
                 bdsMH.EndEdit();
