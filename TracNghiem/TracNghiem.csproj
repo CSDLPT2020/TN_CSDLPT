@@ -129,6 +129,12 @@
     <Compile Include="frmThi.Designer.cs">
       <DependentUpon>frmThi.cs</DependentUpon>
     </Compile>
+    <Compile Include="itemCauHoi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="itemCauHoi.Designer.cs">
+      <DependentUpon>itemCauHoi.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmChuanBiThi.resx">
@@ -154,6 +160,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmTaoTaiKhoan.resx">
       <DependentUpon>frmTaoTaiKhoan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmThi.resx">
+      <DependentUpon>frmThi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="itemCauHoi.resx">
+      <DependentUpon>itemCauHoi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -208,6 +220,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="report\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

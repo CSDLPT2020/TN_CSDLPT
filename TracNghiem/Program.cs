@@ -112,7 +112,7 @@ namespace TracNghiem
             }
         }
 
-        public static string GetMaCS()
+        public static string GetMaCS1()
         {
             DataTable dt = new DataTable();
             BindingSource bds = new BindingSource();
@@ -120,7 +120,18 @@ namespace TracNghiem
             dt = Program.ExecSqlDataTable("SELECT MACS FROM COSO");
             bds.DataSource = dt;
 
-            return ((DataRowView)bds[0])["MACS"].ToString();
+            return dt.Rows[0]["MACS"].ToString();
+            //return ((DataRowView)bds[0])["MACS"].ToString();
+        }
+
+        public static string GetMaCS()
+        {
+            myReader = Program.ExecSqlDataReader("SELECT MACS FROM COSO");
+            if (myReader == null) return "";
+            myReader.Read();
+            string macs = myReader.GetString(0);
+            myReader.Close();
+            return macs;
         }
 
         [STAThread]

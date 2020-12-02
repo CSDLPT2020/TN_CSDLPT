@@ -100,7 +100,6 @@ C:\Users\Administrator\Source\Repos\TN_CSDLPT_2020\TracNghiem\bin\Debug\de\DevEx
 C:\Users\Administrator\Source\Repos\TN_CSDLPT_2020\TracNghiem\bin\Debug\es\DevExpress.Pdf.v19.2.Core.resources.dll
 C:\Users\Administrator\Source\Repos\TN_CSDLPT_2020\TracNghiem\bin\Debug\ja\DevExpress.Pdf.v19.2.Core.resources.dll
 C:\Users\Administrator\Source\Repos\TN_CSDLPT_2020\TracNghiem\bin\Debug\ru\DevExpress.Pdf.v19.2.Core.resources.dll
-C:\Users\Administrator\Source\Repos\TN_CSDLPT_2020\TracNghiem\obj\Debug\TracNghiem.csprojAssemblyReference.cache
 C:\Users\Administrator\Source\Repos\TN_CSDLPT_2020\TracNghiem\obj\Debug\TracNghiem.frmMain.resources
 C:\Users\Administrator\Source\Repos\TN_CSDLPT_2020\TracNghiem\obj\Debug\TracNghiem.frmDangNhap.resources
 C:\Users\Administrator\Source\Repos\TN_CSDLPT_2020\TracNghiem\obj\Debug\TracNghiem.Properties.Resources.resources
@@ -153,3 +152,6 @@ C:\Users\Administrator\Source\Repos\TN_CSDLPT_2020\TracNghiem\obj\Debug\TracNghi
 C:\Users\Administrator\Source\Repos\TN_CSDLPT_2020\TracNghiem\obj\Debug\TracNghiem.frmLop_SinhVien.resources
 C:\Users\Administrator\Source\Repos\TN_CSDLPT_2020\TracNghiem\obj\Debug\TracNghiem.frmNhapDe.resources
 C:\Users\Administrator\Source\Repos\TN_CSDLPT_2020\TracNghiem\obj\Debug\TracNghiem.frmChuanBiThi.resources
+C:\Users\Administrator\Source\Repos\TN_CSDLPT_2020\TracNghiem\obj\Debug\TracNghiem.frmThi.resources
+C:\Users\Administrator\Source\Repos\TN_CSDLPT_2020\TracNghiem\obj\Debug\TracNghiem.itemCauHoi.resources
+C:\Users\Administrator\Source\Repos\TN_CSDLPT_2020\TracNghiem\obj\Debug\TracNghiem.csprojAssemblyReference.cache
