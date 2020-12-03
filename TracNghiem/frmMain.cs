@@ -10,6 +10,8 @@ namespace TracNghiem
             InitializeComponent();
             barButtonItem_DN.PerformClick();
             barButtonItem_DX.Enabled = false;
+            ribbonPage_DM.Visible = false;
+            ribbonPage_PhanQuyen.Visible = false;
         }
 
         private Form CheckExists(Type ftype)
@@ -98,6 +100,7 @@ namespace TracNghiem
             barButtonItem_DN.Enabled = false;
             if (Program.isGV)
             {
+                barButtonItem_Thi.Caption = "Thi thử";
                 toolStripStatusLabel_MaUser.Text = "Mã giảng viên: " + Program.username;
                 toolStripStatusLabel_HoTen.Text = "Họ tên: " + Program.mHoten;
                 toolStripStatusLabel_Nhom.Text = "Nhóm: " + Program.mGroup;
@@ -112,12 +115,15 @@ namespace TracNghiem
             if (Program.isGV)
             {
                 barButtonItem_TaoTaiKhoan.Enabled = true;
-
+                ribbonPage_DM.Visible = true;
+                ribbonPage_PhanQuyen.Visible = true;
             }
             else
             {
-                barButtonItem_TaoTaiKhoan.Enabled = false;
-
+                ribbonPage_DM.Visible = true;
+                ribbonPageGroup_CBT.Visible = false;
+                ribbonPageGroup_SimpleForm.Visible = false;
+                ribbonPageGroup_Subform.Visible = false;
             }
         }
 
@@ -148,6 +154,10 @@ namespace TracNghiem
             if (frm != null) frm.Activate();
             else
             {
+                if (Program.mGroup != "Sinhvien")
+                {
+                    MessageBox.Show("Giáo viên chỉ có thể thi thử và không ghi điểm!", "", MessageBoxButtons.OK);
+                }
                 frmThi f = new frmThi();
                 f.MdiParent = this;
                 f.Show();

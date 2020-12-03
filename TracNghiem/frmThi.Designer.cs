@@ -37,11 +37,11 @@
             this.label_MALOP = new System.Windows.Forms.Label();
             this.label_TENSV = new System.Windows.Forms.Label();
             this.label_MASV = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelTenLop = new System.Windows.Forms.Label();
+            this.labelMaLop = new System.Windows.Forms.Label();
+            this.labelTenSV_GV = new System.Windows.Forms.Label();
+            this.labelMaSV_GV = new System.Windows.Forms.Label();
+            this.label_TT = new System.Windows.Forms.Label();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.label_SCT = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -61,6 +61,9 @@
             this.tableAdapterManager = new TracNghiem.DSTableAdapters.TableAdapterManager();
             this.flowLayoutPanel_THI = new System.Windows.Forms.FlowLayoutPanel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.bdsLop = new System.Windows.Forms.BindingSource(this.components);
+            this.lOPTableAdapter = new TracNghiem.DSTableAdapters.LOPTableAdapter();
+            this.ComboBox_MaLop = new System.Windows.Forms.ComboBox();
             mAMHLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -71,6 +74,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit_NT.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsMH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsLop)).BeginInit();
             this.SuspendLayout();
             // 
             // mAMHLabel
@@ -85,22 +89,23 @@
             // 
             // groupControl1
             // 
+            this.groupControl1.Controls.Add(this.ComboBox_MaLop);
             this.groupControl1.Controls.Add(this.label11);
             this.groupControl1.Controls.Add(this.label_Timer);
             this.groupControl1.Controls.Add(this.label_TENLOP);
             this.groupControl1.Controls.Add(this.label_MALOP);
             this.groupControl1.Controls.Add(this.label_TENSV);
             this.groupControl1.Controls.Add(this.label_MASV);
-            this.groupControl1.Controls.Add(this.label5);
-            this.groupControl1.Controls.Add(this.label4);
-            this.groupControl1.Controls.Add(this.label3);
-            this.groupControl1.Controls.Add(this.label2);
-            this.groupControl1.Controls.Add(this.label1);
+            this.groupControl1.Controls.Add(this.labelTenLop);
+            this.groupControl1.Controls.Add(this.labelMaLop);
+            this.groupControl1.Controls.Add(this.labelTenSV_GV);
+            this.groupControl1.Controls.Add(this.labelMaSV_GV);
+            this.groupControl1.Controls.Add(this.label_TT);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Margin = new System.Windows.Forms.Padding(4);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1332, 120);
+            this.groupControl1.Size = new System.Drawing.Size(1332, 121);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "groupControl1";
             // 
@@ -130,7 +135,7 @@
             // 
             this.label_TENLOP.AutoSize = true;
             this.label_TENLOP.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_TENLOP.Location = new System.Drawing.Point(652, 89);
+            this.label_TENLOP.Location = new System.Drawing.Point(652, 88);
             this.label_TENLOP.Name = "label_TENLOP";
             this.label_TENLOP.Size = new System.Drawing.Size(45, 19);
             this.label_TENLOP.TabIndex = 8;
@@ -166,55 +171,55 @@
             this.label_MASV.TabIndex = 5;
             this.label_MASV.Text = "label6";
             // 
-            // label5
+            // labelTenLop
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(584, 89);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(62, 19);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Tên lớp: ";
+            this.labelTenLop.AutoSize = true;
+            this.labelTenLop.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTenLop.Location = new System.Drawing.Point(584, 89);
+            this.labelTenLop.Name = "labelTenLop";
+            this.labelTenLop.Size = new System.Drawing.Size(62, 19);
+            this.labelTenLop.TabIndex = 4;
+            this.labelTenLop.Text = "Tên lớp: ";
             // 
-            // label4
+            // labelMaLop
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(584, 52);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(60, 19);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Mã lớp: ";
+            this.labelMaLop.AutoSize = true;
+            this.labelMaLop.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMaLop.Location = new System.Drawing.Point(584, 52);
+            this.labelMaLop.Name = "labelMaLop";
+            this.labelMaLop.Size = new System.Drawing.Size(60, 19);
+            this.labelMaLop.TabIndex = 3;
+            this.labelMaLop.Text = "Mã lớp: ";
             // 
-            // label3
+            // labelTenSV_GV
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(209, 89);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(62, 19);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Tên SV: ";
+            this.labelTenSV_GV.AutoSize = true;
+            this.labelTenSV_GV.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTenSV_GV.Location = new System.Drawing.Point(209, 89);
+            this.labelTenSV_GV.Name = "labelTenSV_GV";
+            this.labelTenSV_GV.Size = new System.Drawing.Size(62, 19);
+            this.labelTenSV_GV.TabIndex = 2;
+            this.labelTenSV_GV.Text = "Tên SV: ";
             // 
-            // label2
+            // labelMaSV_GV
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(208, 52);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 19);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Mã SV: ";
+            this.labelMaSV_GV.AutoSize = true;
+            this.labelMaSV_GV.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMaSV_GV.Location = new System.Drawing.Point(208, 52);
+            this.labelMaSV_GV.Name = "labelMaSV_GV";
+            this.labelMaSV_GV.Size = new System.Drawing.Size(60, 19);
+            this.labelMaSV_GV.TabIndex = 1;
+            this.labelMaSV_GV.Text = "Mã SV: ";
             // 
-            // label1
+            // label_TT
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 32);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(165, 22);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Thông tin sinh viên";
+            this.label_TT.AutoSize = true;
+            this.label_TT.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_TT.Location = new System.Drawing.Point(12, 32);
+            this.label_TT.Name = "label_TT";
+            this.label_TT.Size = new System.Drawing.Size(165, 22);
+            this.label_TT.TabIndex = 0;
+            this.label_TT.Text = "Thông tin sinh viên";
             // 
             // groupControl2
             // 
@@ -232,7 +237,7 @@
             this.groupControl2.Controls.Add(this.ComboBox_MAMH);
             this.groupControl2.Controls.Add(this.label6);
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupControl2.Location = new System.Drawing.Point(0, 120);
+            this.groupControl2.Location = new System.Drawing.Point(0, 121);
             this.groupControl2.Name = "groupControl2";
             this.groupControl2.Size = new System.Drawing.Size(1332, 124);
             this.groupControl2.TabIndex = 1;
@@ -419,15 +424,38 @@
             this.flowLayoutPanel_THI.AutoScroll = true;
             this.flowLayoutPanel_THI.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel_THI.ForeColor = System.Drawing.SystemColors.Control;
-            this.flowLayoutPanel_THI.Location = new System.Drawing.Point(0, 244);
+            this.flowLayoutPanel_THI.Location = new System.Drawing.Point(0, 245);
             this.flowLayoutPanel_THI.Name = "flowLayoutPanel_THI";
-            this.flowLayoutPanel_THI.Size = new System.Drawing.Size(1332, 344);
+            this.flowLayoutPanel_THI.Size = new System.Drawing.Size(1332, 343);
             this.flowLayoutPanel_THI.TabIndex = 2;
             // 
             // timer1
             // 
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // bdsLop
+            // 
+            this.bdsLop.DataMember = "LOP";
+            this.bdsLop.DataSource = this.DS;
+            // 
+            // lOPTableAdapter
+            // 
+            this.lOPTableAdapter.ClearBeforeFill = true;
+            // 
+            // ComboBox_MaLop
+            // 
+            this.ComboBox_MaLop.DataSource = this.bdsLop;
+            this.ComboBox_MaLop.DisplayMember = "TENLOP";
+            this.ComboBox_MaLop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox_MaLop.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ComboBox_MaLop.FormattingEnabled = true;
+            this.ComboBox_MaLop.Location = new System.Drawing.Point(656, 82);
+            this.ComboBox_MaLop.Name = "ComboBox_MaLop";
+            this.ComboBox_MaLop.Size = new System.Drawing.Size(149, 25);
+            this.ComboBox_MaLop.TabIndex = 12;
+            this.ComboBox_MaLop.ValueMember = "MALOP";
+            this.ComboBox_MaLop.SelectedIndexChanged += new System.EventHandler(this.ComboBox_MaLop_SelectedIndexChanged);
             // 
             // frmThi
             // 
@@ -454,6 +482,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit_NT.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsMH)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsLop)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -461,15 +490,15 @@
         #endregion
 
         private DevExpress.XtraEditors.GroupControl groupControl1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label_TT;
         private System.Windows.Forms.Label label_TENLOP;
         private System.Windows.Forms.Label label_MALOP;
         private System.Windows.Forms.Label label_TENSV;
         private System.Windows.Forms.Label label_MASV;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelTenLop;
+        private System.Windows.Forms.Label labelMaLop;
+        private System.Windows.Forms.Label labelTenSV_GV;
+        private System.Windows.Forms.Label labelMaSV_GV;
         private DevExpress.XtraEditors.GroupControl groupControl2;
         private System.Windows.Forms.Label label6;
         private DS DS;
@@ -491,5 +520,8 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label_Timer;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.BindingSource bdsLop;
+        private DSTableAdapters.LOPTableAdapter lOPTableAdapter;
+        private System.Windows.Forms.ComboBox ComboBox_MaLop;
     }
 }

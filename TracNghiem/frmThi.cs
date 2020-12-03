@@ -35,7 +35,21 @@ namespace TracNghiem
             label_TENSV.Text = Program.mHoten;
             if (Program.mGroup == "Sinhvien")
             {
+                ComboBox_MaLop.Visible = false;
                 GetMaLop_TenLop();
+            }
+            else if (Program.mGroup == "Giangvien" || Program.mGroup == "Coso")
+            {
+                this.lOPTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.lOPTableAdapter.Fill(this.DS.LOP);
+
+                label_TT.Text = "Thông tin giáo viên";
+                label_TENLOP.Visible = false;
+
+                ComboBox_MaLop.SelectedIndex = 1;
+                ComboBox_MaLop.SelectedIndex = 0;
+                labelMaSV_GV.Text = "Mã GV";
+                labelTenSV_GV.Text = "Tên GV";
             }
         }
 
@@ -104,41 +118,70 @@ namespace TracNghiem
 
         private void button_Find_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(dateEdit_NT.Text))
+            {
+                MessageBox.Show("Bạn chưa chọn ngày thi!", "", MessageBoxButtons.OK);
+                dateEdit_NT.Focus();
+                return;
+            }
             if (Program.mGroup == "Sinhvien")
             {
-                if (string.IsNullOrEmpty(dateEdit_NT.Text))
-                {
-                    MessageBox.Show("Bạn chưa chọn ngày thi!", "", MessageBoxButtons.OK);
-                    dateEdit_NT.Focus();
-                    return;
-                }
                 if (dateEdit_NT.DateTime.Date != DateTime.Now.Date)
                 {
                     MessageBox.Show("Ngày thi phải là hôm nay!", "", MessageBoxButtons.OK);
                     dateEdit_NT.Focus();
                     return;
                 }
-                string strLenh = "EXEC SP_CHECKTHONGTINTHI_SV N'" + label_MALOP.Text
+                //check sv da thi hay chua
+                string strLenh1 = "EXEC SP_CHECKSVTRONGBANGDIEM N'" + Program.username
                     + "', N'" + ComboBox_MAMH.SelectedValue.ToString() +
-                    "', N'" + dateEdit_NT.DateTime.ToString("yyyy-MM-dd HH:mm:ss") + "', " + spinEdit_LAN.Value;
-                Program.myReader = Program.ExecSqlDataReader(strLenh);
-                if (Program.myReader == null) return;
-                if (Program.myReader.Read() == false)
-                {
-                    MessageBox.Show("Thông tin đăng ký thi không tồn tại!", "", MessageBoxButtons.OK);
-                }
-                else
-                {
-                    td = Program.myReader.GetString(0);
-                    label_TD.Text = td;
-                    sct = Program.myReader.GetInt16(1);
-                    label_SCT.Text = sct.ToString();
-                    Int16 time = Program.myReader.GetInt16(2);
-                    label_Timer.Text = time.ToString() + ":00";
-                    s = time * 60;
-                }
-                Program.myReader.Close();
+                    "', " + spinEdit_LAN.Value;
+                int kq = Program.ExecSqlNonQuery(strLenh1);
+                if (kq == 1) return;
             }
+            //get gvdk
+            string strLenh = "EXEC SP_CHECKTHONGTINTHI_SV N'" + label_MALOP.Text
+                + "', N'" + ComboBox_MAMH.SelectedValue.ToString() +
+                "', N'" + dateEdit_NT.DateTime.ToString("yyyy-MM-dd HH:mm:ss") + "', " + spinEdit_LAN.Value;
+            Program.myReader = Program.ExecSqlDataReader(strLenh);
+            if (Program.myReader == null) return;
+            if (Program.myReader.Read() == false)
+            {
+                MessageBox.Show("Thông tin đăng ký thi không tồn tại!", "", MessageBoxButtons.OK);
+            }
+            else
+            {
+                td = Program.myReader.GetString(0);
+                label_TD.Text = td;
+                sct = Program.myReader.GetInt16(1);
+                label_SCT.Text = sct.ToString();
+                Int16 time = Program.myReader.GetInt16(2);
+                label_Timer.Text = time.ToString() + ":00";
+                s = time * 60;
+            }
+            Program.myReader.Close();
+        }
+
+        private string getDapAn(itemCauHoi x)
+        {
+            string da = "";
+            if (x.Rbtn_A.Checked == true)
+            {
+                da = "A";
+            }
+            else if (x.Rbtn_B.Checked == true)
+            {
+                da = "B";
+            }
+            else if (x.Rbtn_C.Checked == true)
+            {
+                da = "C";
+            }
+            else if (x.Rbtn_D.Checked == true)
+            {
+                da = "D";
+            }
+            return da;
         }
 
         private float tinhDiem()
@@ -146,24 +189,7 @@ namespace TracNghiem
             int soCauDung = 0;
             foreach(itemCauHoi x in list)
             {
-                string da = "";
-                if (x.Rbtn_A.Checked == true)
-                {
-                    da = "A";
-                }
-                else if (x.Rbtn_B.Checked == true)
-                {
-                    da = "B";
-                }
-                else if (x.Rbtn_C.Checked == true)
-                {
-                    da = "C";
-                }
-                else if (x.Rbtn_D.Checked == true)
-                {
-                    da = "D";
-                }
-
+                string da = getDapAn(x);
                 if (da == x.DapAn)
                 {
                     soCauDung++;
@@ -171,6 +197,42 @@ namespace TracNghiem
             }
 
             return (soCauDung * 10) / sct;
+        }
+
+        private void ghiBangDiem(float diem)
+        {
+            //ghi vao bang diem
+            string strLenh = "EXEC SP_THEMBANGDIEM N'"
+            + Program.username + "', N'"
+            + ComboBox_MAMH.SelectedValue.ToString() + "', "
+            + spinEdit_LAN.Value + ", N'"
+            + dateEdit_NT.DateTime.ToString("yyyy-MM-dd HH:mm:ss") + "', "
+            + diem ;
+            int kq = Program.ExecSqlNonQuery(strLenh);
+            if (kq != 0)
+            {
+                MessageBox.Show("Lỗi ghi bảng điểm!", "", MessageBoxButtons.OK);
+            }
+        }
+
+        private void ghiCTBT()
+        {
+            foreach(itemCauHoi x in list)
+            {
+                string da = getDapAn(x);
+
+                string strLenh = "EXEC SP_THEMCTBT N'"
+                    + Program.username + "', N'"
+                    + ComboBox_MAMH.SelectedValue.ToString() + "', "
+                    + spinEdit_LAN.Value + ", "
+                    + x.Stt + ", " + x.CauHoi + ", N'"
+                    + da.Trim() + "'";
+                int kq = Program.ExecSqlNonQuery(strLenh);
+                if (kq != 0)
+                {
+                    MessageBox.Show("Lỗi ghi CTBT!", "", MessageBoxButtons.OK);
+                }
+            }
         }
 
         private void button_NOPBAI_Click(object sender, EventArgs e)
@@ -199,22 +261,22 @@ namespace TracNghiem
                     button_NOPBAI.Text = "Bắt đầu thi";
                     timer1.Stop();
                     float diem = tinhDiem();
-                    //ghi vao bang diem
-                    string strLenh = "insert into BANGDIEM(MASV,MAMH,LAN,NGAYTHI,DIEM) values(N'"
-                    + Program.username + "', N'"
-                    + ComboBox_MAMH.SelectedValue.ToString() + "', "
-                    + spinEdit_LAN.Value + ", N'"
-                    + dateEdit_NT.DateTime.ToString("yyyy-MM-dd HH:mm:ss") + "', "
-                    + diem + ")";
-                    int kq = Program.ExecSqlNonQuery(strLenh);
-                    if (kq != 0)
+                    if (Program.mGroup == "Sinhvien")
                     {
-                        MessageBox.Show("Lỗi ghi bảng điểm!", "", MessageBoxButtons.OK);
+                        //ghi bang diem
+                        ghiBangDiem(diem);
+                        //ghi chi tiet bai thi
+                        ghiCTBT();
                     }
                     MessageBox.Show("Bạn đã đạt được " + diem + " điểm!", "", MessageBoxButtons.OK);
-                    
                 }
             }
+        }
+
+        private void ComboBox_MaLop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ComboBox_MaLop.SelectedIndex == -1) return;
+            label_MALOP.Text = ComboBox_MaLop.SelectedValue.ToString();
         }
     }
 }

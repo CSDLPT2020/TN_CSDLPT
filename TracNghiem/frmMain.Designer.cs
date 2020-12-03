@@ -46,9 +46,9 @@
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage_DM = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup_SimpleForm = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup_Subform = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup_CBT = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage_PhanQuyen = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
@@ -57,6 +57,7 @@
             this.toolStripStatusLabel_MaUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel_HoTen = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel_Nhom = new System.Windows.Forms.ToolStripStatusLabel();
+            this.ribbonPageGroup_Thi = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
@@ -195,32 +196,32 @@
             // ribbonPage_DM
             // 
             this.ribbonPage_DM.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup2,
-            this.ribbonPageGroup4,
-            this.ribbonPageGroup6});
+            this.ribbonPageGroup_SimpleForm,
+            this.ribbonPageGroup_Subform,
+            this.ribbonPageGroup_CBT,
+            this.ribbonPageGroup_Thi});
             this.ribbonPage_DM.Name = "ribbonPage_DM";
             this.ribbonPage_DM.Text = "Danh mục";
             // 
-            // ribbonPageGroup2
+            // ribbonPageGroup_SimpleForm
             // 
-            this.ribbonPageGroup2.ItemLinks.Add(this.btnMonHoc);
-            this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem_BODE);
-            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-            this.ribbonPageGroup2.Text = "Simple form";
+            this.ribbonPageGroup_SimpleForm.ItemLinks.Add(this.btnMonHoc);
+            this.ribbonPageGroup_SimpleForm.ItemLinks.Add(this.barButtonItem_BODE);
+            this.ribbonPageGroup_SimpleForm.Name = "ribbonPageGroup_SimpleForm";
+            this.ribbonPageGroup_SimpleForm.Text = "Simple form";
             // 
-            // ribbonPageGroup4
+            // ribbonPageGroup_Subform
             // 
-            this.ribbonPageGroup4.ItemLinks.Add(this.btnKhoaGV);
-            this.ribbonPageGroup4.ItemLinks.Add(this.barButtonItem_LopSV);
-            this.ribbonPageGroup4.Name = "ribbonPageGroup4";
-            this.ribbonPageGroup4.Text = "Subform";
+            this.ribbonPageGroup_Subform.ItemLinks.Add(this.btnKhoaGV);
+            this.ribbonPageGroup_Subform.ItemLinks.Add(this.barButtonItem_LopSV);
+            this.ribbonPageGroup_Subform.Name = "ribbonPageGroup_Subform";
+            this.ribbonPageGroup_Subform.Text = "Subform";
             // 
-            // ribbonPageGroup6
+            // ribbonPageGroup_CBT
             // 
-            this.ribbonPageGroup6.ItemLinks.Add(this.barButtonItem_CBT);
-            this.ribbonPageGroup6.ItemLinks.Add(this.barButtonItem_Thi);
-            this.ribbonPageGroup6.Name = "ribbonPageGroup6";
-            this.ribbonPageGroup6.Text = "Thi";
+            this.ribbonPageGroup_CBT.ItemLinks.Add(this.barButtonItem_CBT);
+            this.ribbonPageGroup_CBT.Name = "ribbonPageGroup_CBT";
+            this.ribbonPageGroup_CBT.Text = "CBT";
             // 
             // ribbonPage_PhanQuyen
             // 
@@ -273,6 +274,12 @@
             this.toolStripStatusLabel_Nhom.Size = new System.Drawing.Size(45, 17);
             this.toolStripStatusLabel_Nhom.Text = "NHOM";
             // 
+            // ribbonPageGroup_Thi
+            // 
+            this.ribbonPageGroup_Thi.ItemLinks.Add(this.barButtonItem_Thi);
+            this.ribbonPageGroup_Thi.Name = "ribbonPageGroup_Thi";
+            this.ribbonPageGroup_Thi.Text = "Thi";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -301,7 +308,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage_HeThong;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage_DM;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup_SimpleForm;
         private DevExpress.XtraBars.PopupMenu popupMenu1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem_DN;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
@@ -316,14 +323,15 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem_TaoTaiKhoan;
         private DevExpress.XtraBars.BarButtonItem btnMonHoc;
         private DevExpress.XtraBars.BarButtonItem btnKhoaGV;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup_Subform;
         private DevExpress.XtraBars.BarButtonItem barButtonItem_DX;
         private DevExpress.XtraBars.BarButtonItem barButtonItem_LopSV;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup5;
         private DevExpress.XtraBars.BarButtonItem barButtonItem_BODE;
         private DevExpress.XtraBars.BarButtonItem barButtonItem_CBT;
         private DevExpress.XtraBars.BarButtonItem barButtonItem_Thi;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup6;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup_CBT;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup_Thi;
     }
 }
 
