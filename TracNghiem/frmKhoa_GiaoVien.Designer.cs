@@ -391,7 +391,7 @@
             this.TextBox_MaCS.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextBox_MaCS.Location = new System.Drawing.Point(147, 168);
             this.TextBox_MaCS.Name = "TextBox_MaCS";
-            this.TextBox_MaCS.Size = new System.Drawing.Size(119, 25);
+            this.TextBox_MaCS.Size = new System.Drawing.Size(144, 25);
             this.TextBox_MaCS.TabIndex = 5;
             // 
             // TextBox_TenKH
@@ -400,7 +400,7 @@
             this.TextBox_TenKH.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextBox_TenKH.Location = new System.Drawing.Point(147, 109);
             this.TextBox_TenKH.Name = "TextBox_TenKH";
-            this.TextBox_TenKH.Size = new System.Drawing.Size(119, 25);
+            this.TextBox_TenKH.Size = new System.Drawing.Size(144, 25);
             this.TextBox_TenKH.TabIndex = 3;
             // 
             // TextBox_MaKH
@@ -409,7 +409,7 @@
             this.TextBox_MaKH.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextBox_MaKH.Location = new System.Drawing.Point(147, 47);
             this.TextBox_MaKH.Name = "TextBox_MaKH";
-            this.TextBox_MaKH.Size = new System.Drawing.Size(119, 25);
+            this.TextBox_MaKH.Size = new System.Drawing.Size(144, 25);
             this.TextBox_MaKH.TabIndex = 1;
             // 
             // bdsGV
@@ -563,7 +563,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "frmKhoa_GiaoVien";
-            this.Text = "frmKhoa_GiaoVien";
+            this.Text = "Khoa - Giảng viên";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmKhoa_GiaoVien_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();

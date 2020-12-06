@@ -46,16 +46,24 @@ namespace TracNghiem
             comboBox_CN.DataSource = Program.bds_dspm;  // sao chép bds_dspm đã load ở form đăng nhập  qua
             comboBox_CN.DisplayMember = "TENCN";
             comboBox_CN.ValueMember = "TENSERVER";
-            comboBox_CN.SelectedIndex = Program.mChinhanh;
+            comboBox_CN.SelectedIndex = Program.mChinhanh; //sau khi load lai khi tat form dang o site pm thi se bat event combobox tu dong chuyen ve site 1
             //phan quyen
-            if (Program.mGroup.Equals("Coso"))
+            //coso,giangvien,truong dc truy cap formCBT
+            if (Program.mGroup == "Coso")
             {
                 comboBox_CN.Enabled = false;
+                btnThoat.Enabled = false;
             }
-            else if (Program.mGroup.Equals("Truong"))
+            else if (Program.mGroup == "Truong")
             {
                 comboBox_CN.Enabled = true;
-                bar2.Visible = false;
+                btnThem.Enabled = btnThoat.Enabled = btnUndo.Enabled
+                    = btnGhi.Enabled = btnXoa.Enabled = false;
+            }
+            else if (Program.mGroup == "Giangvien")
+            {
+                comboBox_CN.Enabled = true;
+                btnThoat.Enabled = false;
             }
         }
 
@@ -101,6 +109,10 @@ namespace TracNghiem
                 this.lOPTableAdapter.Fill(this.DS.LOP);
                 macn = Program.GetMaCS();
                 reLoadKhoaChinh();//list khoa chinh table
+                if (Program.mGroup == "Giangvien")
+                {
+                    Program.frmChinh.fixLoiChuyenSiteFormCBT();
+                }
             }
         }
 
@@ -130,6 +142,7 @@ namespace TracNghiem
             SpinEdit_SCT.Value = SpinEdit_SCT.Properties.MinValue;
             SpinEdit_TG.Value = SpinEdit_TG.Properties.MinValue;
 
+            btnThoat.Enabled = true;
             btnThem.Enabled = btnReload.Enabled = btnXoa.Enabled = false;
             btnGhi.Enabled = btnUndo.Enabled = true;
             GridControl_GVDK.Enabled = false;
@@ -167,6 +180,13 @@ namespace TracNghiem
             }
             else //sua
             {
+                //check da co sv thi ko cho sua
+                string strLenh2 = "EXEC SP_CHECKSVDATHI N'"
+                        + ComboBox_MALOP.SelectedValue.ToString() + "', N'"
+                        + ComboBox_MAMH.SelectedValue.ToString() + "', "
+                        + SpinEdit_LAN.Value;
+                int kq2 = Program.ExecSqlNonQuery(strLenh2);
+                if (kq2 != 0) return;
                 //check 3 khoa chinh
                 int i = bdsGVDK.Position;
                 string str = ComboBox_MAMH.SelectedValue.ToString().Trim()
@@ -219,6 +239,7 @@ namespace TracNghiem
             reLoadKhoaChinh();//list khoa chinh table
             MessageBox.Show("Đăng ký thi thành công!", "", MessageBoxButtons.OK);
 
+            btnThoat.Enabled = false;
             btnThem.Enabled = btnReload.Enabled = btnXoa.Enabled = true;
             btnGhi.Enabled = btnUndo.Enabled = true;
             GridControl_GVDK.Enabled = true;
@@ -231,7 +252,7 @@ namespace TracNghiem
                         + ComboBox_MAMH.SelectedValue.ToString() + "', "
                         + SpinEdit_LAN.Value;
             int kq = Program.ExecSqlNonQuery(strLenh);
-            if (kq == 1) return;
+            if (kq == 1) return;//da co sv thi ko the xoa
             if (MessageBox.Show("Bạn có thật sự muốn xóa GVDK này ? ", "Xác nhận",
                        MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
@@ -277,11 +298,17 @@ namespace TracNghiem
 
         private void btnThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            bdsGVDK.RemoveAt(vitri);
             bdsGVDK.CancelEdit();
+            btnThoat.Enabled = false;
             btnThem.Enabled = btnReload.Enabled = btnXoa.Enabled = true;
             btnGhi.Enabled = btnUndo.Enabled = true;
             GridControl_GVDK.Enabled = true;
             btnReload.PerformClick();
+            if (bdsGVDK.Count > 0)
+            {
+                gridView1.MoveLast();
+            }
         }
 
         private void btnUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

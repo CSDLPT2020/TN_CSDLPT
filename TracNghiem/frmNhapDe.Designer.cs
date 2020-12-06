@@ -631,7 +631,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "frmNhapDe";
-            this.Text = "frmNhapDe";
+            this.Text = "Bộ đề";
             this.Load += new System.EventHandler(this.frmNhapDe_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DS)).EndInit();

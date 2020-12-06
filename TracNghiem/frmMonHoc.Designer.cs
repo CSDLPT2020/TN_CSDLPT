@@ -79,20 +79,22 @@
             // mAMHLabel
             // 
             mAMHLabel.AutoSize = true;
+            mAMHLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             mAMHLabel.Location = new System.Drawing.Point(82, 59);
             mAMHLabel.Name = "mAMHLabel";
-            mAMHLabel.Size = new System.Drawing.Size(41, 13);
+            mAMHLabel.Size = new System.Drawing.Size(66, 19);
             mAMHLabel.TabIndex = 0;
-            mAMHLabel.Text = "MAMH:";
+            mAMHLabel.Text = "Mã MH: ";
             // 
             // tENMHLabel
             // 
             tENMHLabel.AutoSize = true;
+            tENMHLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             tENMHLabel.Location = new System.Drawing.Point(82, 106);
             tENMHLabel.Name = "tENMHLabel";
-            tENMHLabel.Size = new System.Drawing.Size(45, 13);
+            tENMHLabel.Size = new System.Drawing.Size(68, 19);
             tENMHLabel.TabIndex = 2;
-            tENMHLabel.Text = "TENMH:";
+            tENMHLabel.Text = "Tên MH: ";
             // 
             // barManager1
             // 
@@ -299,17 +301,19 @@
             // TextBox_TenMH
             // 
             this.TextBox_TenMH.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsMH, "TENMH", true));
-            this.TextBox_TenMH.Location = new System.Drawing.Point(133, 103);
+            this.TextBox_TenMH.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextBox_TenMH.Location = new System.Drawing.Point(163, 103);
             this.TextBox_TenMH.Name = "TextBox_TenMH";
-            this.TextBox_TenMH.Size = new System.Drawing.Size(100, 21);
+            this.TextBox_TenMH.Size = new System.Drawing.Size(195, 26);
             this.TextBox_TenMH.TabIndex = 3;
             // 
             // TextBox_MaMH
             // 
             this.TextBox_MaMH.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsMH, "MAMH", true));
-            this.TextBox_MaMH.Location = new System.Drawing.Point(133, 56);
+            this.TextBox_MaMH.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextBox_MaMH.Location = new System.Drawing.Point(163, 56);
             this.TextBox_MaMH.Name = "TextBox_MaMH";
-            this.TextBox_MaMH.Size = new System.Drawing.Size(100, 21);
+            this.TextBox_MaMH.Size = new System.Drawing.Size(195, 26);
             this.TextBox_MaMH.TabIndex = 1;
             // 
             // bdsGVDK
@@ -351,7 +355,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "frmMonHoc";
-            this.Text = "frmMonHoc";
+            this.Text = "Môn học";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmMonHoc_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();

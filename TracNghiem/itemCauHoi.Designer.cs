@@ -150,6 +150,7 @@
             this.radioButton_A.TabStop = true;
             this.radioButton_A.Text = "A";
             this.radioButton_A.UseVisualStyleBackColor = false;
+            this.radioButton_A.ForeColorChanged += new System.EventHandler(this.radioButton_A_ForeColorChanged);
             this.radioButton_A.MouseEnter += new System.EventHandler(this.label_CH_MouseEnter);
             this.radioButton_A.MouseLeave += new System.EventHandler(this.label_CH_MouseLeave);
             // 
@@ -166,6 +167,7 @@
             this.radioButton_B.TabStop = true;
             this.radioButton_B.Text = "B";
             this.radioButton_B.UseVisualStyleBackColor = false;
+            this.radioButton_B.ForeColorChanged += new System.EventHandler(this.radioButton_B_ForeColorChanged);
             this.radioButton_B.MouseEnter += new System.EventHandler(this.label_CH_MouseEnter);
             this.radioButton_B.MouseLeave += new System.EventHandler(this.label_CH_MouseLeave);
             // 
@@ -182,6 +184,7 @@
             this.radioButton_C.TabStop = true;
             this.radioButton_C.Text = "C";
             this.radioButton_C.UseVisualStyleBackColor = false;
+            this.radioButton_C.ForeColorChanged += new System.EventHandler(this.radioButton_C_ForeColorChanged);
             this.radioButton_C.MouseEnter += new System.EventHandler(this.label_CH_MouseEnter);
             this.radioButton_C.MouseLeave += new System.EventHandler(this.label_CH_MouseLeave);
             // 
@@ -198,6 +201,7 @@
             this.radioButton_D.TabStop = true;
             this.radioButton_D.Text = "D";
             this.radioButton_D.UseVisualStyleBackColor = false;
+            this.radioButton_D.ForeColorChanged += new System.EventHandler(this.radioButton_D_ForeColorChanged);
             this.radioButton_D.MouseEnter += new System.EventHandler(this.label_CH_MouseEnter);
             this.radioButton_D.MouseLeave += new System.EventHandler(this.label_CH_MouseLeave);
             // 

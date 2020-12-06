@@ -51,25 +51,31 @@ namespace TracNghiem
             comboBox_CN.ValueMember = "TENSERVER";
             comboBox_CN.SelectedIndex = Program.mChinhanh;
             //phan quyen
+            //coso,truong dc truy cap formLopSV
             if (Program.mGroup.Equals("Coso"))
             {
                 comboBox_CN.Enabled = false;
+                btnThoat.Enabled = false;
+                thoatToolStripMenuItem.Enabled = false;
             }
             else if (Program.mGroup.Equals("Truong"))
             {
                 comboBox_CN.Enabled = true;
-                bar2.Visible = false;
+                btnThem.Enabled = btnThoat.Enabled = btnUndo.Enabled
+                    = btnGhi.Enabled = btnXoa.Enabled = false;
+                contextMenuStrip1.Enabled = false;
             }
         }
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            vitri = bdsLop.Position;
-            groupControl1.Enabled = true;
             bdsLop.AddNew();
 
+            vitri = bdsLop.Position;
             ComboBox_MAKH.SelectedIndex = 0;
 
+            btnThoat.Enabled = true;
+            DataGridView_SV.Enabled = false;
             btnThem.Enabled = btnReload.Enabled = btnXoa.Enabled = false;
             btnGhi.Enabled = btnUndo.Enabled = true;
             GridControl_Lop.Enabled = false;
@@ -112,11 +118,19 @@ namespace TracNghiem
 
         private void btnThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            bdsLop.RemoveAt(vitri);
             bdsLop.CancelEdit();
+
             btnThem.Enabled = btnReload.Enabled = btnXoa.Enabled = true;
             btnGhi.Enabled = btnUndo.Enabled = true;
             GridControl_Lop.Enabled = true;
+            btnThoat.Enabled = false;
+            DataGridView_SV.Enabled = true;
             btnReload.PerformClick();
+            if (bdsLop.Count > 0)
+            {
+                gridView1.MoveLast();
+            }
         }
 
         private void btnReload_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -242,11 +256,11 @@ namespace TracNghiem
                 else MessageBox.Show("Lỗi ghi lớp.\n" + ex.Message, "", MessageBoxButtons.OK);
                 return;
             }
-            GridControl_Lop.Enabled = true;
-            btnThem.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
+            btnThem.Enabled = btnReload.Enabled = btnXoa.Enabled = true;
             btnGhi.Enabled = btnUndo.Enabled = true;
-
-            groupControl2.Enabled = true;
+            GridControl_Lop.Enabled = true;
+            btnThoat.Enabled = false;
+            DataGridView_SV.Enabled = true;
         }
 
         private void btnUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -254,16 +268,18 @@ namespace TracNghiem
 
         }
 
-        private void TextBox_MAKH_TextChanged(object sender, EventArgs e)
-        {
-            //ComboBox_MAKH.SelectedValue = TextBox_MAKH.Text;
-        }
-
         private void themSVToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bdsSV.AddNew();
+            thoatToolStripMenuItem.Enabled = true;
             themSVToolStripMenuItem.Enabled = false;
             xoaSVToolStripMenuItem.Enabled = false;
+
+            btnThoat.Enabled = false;
+            btnThem.Enabled = btnReload.Enabled = btnXoa.Enabled = false;
+            btnGhi.Enabled = btnUndo.Enabled = false;
+            GridControl_Lop.Enabled = false;
+            groupControl2.Enabled = false;
         }
 
         private void xoaSVToolStripMenuItem_Click(object sender, EventArgs e)
@@ -365,18 +381,29 @@ namespace TracNghiem
                 }
                 return;
             }
+            thoatToolStripMenuItem.Enabled = false;
             themSVToolStripMenuItem.Enabled = true;
             xoaSVToolStripMenuItem.Enabled = true;
+
+            btnThoat.Enabled = false;
+            btnThem.Enabled = btnReload.Enabled = btnXoa.Enabled = true;
+            btnGhi.Enabled = btnUndo.Enabled = true;
+            GridControl_Lop.Enabled = true;
+            groupControl2.Enabled = true;
         }
 
         private void thoatToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (themSVToolStripMenuItem.Enabled == false)
-            {
-                this.bdsSV.RemoveCurrent();
-                themSVToolStripMenuItem.Enabled = true;
-                xoaSVToolStripMenuItem.Enabled = true;
-            }
+            this.bdsSV.RemoveCurrent();
+            thoatToolStripMenuItem.Enabled = false;
+            themSVToolStripMenuItem.Enabled = true;
+            xoaSVToolStripMenuItem.Enabled = true;
+
+            btnThoat.Enabled = false;
+            btnThem.Enabled = btnReload.Enabled = btnXoa.Enabled = true;
+            btnGhi.Enabled = btnUndo.Enabled = true;
+            GridControl_Lop.Enabled = true;
+            groupControl2.Enabled = true;
         }
     }
 }

@@ -21,25 +21,38 @@ namespace TracNghiem
         private void frmMonHoc_Load(object sender, EventArgs e)
         {
             DS.EnforceConstraints = false;
+
             this.mONHOCTableAdapter.Connection.ConnectionString = Program.connstr;
             this.mONHOCTableAdapter.Fill(this.DS.MONHOC);
 
-            this.bANGDIEMTableAdapter.Connection.ConnectionString = Program.connstr;
-            this.bANGDIEMTableAdapter.Fill(this.DS.BANGDIEM);
+            //chi co Coso va Truong vao dc formMH
+            if (Program.mGroup == "Coso")
+            {
+                this.bANGDIEMTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.bANGDIEMTableAdapter.Fill(this.DS.BANGDIEM);
 
-            this.bODETableAdapter.Connection.ConnectionString = Program.connstr;
-            this.bODETableAdapter.Fill(this.DS.BODE);
+                this.bODETableAdapter.Connection.ConnectionString = Program.connstr;
+                this.bODETableAdapter.Fill(this.DS.BODE);
 
-            this.gIAOVIEN_DANGKYTableAdapter.Connection.ConnectionString = Program.connstr;
-            this.gIAOVIEN_DANGKYTableAdapter.Fill(this.DS.GIAOVIEN_DANGKY);
+                this.gIAOVIEN_DANGKYTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.gIAOVIEN_DANGKYTableAdapter.Fill(this.DS.GIAOVIEN_DANGKY);
+
+                btnThoat.Enabled = false;
+            }
+            else if (Program.mGroup == "Truong")
+            {
+                btnThem.Enabled = btnThoat.Enabled = btnUndo.Enabled
+                    = btnGhi.Enabled = btnXoa.Enabled = false;
+            }
         }
 
         private void barButtonItem_Them_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            vitri = bdsMH.Position;
-            groupControl1.Enabled = true;
             bdsMH.AddNew();
 
+            vitri = bdsMH.Position;
+            groupControl1.Enabled = true;
+            btnThoat.Enabled = true;
             btnThem.Enabled = btnReload.Enabled = btnXoa.Enabled = false;
             btnGhi.Enabled = btnUndo.Enabled = true;
             GridControl_MH.Enabled = false;
@@ -91,22 +104,13 @@ namespace TracNghiem
             }
             catch (Exception ex)
             {
-                //môn học là nhân bản nên có thể check bằng exception của sql
-                if (ex.Message.Contains("PK_MAMH"))
-                {
-                    MessageBox.Show("Lỗi mã môn học bị trùng","", MessageBoxButtons.OK);
-                }
-                else if (ex.Message.Contains("UN_TENMH"))
-                {
-                    MessageBox.Show("Lỗi tên môn học bị trùng", "", MessageBoxButtons.OK);
-                }
-                else MessageBox.Show("Lỗi ghi môn học.\n" + ex.Message, "", MessageBoxButtons.OK);
+                MessageBox.Show("Lỗi ghi môn học.\n" + ex.Message, "", MessageBoxButtons.OK);
                 return;
             }
             GridControl_MH.Enabled = true;
-            btnThem.Enabled = btnXoa.Enabled = btnReload.Enabled = btnThoat.Enabled = true;
+            btnThem.Enabled = btnXoa.Enabled = btnReload.Enabled = true;
             btnGhi.Enabled = btnUndo.Enabled = true;
-
+            btnThoat.Enabled = false;
             groupControl1.Enabled = true;
         }
 
@@ -115,6 +119,12 @@ namespace TracNghiem
             try
             {
                 this.mONHOCTableAdapter.Fill(this.DS.MONHOC);
+                if (Program.mGroup == "Coso")
+                {
+                    this.bANGDIEMTableAdapter.Fill(this.DS.BANGDIEM);
+                    this.bODETableAdapter.Fill(this.DS.BODE);
+                    this.gIAOVIEN_DANGKYTableAdapter.Fill(this.DS.GIAOVIEN_DANGKY);
+                }
             }
             catch (Exception ex)
             {
@@ -168,11 +178,12 @@ namespace TracNghiem
 
         private void btnThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            bdsMH.RemoveAt(vitri);
             bdsMH.CancelEdit();
             btnThem.Enabled = btnReload.Enabled = btnXoa.Enabled = true;
             btnGhi.Enabled = btnUndo.Enabled = true;
+            btnThoat.Enabled = false;
             GridControl_MH.Enabled = true;
-            btnReload.PerformClick();
         }
     }
 }

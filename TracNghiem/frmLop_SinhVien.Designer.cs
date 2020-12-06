@@ -401,7 +401,7 @@
             this.ComboBox_MAKH.FormattingEnabled = true;
             this.ComboBox_MAKH.Location = new System.Drawing.Point(138, 158);
             this.ComboBox_MAKH.Name = "ComboBox_MAKH";
-            this.ComboBox_MAKH.Size = new System.Drawing.Size(138, 25);
+            this.ComboBox_MAKH.Size = new System.Drawing.Size(154, 25);
             this.ComboBox_MAKH.TabIndex = 7;
             this.ComboBox_MAKH.ValueMember = "MAKH";
             // 
@@ -416,7 +416,7 @@
             this.TextBox_TENLOP.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextBox_TENLOP.Location = new System.Drawing.Point(138, 104);
             this.TextBox_TENLOP.Name = "TextBox_TENLOP";
-            this.TextBox_TENLOP.Size = new System.Drawing.Size(138, 25);
+            this.TextBox_TENLOP.Size = new System.Drawing.Size(154, 25);
             this.TextBox_TENLOP.TabIndex = 3;
             // 
             // TextBox_MALOP
@@ -425,7 +425,7 @@
             this.TextBox_MALOP.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TextBox_MALOP.Location = new System.Drawing.Point(138, 44);
             this.TextBox_MALOP.Name = "TextBox_MALOP";
-            this.TextBox_MALOP.Size = new System.Drawing.Size(138, 25);
+            this.TextBox_MALOP.Size = new System.Drawing.Size(154, 25);
             this.TextBox_MALOP.TabIndex = 1;
             // 
             // bdsSV
@@ -505,38 +505,38 @@
             // themSVToolStripMenuItem
             // 
             this.themSVToolStripMenuItem.Name = "themSVToolStripMenuItem";
-            this.themSVToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.themSVToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.themSVToolStripMenuItem.Text = "Thêm sinh viên";
             this.themSVToolStripMenuItem.Click += new System.EventHandler(this.themSVToolStripMenuItem_Click);
             // 
             // xoaSVToolStripMenuItem
             // 
             this.xoaSVToolStripMenuItem.Name = "xoaSVToolStripMenuItem";
-            this.xoaSVToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.xoaSVToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.xoaSVToolStripMenuItem.Text = "Xóa sinh viên";
             this.xoaSVToolStripMenuItem.Click += new System.EventHandler(this.xoaSVToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(151, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // ghiSVToolStripMenuItem
             // 
             this.ghiSVToolStripMenuItem.Name = "ghiSVToolStripMenuItem";
-            this.ghiSVToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.ghiSVToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ghiSVToolStripMenuItem.Text = "Ghi";
             this.ghiSVToolStripMenuItem.Click += new System.EventHandler(this.ghiSVToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(151, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
             // 
             // thoatToolStripMenuItem
             // 
             this.thoatToolStripMenuItem.Name = "thoatToolStripMenuItem";
-            this.thoatToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.thoatToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.thoatToolStripMenuItem.Text = "Thoát";
             this.thoatToolStripMenuItem.Click += new System.EventHandler(this.thoatToolStripMenuItem_Click);
             // 
@@ -569,7 +569,7 @@
             this.Controls.Add(this.barDockControlTop);
             this.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmLop_SinhVien";
-            this.Text = "frmLop_SinhVien";
+            this.Text = "Lớp - Sinh viên";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmLop_SinhVien_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();

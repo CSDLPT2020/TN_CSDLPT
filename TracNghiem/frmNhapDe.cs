@@ -12,6 +12,7 @@ namespace TracNghiem
 {
     public partial class frmNhapDe : Form
     {
+        int vitri = 0;
         public frmNhapDe()
         {
             InitializeComponent();
@@ -32,16 +33,30 @@ namespace TracNghiem
                 //fix loi dong dau combobox
                 ComboBox_MAMH.SelectedValue = ((DataRowView)bdsBD[0])["MAMH"].ToString();
             }
+
+            //truong,coso,giangvien dc truy cap formNhapDe
+            if (Program.mGroup == "Truong")
+            {
+                btnThem.Enabled = btnThoat.Enabled = btnUndo.Enabled
+                    = btnGhi.Enabled = btnXoa.Enabled = false;
+            }
+            else if (Program.mGroup == "Coso" || Program.mGroup == "Giangvien")
+            {
+                btnThoat.Enabled = false;
+            }
         }
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             bdsBD.AddNew();
+
+            vitri = bdsBD.Position;
             TextBox_MAGV.Text = Program.username;
             ComboBox_MAMH.SelectedIndex = 0;
             ComboBox_DA.SelectedIndex = -1;
             ComboBox_TD.SelectedIndex = -1;
 
+            btnThoat.Enabled = true;
             btnThem.Enabled = btnReload.Enabled = btnXoa.Enabled = false;
             btnGhi.Enabled = btnUndo.Enabled = true;
             GridControl_BODE.Enabled = false;
@@ -49,6 +64,9 @@ namespace TracNghiem
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            string strLenh = "EXEC SP_CHECKCAUHOI_TRONGCTBT " + TextBox_CH.Text;
+            int k = Program.ExecSqlNonQuery(strLenh);
+            if (k == 1) return;
             String mach = "";
             if (MessageBox.Show("Bạn có thật sự muốn xóa câu hỏi này ? ", "Xác nhận",
                        MessageBoxButtons.OKCancel) == DialogResult.OK)
@@ -108,6 +126,11 @@ namespace TracNghiem
                 else MessageBox.Show("Lỗi ghi bộ đề.\n" + ex.Message, "", MessageBoxButtons.OK);
                 return;
             }
+
+            btnThoat.Enabled = false;
+            btnThem.Enabled = btnReload.Enabled = btnXoa.Enabled = true;
+            btnGhi.Enabled = btnUndo.Enabled = true;
+            GridControl_BODE.Enabled = true;
         }
 
         private void btnUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -137,11 +160,17 @@ namespace TracNghiem
 
         private void btnThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            bdsBD.RemoveAt(vitri);
             bdsBD.CancelEdit();
+            btnThoat.Enabled = false;
             btnThem.Enabled = btnReload.Enabled = btnXoa.Enabled = true;
             btnGhi.Enabled = btnUndo.Enabled = true;
             GridControl_BODE.Enabled = true;
             btnReload.PerformClick();
+            if (bdsBD.Count > 0)
+            {
+                gridView1.MoveLast();
+            }
         }
 
         private void TextBox_MAGV_TextChanged(object sender, EventArgs e)

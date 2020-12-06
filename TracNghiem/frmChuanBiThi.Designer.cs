@@ -698,7 +698,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "frmChuanBiThi";
-            this.Text = "frmChuanBiThi";
+            this.Text = "Chuẩn bị thi";
             this.Load += new System.EventHandler(this.frmChuanBiThi_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();

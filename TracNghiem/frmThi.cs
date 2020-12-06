@@ -13,9 +13,10 @@ namespace TracNghiem
     public partial class frmThi : Form
     {
         List<itemCauHoi> list = new List<itemCauHoi>();
-        int s=0;//tong so giay
-        int sct=0;
+        int s = 0;//tong so giay
+        int sct = 0;
         string td = "";
+        bool timeOut = false;
         public frmThi()
         {
             InitializeComponent();
@@ -28,15 +29,18 @@ namespace TracNghiem
             this.mONHOCTableAdapter.Connection.ConnectionString = Program.connstr;
             this.mONHOCTableAdapter.Fill(this.DS.MONHOC);
 
-            dateEdit_NT.DateTime = DateTime.Now.Date;
-            spinEdit_LAN.Value = spinEdit_LAN.Properties.MinValue;
             //fill thong tin SV
             label_MASV.Text = Program.username;
             label_TENSV.Text = Program.mHoten;
+            GetMa_Ten();
             if (Program.mGroup == "Sinhvien")
             {
-                ComboBox_MaLop.Visible = false;
-                GetMaLop_TenLop();
+                comboBox_TD.Visible = false;
+                spinEdit_SCT.Visible = false;
+                dateEdit_NT.DateTime = DateTime.Now.Date;
+                spinEdit_LAN.Value = spinEdit_LAN.Properties.MinValue;
+
+                button_NOPBAI.Enabled = false;
             }
             else if (Program.mGroup == "Giangvien" || Program.mGroup == "Coso")
             {
@@ -44,19 +48,39 @@ namespace TracNghiem
                 this.lOPTableAdapter.Fill(this.DS.LOP);
 
                 label_TT.Text = "Thông tin giáo viên";
-                label_TENLOP.Visible = false;
-
-                ComboBox_MaLop.SelectedIndex = 1;
-                ComboBox_MaLop.SelectedIndex = 0;
                 labelMaSV_GV.Text = "Mã GV";
                 labelTenSV_GV.Text = "Tên GV";
+                labelMaLop.Text = "Mã khoa";
+                labelTenLop.Text = "Tên khoa";
+
+                dateEdit_NT.Enabled = false;
+                spinEdit_LAN.Enabled = false;
+                label_TD.Visible = false;
+                label_SCT.Visible = false;
+                button_Find.Enabled = false;
+
+                comboBox_TD.SelectedItem = -1;
+                spinEdit_SCT.Value = spinEdit_SCT.Properties.MinValue;
+                sct = (Int16)spinEdit_SCT.Value;
+                //cho giao vien time max = 60p
+                s = 60 * 60;
+                label_Timer.Text = "60:00";
             }
         }
 
-        private void GetMaLop_TenLop()
+        private void GetMa_Ten()
         {
-            string strLenh = "SELECT MALOP,TENLOP FROM LOP WHERE MALOP in" +
+            string strLenh = "";
+            if (Program.isGV)
+            {
+                strLenh = "SELECT MAKH,TENKH FROM KHOA WHERE MAKH in" +
+                " (SELECT MAKH FROM GIAOVIEN WHERE MAGV= N'" + Program.username + "')";
+            }
+            else
+            {
+                strLenh = "SELECT MALOP,TENLOP FROM LOP WHERE MALOP in" +
                 " (SELECT MALOP FROM SINHVIEN WHERE MASV= N'" + Program.username + "')";
+            }
             Program.myReader = Program.ExecSqlDataReader(strLenh);
             if (Program.myReader == null) return;
             if (Program.myReader.Read() == false) return;
@@ -112,7 +136,8 @@ namespace TracNghiem
             label_Timer.Text = mi + ":" + se;
             if (s == 0)
             {
-                timer1.Stop();
+                timeOut = true;
+                button_NOPBAI.PerformClick();
             }
         }
 
@@ -124,21 +149,18 @@ namespace TracNghiem
                 dateEdit_NT.Focus();
                 return;
             }
-            if (Program.mGroup == "Sinhvien")
+            if (dateEdit_NT.DateTime.Date != DateTime.Now.Date)
             {
-                if (dateEdit_NT.DateTime.Date != DateTime.Now.Date)
-                {
-                    MessageBox.Show("Ngày thi phải là hôm nay!", "", MessageBoxButtons.OK);
-                    dateEdit_NT.Focus();
-                    return;
-                }
-                //check sv da thi hay chua
-                string strLenh1 = "EXEC SP_CHECKSVTRONGBANGDIEM N'" + Program.username
-                    + "', N'" + ComboBox_MAMH.SelectedValue.ToString() +
-                    "', " + spinEdit_LAN.Value;
-                int kq = Program.ExecSqlNonQuery(strLenh1);
-                if (kq == 1) return;
+                MessageBox.Show("Ngày thi phải là hôm nay!", "", MessageBoxButtons.OK);
+                dateEdit_NT.Focus();
+                return;
             }
+            //check sv da thi hay chua
+            string strLenh1 = "EXEC SP_CHECKSVTRONGBANGDIEM N'" + Program.username
+                + "', N'" + ComboBox_MAMH.SelectedValue.ToString() +
+                "', " + spinEdit_LAN.Value;
+            int kq = Program.ExecSqlNonQuery(strLenh1);
+            if (kq == 1) return;
             //get gvdk
             string strLenh = "EXEC SP_CHECKTHONGTINTHI_SV N'" + label_MALOP.Text
                 + "', N'" + ComboBox_MAMH.SelectedValue.ToString() +
@@ -158,6 +180,11 @@ namespace TracNghiem
                 Int16 time = Program.myReader.GetInt16(2);
                 label_Timer.Text = time.ToString() + ":00";
                 s = time * 60;
+                //phan quyen
+                if (Program.mGroup == "Sinhvien")
+                {
+                    button_NOPBAI.Enabled = true;
+                }
             }
             Program.myReader.Close();
         }
@@ -184,15 +211,40 @@ namespace TracNghiem
             return da;
         }
 
+        private void setColorDapAn(itemCauHoi x, Color c)
+        {
+            if (x.DapAn == "A")
+            {
+                x.Rbtn_A.ForeColor = c;
+            }
+            else if (x.DapAn == "B")
+            {
+                x.Rbtn_B.ForeColor = c;
+            }
+            else if (x.DapAn == "C")
+            {
+                x.Rbtn_C.ForeColor = c;
+            }
+            else if (x.DapAn == "D")
+            {
+                x.Rbtn_D.ForeColor = c;
+            }
+        }
+
         private float tinhDiem()
         {
             int soCauDung = 0;
-            foreach(itemCauHoi x in list)
+            foreach (itemCauHoi x in list)
             {
                 string da = getDapAn(x);
                 if (da == x.DapAn)
                 {
                     soCauDung++;
+                    setColorDapAn(x, Color.Blue);
+                }
+                else
+                {
+                    setColorDapAn(x, Color.Red);
                 }
             }
 
@@ -207,7 +259,7 @@ namespace TracNghiem
             + ComboBox_MAMH.SelectedValue.ToString() + "', "
             + spinEdit_LAN.Value + ", N'"
             + dateEdit_NT.DateTime.ToString("yyyy-MM-dd HH:mm:ss") + "', "
-            + diem ;
+            + diem;
             int kq = Program.ExecSqlNonQuery(strLenh);
             if (kq != 0)
             {
@@ -217,7 +269,7 @@ namespace TracNghiem
 
         private void ghiCTBT()
         {
-            foreach(itemCauHoi x in list)
+            foreach (itemCauHoi x in list)
             {
                 string da = getDapAn(x);
 
@@ -239,6 +291,14 @@ namespace TracNghiem
         {
             if (timer1.Enabled == false) //bat dau thi
             {
+                if (Program.isGV)
+                {
+                    if (comboBox_TD.SelectedIndex == -1)
+                    {
+                        MessageBox.Show("Bạn chưa chọn trình độ thi!", "", MessageBoxButtons.OK);
+                        return;
+                    }
+                }
                 //check them cho chac SCT
                 string strLenh1 = "EXEC SP_CHECKSOCAUTHI N'"
                     + ComboBox_MAMH.SelectedValue.ToString() + "', N'"
@@ -249,13 +309,25 @@ namespace TracNghiem
 
                 button_NOPBAI.Text = "Nộp bài";
                 timer1.Start();
-                //load cau hoi thi
-                //load giao dien thi
+                //load cau hoi thi, load giao dien thi
                 loadCauHoiThi();
+
+                if (Program.isGV)
+                {
+                    comboBox_TD.Enabled = false;
+                    spinEdit_SCT.Enabled = false;
+                }
+                else
+                {
+                    button_Find.Enabled = false;
+                    dateEdit_NT.Enabled = false;
+                    spinEdit_LAN.Enabled = false;
+                }
+                ComboBox_MAMH.Enabled = false;
             }
             else //nop bai
             {
-                if (MessageBox.Show("Bạn có thật sự muốn nộp bài ? ", "Xác nhận",
+                if (timeOut == true || MessageBox.Show("Bạn có thật sự muốn nộp bài ? ", "Xác nhận",
                        MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
                     button_NOPBAI.Text = "Bắt đầu thi";
@@ -269,14 +341,35 @@ namespace TracNghiem
                         ghiCTBT();
                     }
                     MessageBox.Show("Bạn đã đạt được " + diem + " điểm!", "", MessageBoxButtons.OK);
+                    timeOut = false;
+
+                    if (Program.isGV)
+                    {
+                        comboBox_TD.Enabled = true;
+                        spinEdit_SCT.Enabled = true;
+                        s = 60 * 60;
+                        label_Timer.Text = "60:00";
+                    }
+                    else
+                    {
+                        button_Find.Enabled = true;
+                        dateEdit_NT.Enabled = true;
+                        spinEdit_LAN.Enabled = true;
+                        button_NOPBAI.Enabled = false;
+                    }
+                    ComboBox_MAMH.Enabled = true;
                 }
             }
         }
 
-        private void ComboBox_MaLop_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBox_TD_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ComboBox_MaLop.SelectedIndex == -1) return;
-            label_MALOP.Text = ComboBox_MaLop.SelectedValue.ToString();
+            td = comboBox_TD.SelectedItem.ToString();
+        }
+
+        private void spinEdit_SCT_TextChanged(object sender, EventArgs e)
+        {
+            sct = (Int16)spinEdit_SCT.Value;
         }
     }
 }

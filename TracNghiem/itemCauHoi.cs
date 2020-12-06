@@ -152,5 +152,25 @@ namespace TracNghiem
         {
             radioButton_D.Checked = true;
         }
+
+        private void radioButton_A_ForeColorChanged(object sender, EventArgs e)
+        {
+            label_DA_A.ForeColor = radioButton_A.ForeColor;
+        }
+
+        private void radioButton_B_ForeColorChanged(object sender, EventArgs e)
+        {
+            label_DA_B.ForeColor = radioButton_B.ForeColor;
+        }
+
+        private void radioButton_C_ForeColorChanged(object sender, EventArgs e)
+        {
+            label_DA_C.ForeColor = radioButton_C.ForeColor;
+        }
+
+        private void radioButton_D_ForeColorChanged(object sender, EventArgs e)
+        {
+            label_DA_D.ForeColor = radioButton_D.ForeColor;
+        }
     }
 }

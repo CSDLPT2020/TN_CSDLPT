@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label hOTENLabel;
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.comboBox_CN = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.TextBox_Username = new System.Windows.Forms.TextBox();
             this.bdsGV = new System.Windows.Forms.BindingSource(this.components);
             this.dS_DSGV_CHUATK = new TracNghiem.DS_DSGV_CHUATK();
@@ -48,8 +50,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.v_DS_GIAOVIENCHUACOTKTableAdapter = new TracNghiem.DS_DSGV_CHUATKTableAdapters.V_DS_GIAOVIENCHUACOTKTableAdapter();
             this.tableAdapterManager = new TracNghiem.DS_DSGV_CHUATKTableAdapters.TableAdapterManager();
-            this.label5 = new System.Windows.Forms.Label();
-            this.comboBox_CN = new System.Windows.Forms.ComboBox();
             hOTENLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -91,6 +91,26 @@
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(524, 471);
             this.groupControl1.TabIndex = 0;
+            // 
+            // comboBox_CN
+            // 
+            this.comboBox_CN.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_CN.Enabled = false;
+            this.comboBox_CN.FormattingEnabled = true;
+            this.comboBox_CN.Location = new System.Drawing.Point(224, 91);
+            this.comboBox_CN.Name = "comboBox_CN";
+            this.comboBox_CN.Size = new System.Drawing.Size(168, 21);
+            this.comboBox_CN.TabIndex = 16;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.label5.Location = new System.Drawing.Point(99, 91);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(57, 19);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "CƠ SỞ";
             // 
             // TextBox_Username
             // 
@@ -243,26 +263,6 @@
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.Connection = null;
             this.tableAdapterManager.UpdateOrder = TracNghiem.DS_DSGV_CHUATKTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.label5.Location = new System.Drawing.Point(99, 91);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(57, 19);
-            this.label5.TabIndex = 15;
-            this.label5.Text = "CƠ SỞ";
-            // 
-            // comboBox_CN
-            // 
-            this.comboBox_CN.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_CN.Enabled = false;
-            this.comboBox_CN.FormattingEnabled = true;
-            this.comboBox_CN.Location = new System.Drawing.Point(224, 91);
-            this.comboBox_CN.Name = "comboBox_CN";
-            this.comboBox_CN.Size = new System.Drawing.Size(168, 21);
-            this.comboBox_CN.TabIndex = 16;
             // 
             // frmTaoTaiKhoan
             // 

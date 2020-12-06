@@ -19,12 +19,10 @@ namespace TracNghiem
 
         private void frmDangNhap_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'dS_DSPM.V_DS_PHANMANH' table. You can move, or remove it, as needed.
             this.v_DS_PHANMANHTableAdapter.Fill(this.dS_DSPM.V_DS_PHANMANH);
+
             comboBox_TenCN.SelectedIndex = 1;
             comboBox_TenCN.SelectedIndex = 0;
-            //string t=((DataRowView)bdsPM[2])["TENCN"].ToString();
-            //MessageBox.Show(t);
         }
 
         private void comboBox_TenCN_SelectedIndexChanged(object sender, EventArgs e)

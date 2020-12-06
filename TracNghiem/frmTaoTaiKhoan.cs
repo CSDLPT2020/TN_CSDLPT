@@ -35,7 +35,6 @@ namespace TracNghiem
             if (Program.KetNoi() == 0)
                 MessageBox.Show("Lỗi kết nối về chi nhánh mới", "", MessageBoxButtons.OK);
 
-            // TODO: This line of code loads data into the 'dS_DSGV_CHUATK.V_DS_GIAOVIENCHUACOTK' table. You can move, or remove it, as needed.
             this.v_DS_GIAOVIENCHUACOTKTableAdapter.Connection.ConnectionString = Program.connstr;
             this.v_DS_GIAOVIENCHUACOTKTableAdapter.Fill(this.dS_DSGV_CHUATK.V_DS_GIAOVIENCHUACOTK);
 
@@ -50,6 +49,10 @@ namespace TracNghiem
                 radioButton_Truong.Enabled = false;
                 radioButton_Coso.Checked = true;
                 radioButton_Giangvien.Enabled = true;
+            }
+            if (bdsGV.Count == 0)
+            {
+                button_DK.Enabled = false;
             }
         }
 
@@ -77,11 +80,14 @@ namespace TracNghiem
             string strLenh = "EXEC SP_TAOTAIKHOAN '" +
                 textBox_LoginName.Text.Trim() + "', '" + textBox_Password.Text.Trim()
                 + "', '" + TextBox_Username.Text.Trim() + "', '" + role + "'";
-            Program.myReader = Program.ExecSqlDataReader(strLenh);
-            if (Program.myReader == null) return;
+            int kq = Program.ExecSqlNonQuery(strLenh);
+            if (kq != 0) return;
             MessageBox.Show("Tạo tài khoản thành công!", "", MessageBoxButtons.OK);
             this.v_DS_GIAOVIENCHUACOTKTableAdapter.Fill(this.dS_DSGV_CHUATK.V_DS_GIAOVIENCHUACOTK);//reload
-            Program.myReader.Close();
+            if (bdsGV.Count == 0)
+            {
+                button_DK.Enabled = false;
+            }
         }
     }
 }

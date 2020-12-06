@@ -42,7 +42,11 @@
             this.labelTenSV_GV = new System.Windows.Forms.Label();
             this.labelMaSV_GV = new System.Windows.Forms.Label();
             this.label_TT = new System.Windows.Forms.Label();
+            this.bdsLop = new System.Windows.Forms.BindingSource(this.components);
+            this.DS = new TracNghiem.DS();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.spinEdit_SCT = new DevExpress.XtraEditors.SpinEdit();
+            this.comboBox_TD = new System.Windows.Forms.ComboBox();
             this.label_SCT = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label_TD = new System.Windows.Forms.Label();
@@ -55,26 +59,24 @@
             this.label7 = new System.Windows.Forms.Label();
             this.ComboBox_MAMH = new System.Windows.Forms.ComboBox();
             this.bdsMH = new System.Windows.Forms.BindingSource(this.components);
-            this.DS = new TracNghiem.DS();
             this.label6 = new System.Windows.Forms.Label();
             this.mONHOCTableAdapter = new TracNghiem.DSTableAdapters.MONHOCTableAdapter();
             this.tableAdapterManager = new TracNghiem.DSTableAdapters.TableAdapterManager();
             this.flowLayoutPanel_THI = new System.Windows.Forms.FlowLayoutPanel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.bdsLop = new System.Windows.Forms.BindingSource(this.components);
             this.lOPTableAdapter = new TracNghiem.DSTableAdapters.LOPTableAdapter();
-            this.ComboBox_MaLop = new System.Windows.Forms.ComboBox();
             mAMHLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsLop)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spinEdit_SCT.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit_LAN.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit_NT.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit_NT.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsMH)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsLop)).BeginInit();
             this.SuspendLayout();
             // 
             // mAMHLabel
@@ -89,7 +91,6 @@
             // 
             // groupControl1
             // 
-            this.groupControl1.Controls.Add(this.ComboBox_MaLop);
             this.groupControl1.Controls.Add(this.label11);
             this.groupControl1.Controls.Add(this.label_Timer);
             this.groupControl1.Controls.Add(this.label_TENLOP);
@@ -221,8 +222,20 @@
             this.label_TT.TabIndex = 0;
             this.label_TT.Text = "Thông tin sinh viên";
             // 
+            // bdsLop
+            // 
+            this.bdsLop.DataMember = "LOP";
+            this.bdsLop.DataSource = this.DS;
+            // 
+            // DS
+            // 
+            this.DS.DataSetName = "DS";
+            this.DS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // groupControl2
             // 
+            this.groupControl2.Controls.Add(this.spinEdit_SCT);
+            this.groupControl2.Controls.Add(this.comboBox_TD);
             this.groupControl2.Controls.Add(this.label_SCT);
             this.groupControl2.Controls.Add(this.label10);
             this.groupControl2.Controls.Add(this.label_TD);
@@ -242,6 +255,50 @@
             this.groupControl2.Size = new System.Drawing.Size(1332, 124);
             this.groupControl2.TabIndex = 1;
             this.groupControl2.Text = "groupControl2";
+            // 
+            // spinEdit_SCT
+            // 
+            this.spinEdit_SCT.EditValue = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.spinEdit_SCT.Location = new System.Drawing.Point(1046, 65);
+            this.spinEdit_SCT.Name = "spinEdit_SCT";
+            this.spinEdit_SCT.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.spinEdit_SCT.Properties.Appearance.Options.UseFont = true;
+            this.spinEdit_SCT.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.spinEdit_SCT.Properties.IsFloatValue = false;
+            this.spinEdit_SCT.Properties.Mask.EditMask = "N00";
+            this.spinEdit_SCT.Properties.MaxValue = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.spinEdit_SCT.Properties.MinValue = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.spinEdit_SCT.Size = new System.Drawing.Size(56, 24);
+            this.spinEdit_SCT.TabIndex = 22;
+            this.spinEdit_SCT.TextChanged += new System.EventHandler(this.spinEdit_SCT_TextChanged);
+            // 
+            // comboBox_TD
+            // 
+            this.comboBox_TD.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_TD.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox_TD.FormattingEnabled = true;
+            this.comboBox_TD.Items.AddRange(new object[] {
+            "A",
+            "B",
+            "C"});
+            this.comboBox_TD.Location = new System.Drawing.Point(891, 66);
+            this.comboBox_TD.Name = "comboBox_TD";
+            this.comboBox_TD.Size = new System.Drawing.Size(43, 25);
+            this.comboBox_TD.TabIndex = 21;
+            this.comboBox_TD.SelectedIndexChanged += new System.EventHandler(this.comboBox_TD_SelectedIndexChanged);
             // 
             // label_SCT
             // 
@@ -297,7 +354,7 @@
             // button_Find
             // 
             this.button_Find.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Find.Location = new System.Drawing.Point(1121, 64);
+            this.button_Find.Location = new System.Drawing.Point(1137, 62);
             this.button_Find.Name = "button_Find";
             this.button_Find.Size = new System.Drawing.Size(75, 28);
             this.button_Find.TabIndex = 15;
@@ -385,11 +442,6 @@
             this.bdsMH.DataMember = "MONHOC";
             this.bdsMH.DataSource = this.DS;
             // 
-            // DS
-            // 
-            this.DS.DataSetName = "DS";
-            this.DS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -434,28 +486,9 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // bdsLop
-            // 
-            this.bdsLop.DataMember = "LOP";
-            this.bdsLop.DataSource = this.DS;
-            // 
             // lOPTableAdapter
             // 
             this.lOPTableAdapter.ClearBeforeFill = true;
-            // 
-            // ComboBox_MaLop
-            // 
-            this.ComboBox_MaLop.DataSource = this.bdsLop;
-            this.ComboBox_MaLop.DisplayMember = "TENLOP";
-            this.ComboBox_MaLop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComboBox_MaLop.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ComboBox_MaLop.FormattingEnabled = true;
-            this.ComboBox_MaLop.Location = new System.Drawing.Point(656, 82);
-            this.ComboBox_MaLop.Name = "ComboBox_MaLop";
-            this.ComboBox_MaLop.Size = new System.Drawing.Size(149, 25);
-            this.ComboBox_MaLop.TabIndex = 12;
-            this.ComboBox_MaLop.ValueMember = "MALOP";
-            this.ComboBox_MaLop.SelectedIndexChanged += new System.EventHandler(this.ComboBox_MaLop_SelectedIndexChanged);
             // 
             // frmThi
             // 
@@ -469,20 +502,21 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmThi";
-            this.Text = "frmThi";
+            this.Text = "Thi";
             this.Load += new System.EventHandler(this.frmThi_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsLop)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             this.groupControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spinEdit_SCT.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit_LAN.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit_NT.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit_NT.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsMH)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsLop)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -522,6 +556,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.BindingSource bdsLop;
         private DSTableAdapters.LOPTableAdapter lOPTableAdapter;
-        private System.Windows.Forms.ComboBox ComboBox_MaLop;
+        private System.Windows.Forms.ComboBox comboBox_TD;
+        private DevExpress.XtraEditors.SpinEdit spinEdit_SCT;
     }
 }

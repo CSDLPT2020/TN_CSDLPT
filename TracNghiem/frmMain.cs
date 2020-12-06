@@ -8,8 +8,8 @@ namespace TracNghiem
         public frmMain()
         {
             InitializeComponent();
-            barButtonItem_DN.PerformClick();
-            barButtonItem_DX.Enabled = false;
+            btnDN.PerformClick();
+            btnDX.Enabled = false;
             ribbonPage_DM.Visible = false;
             ribbonPage_PhanQuyen.Visible = false;
         }
@@ -94,39 +94,6 @@ namespace TracNghiem
             }
         }
 
-        public void HienThiMenu()
-        {
-            barButtonItem_DX.Enabled = true;
-            barButtonItem_DN.Enabled = false;
-            if (Program.isGV)
-            {
-                barButtonItem_Thi.Caption = "Thi thử";
-                toolStripStatusLabel_MaUser.Text = "Mã giảng viên: " + Program.username;
-                toolStripStatusLabel_HoTen.Text = "Họ tên: " + Program.mHoten;
-                toolStripStatusLabel_Nhom.Text = "Nhóm: " + Program.mGroup;
-            }
-            else
-            {
-                toolStripStatusLabel_MaUser.Text = "Mã sinh viên: " + Program.username;
-                toolStripStatusLabel_HoTen.Text = "Họ tên: " + Program.mHoten;
-                toolStripStatusLabel_Nhom.Text = "Nhóm: " + Program.mGroup;
-            }
-            //phan quyen
-            if (Program.isGV)
-            {
-                barButtonItem_TaoTaiKhoan.Enabled = true;
-                ribbonPage_DM.Visible = true;
-                ribbonPage_PhanQuyen.Visible = true;
-            }
-            else
-            {
-                ribbonPage_DM.Visible = true;
-                ribbonPageGroup_CBT.Visible = false;
-                ribbonPageGroup_SimpleForm.Visible = false;
-                ribbonPageGroup_Subform.Visible = false;
-            }
-        }
-
         private void barButtonItem_DX_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (MessageBox.Show("Bạn có thật sự muốn đăng xuất khỏi tài khoản '"
@@ -154,13 +121,78 @@ namespace TracNghiem
             if (frm != null) frm.Activate();
             else
             {
-                if (Program.mGroup != "Sinhvien")
-                {
-                    MessageBox.Show("Giáo viên chỉ có thể thi thử và không ghi điểm!", "", MessageBoxButtons.OK);
-                }
                 frmThi f = new frmThi();
                 f.MdiParent = this;
                 f.Show();
+                if (Program.mGroup != "Sinhvien")
+                {
+                    f.Text = "Thi thử";
+                    MessageBox.Show("Giáo viên chỉ có thể thi thử và không ghi điểm!", "", MessageBoxButtons.OK);
+                }
+            }
+        }
+
+        public void HienThiMenu()
+        {
+            btnDX.Enabled = true;
+            btnDN.Enabled = false;
+            if (Program.isGV)
+            {
+                toolStripStatusLabel_MaUser.Text = "Mã giảng viên: " + Program.username;
+                toolStripStatusLabel_HoTen.Text = "Họ tên: " + Program.mHoten;
+                toolStripStatusLabel_Nhom.Text = "Nhóm: " + Program.mGroup;
+            }
+            else
+            {
+                toolStripStatusLabel_MaUser.Text = "Mã sinh viên: " + Program.username;
+                toolStripStatusLabel_HoTen.Text = "Họ tên: " + Program.mHoten;
+                toolStripStatusLabel_Nhom.Text = "Nhóm: " + Program.mGroup;
+            }
+            //phan quyen
+            if (Program.isGV)
+            {
+                btnThi.Caption = "Thi thử";
+                ribbonPage_DM.Visible = true;
+                if (Program.mGroup == "Giangvien")
+                {
+                    btnMonHoc.Enabled = false;
+                    btnKhoaGV.Enabled = false;
+                    btnLopSV.Enabled = false;
+                }
+                else
+                {
+                    ribbonPage_PhanQuyen.Visible = true;
+                    btnTaoTaiKhoan.Enabled = true;
+                    if (Program.mGroup == "Truong")
+                    {
+                        ribbonPageGroup_Thi.Visible = false;
+                    }
+                }
+            }
+            else
+            {
+                ribbonPage_DM.Visible = true;
+                ribbonPageGroup_CBT.Visible = false;
+                ribbonPageGroup_SimpleForm.Visible = false;
+                ribbonPageGroup_Subform.Visible = false;
+            }
+        }
+
+        public void fixLoiChuyenSiteFormCBT()
+        {
+            if (Program.mlogin == Program.mloginDN) //site ht
+            {
+                btnBODE.Enabled = true;
+                btnThi.Enabled = true;
+            }
+            else
+            {
+                btnBODE.Enabled = false;
+                btnThi.Enabled = false;
+                Form frm = this.CheckExists(typeof(frmThi));
+                if (frm != null) frm.Close();
+                frm = this.CheckExists(typeof(frmNhapDe));
+                if (frm != null) frm.Close();
             }
         }
     }
