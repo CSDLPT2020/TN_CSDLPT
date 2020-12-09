@@ -195,5 +195,41 @@ namespace TracNghiem
                 if (frm != null) frm.Close();
             }
         }
+
+        private void btnBaiThi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(frmKQTHI));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frmKQTHI f = new frmKQTHI();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void btnBangDiem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(frmBangDiemMH));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frmBangDiemMH f = new frmBangDiemMH();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void btnDSDK_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(frmDsDkThi));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frmDsDkThi f = new frmDsDkThi();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
     }
 }
