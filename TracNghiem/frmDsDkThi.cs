@@ -13,18 +13,15 @@ namespace TracNghiem
 {
     public partial class frmDsDkThi : Form
     {
-        // public static Boolean checkVitriCS = false;
         public static String macn = "";
         public frmDsDkThi()
         {
             InitializeComponent();
         }
 
-
-
         private void frmDsDkThi_Load(object sender, EventArgs e)
         {
-            this.ControlBox = false;
+
             dSReport.EnforceConstraints = false;
             // Lấy kết danh sách phân mảnh đổ vào combobox
             macn = Program.GetMaCS();
@@ -89,7 +86,6 @@ namespace TracNghiem
             int compare = DateTime.Compare(FromDate, ToDate);
             if (compare > 0)
             {
-                // ngày bắt đầu không thể lớn hơn ngày kết thúc
                 MessageBox.Show("Ngày bắt đầu không thể lớn hơn ngày kết thúc");
                 return;
             }
@@ -97,7 +93,11 @@ namespace TracNghiem
             {
                 this.sP_DSDANGKYTHITableAdapter.Connection.ConnectionString = Program.connstr;
                 this.sP_DSDANGKYTHITableAdapter.Fill(this.dSReport.SP_DSDANGKYTHI, FromDate, ToDate);
-
+                if (bdsDSDKTHI.Count == 0)
+                {
+                    MessageBox.Show("Danh sách trống!!", "Thông báo", MessageBoxButtons.OK);
+                    return;
+                }
             }
         }
 
@@ -129,16 +129,27 @@ namespace TracNghiem
                 // ngày bắt đầu không thể lớn hơn ngày kết thúc
                 MessageBox.Show("Ngày bắt đầu không thể lớn hơn ngày kết thúc");
                 return;
-            }
-            else
-            {
-                //Console.WriteLine("ngay" + ToDate.ToString("dd/MM/yyyy"));
-                xrp.lbCoso.Text = (cbbCoso.SelectedIndex + 1).ToString();
-                xrp.lbDateFrom.Text = FromDate.ToString("dd/MM/yyyy");
-                xrp.lbDateTo.Text = ToDate.ToString("dd/MM/yyyy");
 
-                ReportPrintTool report = new ReportPrintTool(xrp);
-                report.ShowPreviewDialog();
+            }
+            else if (compare <= 0)
+            {
+                this.sP_DSDANGKYTHITableAdapter.Connection.ConnectionString = Program.connstr;
+                this.sP_DSDANGKYTHITableAdapter.Fill(this.dSReport.SP_DSDANGKYTHI, FromDate, ToDate);
+                if (bdsDSDKTHI.Count == 0)
+                {
+                    MessageBox.Show("Danh sách trống!!", "Thông báo", MessageBoxButtons.OK);
+                    return;
+                }
+                else
+                {
+
+                    xrp.lbCoso.Text = (cbbCoso.SelectedIndex + 1).ToString();
+                    xrp.lbDateFrom.Text = FromDate.ToString("dd/MM/yyyy");
+                    xrp.lbDateTo.Text = ToDate.ToString("dd/MM/yyyy");
+
+                    ReportPrintTool report = new ReportPrintTool(xrp);
+                    report.ShowPreviewDialog();
+                }
             }*/
         }
     }

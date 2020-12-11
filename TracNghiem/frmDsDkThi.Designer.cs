@@ -122,7 +122,7 @@
             // 
             // dateFrom
             // 
-            this.dateFrom.EditValue = null;
+            this.dateFrom.EditValue = new System.DateTime(2020, 12, 1, 0, 0, 0, 0);
             this.dateFrom.Location = new System.Drawing.Point(605, 57);
             this.dateFrom.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.dateFrom.Name = "dateFrom";
@@ -137,7 +137,7 @@
             // 
             // dateTo
             // 
-            this.dateTo.EditValue = null;
+            this.dateTo.EditValue = new System.DateTime(2020, 12, 11, 13, 28, 34, 0);
             this.dateTo.Location = new System.Drawing.Point(834, 60);
             this.dateTo.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.dateTo.Name = "dateTo";
@@ -147,6 +147,9 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateTo.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateTo.Properties.EditFormat.FormatString = "dd/MM/yyyy";
+            this.dateTo.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dateTo.Properties.Mask.EditMask = "dd/MM/yyyy";
             this.dateTo.Size = new System.Drawing.Size(103, 20);
             this.dateTo.TabIndex = 22;
             // 

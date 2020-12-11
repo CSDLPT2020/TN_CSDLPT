@@ -12,6 +12,7 @@ namespace TracNghiem
             btnDX.Enabled = false;
             ribbonPage_DM.Visible = false;
             ribbonPage_PhanQuyen.Visible = false;
+            ribbonPage_BaoCao.Visible = false;
         }
 
         private Form CheckExists(Type ftype)
@@ -149,6 +150,7 @@ namespace TracNghiem
                 toolStripStatusLabel_Nhom.Text = "Nhóm: " + Program.mGroup;
             }
             //phan quyen
+            ribbonPage_BaoCao.Visible = true;
             if (Program.isGV)
             {
                 btnThi.Caption = "Thi thử";
@@ -158,9 +160,12 @@ namespace TracNghiem
                     btnMonHoc.Enabled = false;
                     btnKhoaGV.Enabled = false;
                     btnLopSV.Enabled = false;
+                    ribbonPageGroup_BT.Visible = false;
+                    ribbonPageGroup_DSDKT.Visible = false;
                 }
                 else
                 {
+                    btnBaiThi.Enabled = false;
                     ribbonPage_PhanQuyen.Visible = true;
                     btnTaoTaiKhoan.Enabled = true;
                     if (Program.mGroup == "Truong")
@@ -175,6 +180,8 @@ namespace TracNghiem
                 ribbonPageGroup_CBT.Visible = false;
                 ribbonPageGroup_SimpleForm.Visible = false;
                 ribbonPageGroup_Subform.Visible = false;
+                ribbonPageGroup_BD.Visible = false;
+                ribbonPageGroup_DSDKT.Visible = false;
             }
         }
 

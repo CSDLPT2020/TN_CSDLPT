@@ -35,16 +35,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.gcBangDiem = new DevExpress.XtraEditors.GroupControl();
+            this.spinEditLAN = new DevExpress.XtraEditors.SpinEdit();
             this.btnPreview = new System.Windows.Forms.Button();
-            this.cbbLopDK = new System.Windows.Forms.ComboBox();
-            this.bdsLopDK = new System.Windows.Forms.BindingSource(this.components);
-            this.dSReport = new TracNghiem.DSReport();
-            this.cbbMonHoc = new System.Windows.Forms.ComboBox();
-            this.bdsMonHoc = new System.Windows.Forms.BindingSource(this.components);
-            this.cbbLanThi = new System.Windows.Forms.ComboBox();
-            this.bdsLanThi = new System.Windows.Forms.BindingSource(this.components);
-            this.btnThoat = new System.Windows.Forms.Button();
             this.btnInBC = new System.Windows.Forms.Button();
+            this.dSReport = new TracNghiem.DSReport();
             this.sP_BANGDIEMMHGridControl = new DevExpress.XtraGrid.GridControl();
             this.bdsBANGDIEMMH = new System.Windows.Forms.BindingSource(this.components);
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -55,29 +49,35 @@
             this.colDIEMCHU = new DevExpress.XtraGrid.Columns.GridColumn();
             this.sP_BANGDIEMMHTableAdapter = new TracNghiem.DSReportTableAdapters.SP_BANGDIEMMHTableAdapter();
             this.tableAdapterManager = new TracNghiem.DSReportTableAdapters.TableAdapterManager();
-            this.sP_DSLANTHIDADANGKYTableAdapter = new TracNghiem.DSReportTableAdapters.SP_DSLANTHIDADANGKYTableAdapter();
-            this.sP_DSMHDADKTableAdapter = new TracNghiem.DSReportTableAdapters.SP_DSMHDADKTableAdapter();
-            this.sP_DSLOPDADKTableAdapter = new TracNghiem.DSReportTableAdapters.SP_DSLOPDADKTableAdapter();
+            this.DS = new TracNghiem.DS();
+            this.bdsLop = new System.Windows.Forms.BindingSource(this.components);
+            this.lOPTableAdapter = new TracNghiem.DSTableAdapters.LOPTableAdapter();
+            this.tableAdapterManager1 = new TracNghiem.DSTableAdapters.TableAdapterManager();
+            this.cbboxLOP = new System.Windows.Forms.ComboBox();
+            this.bdsMH = new System.Windows.Forms.BindingSource(this.components);
+            this.mONHOCTableAdapter = new TracNghiem.DSTableAdapters.MONHOCTableAdapter();
+            this.cbboxMH = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.gcBangDiem)).BeginInit();
             this.gcBangDiem.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsLopDK)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinEditLAN.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dSReport)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsMonHoc)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsLanThi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sP_BANGDIEMMHGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsBANGDIEMMH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsLop)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsMH)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBox_TenCN
             // 
             this.comboBox_TenCN.DisplayMember = "TENCN";
             this.comboBox_TenCN.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_TenCN.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox_TenCN.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox_TenCN.FormattingEnabled = true;
-            this.comboBox_TenCN.Location = new System.Drawing.Point(292, 36);
+            this.comboBox_TenCN.Location = new System.Drawing.Point(267, 39);
             this.comboBox_TenCN.Name = "comboBox_TenCN";
-            this.comboBox_TenCN.Size = new System.Drawing.Size(237, 29);
+            this.comboBox_TenCN.Size = new System.Drawing.Size(237, 27);
             this.comboBox_TenCN.TabIndex = 3;
             this.comboBox_TenCN.ValueMember = "TENSERVER";
             this.comboBox_TenCN.SelectedIndexChanged += new System.EventHandler(this.comboBox_TenCN_SelectedIndexChanged);
@@ -85,10 +85,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(189, 42);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 22);
+            this.label2.Size = new System.Drawing.Size(51, 19);
             this.label2.TabIndex = 2;
             this.label2.Text = "Cơ Sở";
             // 
@@ -96,7 +96,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(497, 106);
+            this.label6.Location = new System.Drawing.Point(609, 104);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(56, 19);
@@ -107,7 +107,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(262, 105);
+            this.label5.Location = new System.Drawing.Point(295, 103);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(68, 19);
@@ -127,11 +127,10 @@
             // 
             // gcBangDiem
             // 
+            this.gcBangDiem.Controls.Add(this.cbboxMH);
+            this.gcBangDiem.Controls.Add(this.cbboxLOP);
+            this.gcBangDiem.Controls.Add(this.spinEditLAN);
             this.gcBangDiem.Controls.Add(this.btnPreview);
-            this.gcBangDiem.Controls.Add(this.cbbLopDK);
-            this.gcBangDiem.Controls.Add(this.cbbMonHoc);
-            this.gcBangDiem.Controls.Add(this.cbbLanThi);
-            this.gcBangDiem.Controls.Add(this.btnThoat);
             this.gcBangDiem.Controls.Add(this.btnInBC);
             this.gcBangDiem.Controls.Add(this.label6);
             this.gcBangDiem.Controls.Add(this.label5);
@@ -141,14 +140,44 @@
             this.gcBangDiem.Dock = System.Windows.Forms.DockStyle.Top;
             this.gcBangDiem.Location = new System.Drawing.Point(0, 0);
             this.gcBangDiem.Name = "gcBangDiem";
-            this.gcBangDiem.Size = new System.Drawing.Size(730, 233);
+            this.gcBangDiem.Size = new System.Drawing.Size(794, 233);
             this.gcBangDiem.TabIndex = 2;
             this.gcBangDiem.Text = "Thông Tin";
             // 
+            // spinEditLAN
+            // 
+            this.spinEditLAN.EditValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.spinEditLAN.Location = new System.Drawing.Point(682, 101);
+            this.spinEditLAN.Margin = new System.Windows.Forms.Padding(2);
+            this.spinEditLAN.Name = "spinEditLAN";
+            this.spinEditLAN.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.spinEditLAN.Properties.Appearance.Options.UseFont = true;
+            this.spinEditLAN.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.spinEditLAN.Properties.IsFloatValue = false;
+            this.spinEditLAN.Properties.Mask.EditMask = "N00";
+            this.spinEditLAN.Properties.MaxValue = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.spinEditLAN.Properties.MinValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.spinEditLAN.Size = new System.Drawing.Size(70, 26);
+            this.spinEditLAN.TabIndex = 45;
+            this.spinEditLAN.EditValueChanged += new System.EventHandler(this.spinEditLAN_EditValueChanged);
+            // 
             // btnPreview
             // 
-            this.btnPreview.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPreview.Location = new System.Drawing.Point(125, 173);
+            this.btnPreview.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPreview.Location = new System.Drawing.Point(226, 173);
             this.btnPreview.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnPreview.Name = "btnPreview";
             this.btnPreview.Size = new System.Drawing.Size(113, 40);
@@ -157,83 +186,10 @@
             this.btnPreview.UseVisualStyleBackColor = true;
             this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
             // 
-            // cbbLopDK
-            // 
-            this.cbbLopDK.DataSource = this.bdsLopDK;
-            this.cbbLopDK.DisplayMember = "TENLOP";
-            this.cbbLopDK.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbLopDK.FormattingEnabled = true;
-            this.cbbLopDK.Location = new System.Drawing.Point(93, 103);
-            this.cbbLopDK.Margin = new System.Windows.Forms.Padding(2);
-            this.cbbLopDK.Name = "cbbLopDK";
-            this.cbbLopDK.Size = new System.Drawing.Size(134, 21);
-            this.cbbLopDK.TabIndex = 32;
-            this.cbbLopDK.ValueMember = "MALOP";
-            this.cbbLopDK.SelectedIndexChanged += new System.EventHandler(this.cbbLopDK_SelectedIndexChanged);
-            // 
-            // bdsLopDK
-            // 
-            this.bdsLopDK.DataMember = "SP_DSLOPDADK";
-            this.bdsLopDK.DataSource = this.dSReport;
-            // 
-            // dSReport
-            // 
-            this.dSReport.DataSetName = "DSReport";
-            this.dSReport.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // cbbMonHoc
-            // 
-            this.cbbMonHoc.DataSource = this.bdsMonHoc;
-            this.cbbMonHoc.DisplayMember = "TENMH";
-            this.cbbMonHoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbMonHoc.FormattingEnabled = true;
-            this.cbbMonHoc.Location = new System.Drawing.Point(336, 106);
-            this.cbbMonHoc.Margin = new System.Windows.Forms.Padding(2);
-            this.cbbMonHoc.Name = "cbbMonHoc";
-            this.cbbMonHoc.Size = new System.Drawing.Size(134, 21);
-            this.cbbMonHoc.TabIndex = 1;
-            this.cbbMonHoc.ValueMember = "MAMH";
-            this.cbbMonHoc.SelectedIndexChanged += new System.EventHandler(this.cbbMonHoc_SelectedIndexChanged);
-            // 
-            // bdsMonHoc
-            // 
-            this.bdsMonHoc.DataMember = "SP_DSMHDADK";
-            this.bdsMonHoc.DataSource = this.dSReport;
-            // 
-            // cbbLanThi
-            // 
-            this.cbbLanThi.DataSource = this.bdsLanThi;
-            this.cbbLanThi.DisplayMember = "LAN";
-            this.cbbLanThi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbLanThi.FormattingEnabled = true;
-            this.cbbLanThi.Location = new System.Drawing.Point(571, 107);
-            this.cbbLanThi.Margin = new System.Windows.Forms.Padding(2);
-            this.cbbLanThi.Name = "cbbLanThi";
-            this.cbbLanThi.Size = new System.Drawing.Size(134, 21);
-            this.cbbLanThi.TabIndex = 30;
-            this.cbbLanThi.ValueMember = "LAN";
-            // 
-            // bdsLanThi
-            // 
-            this.bdsLanThi.DataMember = "SP_DSLANTHIDADANGKY";
-            this.bdsLanThi.DataSource = this.dSReport;
-            // 
-            // btnThoat
-            // 
-            this.btnThoat.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThoat.Location = new System.Drawing.Point(473, 173);
-            this.btnThoat.Margin = new System.Windows.Forms.Padding(2);
-            this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(113, 40);
-            this.btnThoat.TabIndex = 29;
-            this.btnThoat.Text = "Thoát";
-            this.btnThoat.UseVisualStyleBackColor = true;
-            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
-            // 
             // btnInBC
             // 
-            this.btnInBC.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInBC.Location = new System.Drawing.Point(299, 173);
+            this.btnInBC.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInBC.Location = new System.Drawing.Point(416, 173);
             this.btnInBC.Margin = new System.Windows.Forms.Padding(2);
             this.btnInBC.Name = "btnInBC";
             this.btnInBC.Size = new System.Drawing.Size(113, 40);
@@ -241,6 +197,11 @@
             this.btnInBC.Text = "In Báo Cáo";
             this.btnInBC.UseVisualStyleBackColor = true;
             this.btnInBC.Click += new System.EventHandler(this.btnInBC_Click);
+            // 
+            // dSReport
+            // 
+            this.dSReport.DataSetName = "DSReport";
+            this.dSReport.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // sP_BANGDIEMMHGridControl
             // 
@@ -251,7 +212,7 @@
             this.sP_BANGDIEMMHGridControl.MainView = this.gridView1;
             this.sP_BANGDIEMMHGridControl.Margin = new System.Windows.Forms.Padding(2);
             this.sP_BANGDIEMMHGridControl.Name = "sP_BANGDIEMMHGridControl";
-            this.sP_BANGDIEMMHGridControl.Size = new System.Drawing.Size(730, 248);
+            this.sP_BANGDIEMMHGridControl.Size = new System.Drawing.Size(794, 248);
             this.sP_BANGDIEMMHGridControl.TabIndex = 4;
             this.sP_BANGDIEMMHGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -325,23 +286,77 @@
             this.tableAdapterManager.Connection = null;
             this.tableAdapterManager.UpdateOrder = TracNghiem.DSReportTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // sP_DSLANTHIDADANGKYTableAdapter
+            // DS
             // 
-            this.sP_DSLANTHIDADANGKYTableAdapter.ClearBeforeFill = true;
+            this.DS.DataSetName = "DS";
+            this.DS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // sP_DSMHDADKTableAdapter
+            // bdsLop
             // 
-            this.sP_DSMHDADKTableAdapter.ClearBeforeFill = true;
+            this.bdsLop.DataMember = "LOP";
+            this.bdsLop.DataSource = this.DS;
             // 
-            // sP_DSLOPDADKTableAdapter
+            // lOPTableAdapter
             // 
-            this.sP_DSLOPDADKTableAdapter.ClearBeforeFill = true;
+            this.lOPTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager1
+            // 
+            this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager1.BANGDIEMTableAdapter = null;
+            this.tableAdapterManager1.BODETableAdapter = null;
+            this.tableAdapterManager1.CHITIETBAITHITableAdapter = null;
+            this.tableAdapterManager1.COSOTableAdapter = null;
+            this.tableAdapterManager1.GIAOVIEN_DANGKYTableAdapter = null;
+            this.tableAdapterManager1.GIAOVIENTableAdapter = null;
+            this.tableAdapterManager1.KHOATableAdapter = null;
+            this.tableAdapterManager1.LOPTableAdapter = this.lOPTableAdapter;
+            this.tableAdapterManager1.MONHOCTableAdapter = this.mONHOCTableAdapter;
+            this.tableAdapterManager1.SINHVIENTableAdapter = null;
+            this.tableAdapterManager1.UpdateOrder = TracNghiem.DSTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // cbboxLOP
+            // 
+            this.cbboxLOP.DataSource = this.bdsLop;
+            this.cbboxLOP.DisplayMember = "TENLOP";
+            this.cbboxLOP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbboxLOP.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbboxLOP.FormattingEnabled = true;
+            this.cbboxLOP.Location = new System.Drawing.Point(94, 102);
+            this.cbboxLOP.Name = "cbboxLOP";
+            this.cbboxLOP.Size = new System.Drawing.Size(160, 27);
+            this.cbboxLOP.TabIndex = 46;
+            this.cbboxLOP.ValueMember = "MALOP";
+            this.cbboxLOP.SelectedIndexChanged += new System.EventHandler(this.cbboxLOP_SelectedIndexChanged);
+            // 
+            // bdsMH
+            // 
+            this.bdsMH.DataMember = "MONHOC";
+            this.bdsMH.DataSource = this.DS;
+            // 
+            // mONHOCTableAdapter
+            // 
+            this.mONHOCTableAdapter.ClearBeforeFill = true;
+            // 
+            // cbboxMH
+            // 
+            this.cbboxMH.DataSource = this.bdsMH;
+            this.cbboxMH.DisplayMember = "TENMH";
+            this.cbboxMH.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbboxMH.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbboxMH.FormattingEnabled = true;
+            this.cbboxMH.Location = new System.Drawing.Point(370, 101);
+            this.cbboxMH.Name = "cbboxMH";
+            this.cbboxMH.Size = new System.Drawing.Size(213, 27);
+            this.cbboxMH.TabIndex = 47;
+            this.cbboxMH.ValueMember = "MAMH";
+            this.cbboxMH.SelectedIndexChanged += new System.EventHandler(this.cbboxMH_SelectedIndexChanged);
             // 
             // frmBangDiemMH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(730, 481);
+            this.ClientSize = new System.Drawing.Size(794, 481);
             this.Controls.Add(this.sP_BANGDIEMMHGridControl);
             this.Controls.Add(this.gcBangDiem);
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -351,13 +366,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.gcBangDiem)).EndInit();
             this.gcBangDiem.ResumeLayout(false);
             this.gcBangDiem.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsLopDK)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinEditLAN.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dSReport)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsMonHoc)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsLanThi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sP_BANGDIEMMHGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsBANGDIEMMH)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsLop)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsMH)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -369,15 +385,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label1;
         private DevExpress.XtraEditors.GroupControl gcBangDiem;
-        private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.Button btnInBC;
-        //private DSReportTableAdapters.SP_BANGDIEMMHTableAdapter sP_BANGDIEMMHTableAdapter;
-        //private DSReportTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.ComboBox cbbLanThi;
-        //private DSReportTableAdapters.SP_DSMHDKTableAdapter sP_DSMHDKTableAdapter;
-        private System.Windows.Forms.ComboBox cbbMonHoc;
-        //private DSReportTableAdapters.SP_DSLOPDKTableAdapter sP_DSLOPDKTableAdapter;
-        private System.Windows.Forms.ComboBox cbbLopDK;
         //private DSReportTableAdapters.SP_DSLANTHIDKTableAdapter sP_DSLANTHIDKTableAdapter;
         private System.Windows.Forms.Button btnPreview;
         private DevExpress.XtraGrid.GridControl sP_BANGDIEMMHGridControl;
@@ -391,11 +399,14 @@
         private System.Windows.Forms.BindingSource bdsBANGDIEMMH;
         private DSReportTableAdapters.SP_BANGDIEMMHTableAdapter sP_BANGDIEMMHTableAdapter;
         private DSReportTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.BindingSource bdsLanThi;
-        private DSReportTableAdapters.SP_DSLANTHIDADANGKYTableAdapter sP_DSLANTHIDADANGKYTableAdapter;
-        private System.Windows.Forms.BindingSource bdsMonHoc;
-        private DSReportTableAdapters.SP_DSMHDADKTableAdapter sP_DSMHDADKTableAdapter;
-        private System.Windows.Forms.BindingSource bdsLopDK;
-        private DSReportTableAdapters.SP_DSLOPDADKTableAdapter sP_DSLOPDADKTableAdapter;
+        private DevExpress.XtraEditors.SpinEdit spinEditLAN;
+        private DS DS;
+        private System.Windows.Forms.BindingSource bdsLop;
+        private DSTableAdapters.LOPTableAdapter lOPTableAdapter;
+        private DSTableAdapters.TableAdapterManager tableAdapterManager1;
+        private System.Windows.Forms.ComboBox cbboxLOP;
+        private DSTableAdapters.MONHOCTableAdapter mONHOCTableAdapter;
+        private System.Windows.Forms.BindingSource bdsMH;
+        private System.Windows.Forms.ComboBox cbboxMH;
     }
 }

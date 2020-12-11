@@ -21,29 +21,26 @@ namespace TracNghiem
 
         private void frmBangDiemMH_Load(object sender, EventArgs e)
         {
-            this.sP_DSLOPDADKTableAdapter.Connection.ConnectionString = Program.connstr;
-            this.sP_DSLOPDADKTableAdapter.Fill(this.dSReport.SP_DSLOPDADK);
-            this.ControlBox = false;
+            DS.EnforceConstraints = false;
             dSReport.EnforceConstraints = false;
-            // Lấy kết danh sách phân mảnh đổ vào combobox
+
+            this.mONHOCTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.mONHOCTableAdapter.Fill(this.DS.MONHOC);
+
+            this.lOPTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.lOPTableAdapter.Fill(this.DS.LOP);
+
             macn = Program.GetMaCS();
-            comboBox_TenCN.DataSource = Program.bds_dspm;  // sao chép bds_dspm đã load ở form đăng nhập  qua
+            comboBox_TenCN.DataSource = Program.bds_dspm;// sao chép bds_dspm đã load ở form đăng nhập  qua
             comboBox_TenCN.DisplayMember = "TENCN";
             comboBox_TenCN.ValueMember = "TENSERVER";
             comboBox_TenCN.SelectedIndex = Program.mChinhanh;
 
-            if (Program.mGroup == "Truong")
-            {
-                comboBox_TenCN.Enabled = true;
-                comboBox_TenCN.SelectedIndex = 1;
-            }
-            else if (Program.mGroup == "Coso")
+            btnInBC.Enabled = false;
+            if (Program.mGroup == "Coso")
             {
                 comboBox_TenCN.Enabled = false;
-                comboBox_TenCN.SelectedIndex = Program.mChinhanh;
             }
-
-
         }
 
         private void comboBox_TenCN_SelectedIndexChanged(object sender, EventArgs e)
@@ -67,65 +64,64 @@ namespace TracNghiem
                 MessageBox.Show("Lỗi kết nối về chi nhánh mới", "", MessageBoxButtons.OK);
             else
             {
-                this.sP_DSLOPDADKTableAdapter.Connection.ConnectionString = Program.connstr;
-                this.sP_DSLOPDADKTableAdapter.Fill(this.dSReport.SP_DSLOPDADK);
-                this.sP_DSMHDADKTableAdapter.Connection.ConnectionString = Program.connstr;
-                this.sP_DSMHDADKTableAdapter.Fill(this.dSReport.SP_DSMHDADK, cbbLopDK.SelectedValue.ToString());
-                this.sP_DSLANTHIDADANGKYTableAdapter.Connection.ConnectionString = Program.connstr;
-                this.sP_DSLANTHIDADANGKYTableAdapter.Fill(this.dSReport.SP_DSLANTHIDADANGKY, cbbMonHoc.SelectedValue.ToString(), cbbLopDK.SelectedValue.ToString());
-
+                this.mONHOCTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.mONHOCTableAdapter.Fill(this.DS.MONHOC);
+                this.lOPTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.lOPTableAdapter.Fill(this.DS.LOP);
                 macn = Program.GetMaCS();
             }
         }
 
-        private void cbbLopDK_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbbLopDK.SelectedIndex == -1) return;
-
-            if (cbbLopDK.SelectedValue != null)
-            {
-
-                this.sP_DSMHDADKTableAdapter.Connection.ConnectionString = Program.connstr;
-                this.sP_DSMHDADKTableAdapter.Fill(this.dSReport.SP_DSMHDADK, cbbLopDK.SelectedValue.ToString());
-                this.sP_DSLANTHIDADANGKYTableAdapter.Connection.ConnectionString = Program.connstr;
-                this.sP_DSLANTHIDADANGKYTableAdapter.Fill(this.dSReport.SP_DSLANTHIDADANGKY, cbbMonHoc.SelectedValue.ToString(), cbbLopDK.SelectedValue.ToString());
-            }
-        }
-
-        private void cbbMonHoc_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbbMonHoc.SelectedValue != null)
-            {
-                this.sP_DSLANTHIDADANGKYTableAdapter.Connection.ConnectionString = Program.connstr;
-                this.sP_DSLANTHIDADANGKYTableAdapter.Fill(this.dSReport.SP_DSLANTHIDADANGKY, cbbMonHoc.SelectedValue.ToString(), cbbLopDK.SelectedValue.ToString());
-            }
-        }
-
-        private void btnThoat_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void btnInBC_Click(object sender, EventArgs e)
         {
-
-            XrpBANGDIEM rpBD = new XrpBANGDIEM(cbbLopDK.SelectedValue.ToString(), cbbMonHoc.SelectedValue.ToString(), short.Parse(cbbLanThi.SelectedValue.ToString()));
-            rpBD.lbLop.Text = cbbLopDK.Text;
-            rpBD.lbMH.Text = cbbMonHoc.Text;
-            rpBD.lbLanThi.Text = cbbLanThi.Text;
+            XrpBANGDIEM rpBD = new XrpBANGDIEM(cbboxLOP.SelectedValue.ToString(),
+                cbboxMH.SelectedValue.ToString(), 
+                short.Parse(spinEditLAN.Value.ToString()));
+            rpBD.lbLop.Text = cbboxLOP.SelectedValue.ToString();
+            rpBD.lbMH.Text = cbboxMH.SelectedValue.ToString();
+            rpBD.lbLanThi.Text = spinEditLAN.Value.ToString();
             ReportPrintTool report = new ReportPrintTool(rpBD);
             report.ShowPreviewDialog();
-
         }
+
 
         private void btnPreview_Click(object sender, EventArgs e)
         {
             this.sP_BANGDIEMMHTableAdapter.Connection.ConnectionString = Program.connstr;
-            this.sP_BANGDIEMMHTableAdapter.Fill(this.dSReport.SP_BANGDIEMMH, cbbLopDK.SelectedValue.ToString(), cbbMonHoc.SelectedValue.ToString(), short.Parse(cbbLanThi.SelectedValue.ToString()));
-            if (bdsBANGDIEMMH.Count == 0)
+            this.sP_BANGDIEMMHTableAdapter.Fill(this.dSReport.SP_BANGDIEMMH,
+                cbboxLOP.SelectedValue.ToString(),
+                cbboxMH.SelectedValue.ToString(),
+                short.Parse(spinEditLAN.Value.ToString()));
+
+            string strLenh = "EXEC SP_CHECKSVDATHI N'"
+               + cbboxLOP.SelectedValue.ToString() + "', N'"
+               + cbboxMH.SelectedValue.ToString() + "', "
+               + spinEditLAN.Value;
+            int kq=Program.ExecSqlNonQuery(strLenh);
+            if (kq == 0)
             {
-                MessageBox.Show("Chưa có Bảng điểm!", "Thông Báo", MessageBoxButtons.OK);
+                MessageBox.Show("Không có sinh viên đã thi!", "",
+                    MessageBoxButtons.OK);
             }
+            else
+            {
+                btnInBC.Enabled = true;
+            }
+        }
+
+        private void cbboxLOP_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnInBC.Enabled = false;
+        }
+
+        private void cbboxMH_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnInBC.Enabled = false;
+        }
+
+        private void spinEditLAN_EditValueChanged(object sender, EventArgs e)
+        {
+            btnInBC.Enabled = false;
         }
     }
 }
