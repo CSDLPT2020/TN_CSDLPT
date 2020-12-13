@@ -83,6 +83,7 @@
               <Mapping SourceColumn="SOCAUTHI" DataSetColumn="SOCAUTHI" />
               <Mapping SourceColumn="NGAYTHI" DataSetColumn="NGAYTHI" />
               <Mapping SourceColumn="DATHI" DataSetColumn="DATHI" />
+              <Mapping SourceColumn="COSO" DataSetColumn="COSO" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -94,7 +95,7 @@
   <xs:element name="DSReport" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="DSReport" msprop:Generator_UserDSName="DSReport">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="SP_BANGDIEMMH" msprop:Generator_TableClassName="SP_BANGDIEMMHDataTable" msprop:Generator_TableVarName="tableSP_BANGDIEMMH" msprop:Generator_TablePropName="SP_BANGDIEMMH" msprop:Generator_RowDeletingName="SP_BANGDIEMMHRowDeleting" msprop:Generator_RowChangingName="SP_BANGDIEMMHRowChanging" msprop:Generator_RowEvHandlerName="SP_BANGDIEMMHRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_BANGDIEMMHRowDeleted" msprop:Generator_UserTableName="SP_BANGDIEMMH" msprop:Generator_RowChangedName="SP_BANGDIEMMHRowChanged" msprop:Generator_RowEvArgName="SP_BANGDIEMMHRowChangeEvent" msprop:Generator_RowClassName="SP_BANGDIEMMHRow">
+        <xs:element name="SP_BANGDIEMMH" msprop:Generator_TableClassName="SP_BANGDIEMMHDataTable" msprop:Generator_TableVarName="tableSP_BANGDIEMMH" msprop:Generator_RowChangedName="SP_BANGDIEMMHRowChanged" msprop:Generator_TablePropName="SP_BANGDIEMMH" msprop:Generator_RowDeletingName="SP_BANGDIEMMHRowDeleting" msprop:Generator_RowChangingName="SP_BANGDIEMMHRowChanging" msprop:Generator_RowEvHandlerName="SP_BANGDIEMMHRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_BANGDIEMMHRowDeleted" msprop:Generator_RowClassName="SP_BANGDIEMMHRow" msprop:Generator_UserTableName="SP_BANGDIEMMH" msprop:Generator_RowEvArgName="SP_BANGDIEMMHRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="MASV" msprop:Generator_ColumnVarNameInTable="columnMASV" msprop:Generator_ColumnPropNameInRow="MASV" msprop:Generator_ColumnPropNameInTable="MASVColumn" msprop:Generator_UserColumnName="MASV">
@@ -129,7 +130,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="SP_INBAITHI" msprop:Generator_TableClassName="SP_INBAITHIDataTable" msprop:Generator_TableVarName="tableSP_INBAITHI" msprop:Generator_TablePropName="SP_INBAITHI" msprop:Generator_RowDeletingName="SP_INBAITHIRowDeleting" msprop:Generator_RowChangingName="SP_INBAITHIRowChanging" msprop:Generator_RowEvHandlerName="SP_INBAITHIRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_INBAITHIRowDeleted" msprop:Generator_UserTableName="SP_INBAITHI" msprop:Generator_RowChangedName="SP_INBAITHIRowChanged" msprop:Generator_RowEvArgName="SP_INBAITHIRowChangeEvent" msprop:Generator_RowClassName="SP_INBAITHIRow">
+        <xs:element name="SP_INBAITHI" msprop:Generator_TableClassName="SP_INBAITHIDataTable" msprop:Generator_TableVarName="tableSP_INBAITHI" msprop:Generator_RowChangedName="SP_INBAITHIRowChanged" msprop:Generator_TablePropName="SP_INBAITHI" msprop:Generator_RowDeletingName="SP_INBAITHIRowDeleting" msprop:Generator_RowChangingName="SP_INBAITHIRowChanging" msprop:Generator_RowEvHandlerName="SP_INBAITHIRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_INBAITHIRowDeleted" msprop:Generator_RowClassName="SP_INBAITHIRow" msprop:Generator_UserTableName="SP_INBAITHI" msprop:Generator_RowEvArgName="SP_INBAITHIRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="STTTRONGBAI" msprop:Generator_ColumnVarNameInTable="columnSTTTRONGBAI" msprop:Generator_ColumnPropNameInRow="STTTRONGBAI" msprop:Generator_ColumnPropNameInTable="STTTRONGBAIColumn" msprop:Generator_UserColumnName="STTTRONGBAI" type="xs:int" />
@@ -186,17 +187,17 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="SP_DSDANGKYTHI" msprop:Generator_TableClassName="SP_DSDANGKYTHIDataTable" msprop:Generator_TableVarName="tableSP_DSDANGKYTHI" msprop:Generator_RowChangedName="SP_DSDANGKYTHIRowChanged" msprop:Generator_TablePropName="SP_DSDANGKYTHI" msprop:Generator_RowDeletingName="SP_DSDANGKYTHIRowDeleting" msprop:Generator_RowChangingName="SP_DSDANGKYTHIRowChanging" msprop:Generator_RowEvHandlerName="SP_DSDANGKYTHIRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_DSDANGKYTHIRowDeleted" msprop:Generator_RowClassName="SP_DSDANGKYTHIRow" msprop:Generator_UserTableName="SP_DSDANGKYTHI" msprop:Generator_RowEvArgName="SP_DSDANGKYTHIRowChangeEvent">
+        <xs:element name="SP_DSDANGKYTHI" msprop:Generator_TableClassName="SP_DSDANGKYTHIDataTable" msprop:Generator_TableVarName="tableSP_DSDANGKYTHI" msprop:Generator_TablePropName="SP_DSDANGKYTHI" msprop:Generator_RowDeletingName="SP_DSDANGKYTHIRowDeleting" msprop:Generator_RowChangingName="SP_DSDANGKYTHIRowChanging" msprop:Generator_RowEvHandlerName="SP_DSDANGKYTHIRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_DSDANGKYTHIRowDeleted" msprop:Generator_UserTableName="SP_DSDANGKYTHI" msprop:Generator_RowChangedName="SP_DSDANGKYTHIRowChanged" msprop:Generator_RowEvArgName="SP_DSDANGKYTHIRowChangeEvent" msprop:Generator_RowClassName="SP_DSDANGKYTHIRow">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="TENLOP" msprop:Generator_ColumnVarNameInTable="columnTENLOP" msprop:Generator_ColumnPropNameInRow="TENLOP" msprop:Generator_ColumnPropNameInTable="TENLOPColumn" msprop:Generator_UserColumnName="TENLOP">
+              <xs:element name="TENLOP" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTENLOP" msprop:Generator_ColumnPropNameInRow="TENLOP" msprop:Generator_ColumnPropNameInTable="TENLOPColumn" msprop:Generator_UserColumnName="TENLOP" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="40" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="TENMH" msprop:Generator_ColumnVarNameInTable="columnTENMH" msprop:Generator_ColumnPropNameInRow="TENMH" msprop:Generator_ColumnPropNameInTable="TENMHColumn" msprop:Generator_UserColumnName="TENMH" minOccurs="0">
+              <xs:element name="TENMH" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTENMH" msprop:Generator_ColumnPropNameInRow="TENMH" msprop:Generator_ColumnPropNameInTable="TENMHColumn" msprop:Generator_UserColumnName="TENMH" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="40" />
@@ -210,15 +211,16 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="SOCAUTHI" msprop:Generator_ColumnVarNameInTable="columnSOCAUTHI" msprop:Generator_ColumnPropNameInRow="SOCAUTHI" msprop:Generator_ColumnPropNameInTable="SOCAUTHIColumn" msprop:Generator_UserColumnName="SOCAUTHI" type="xs:short" minOccurs="0" />
+              <xs:element name="SOCAUTHI" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSOCAUTHI" msprop:Generator_ColumnPropNameInRow="SOCAUTHI" msprop:Generator_ColumnPropNameInTable="SOCAUTHIColumn" msprop:Generator_UserColumnName="SOCAUTHI" type="xs:short" minOccurs="0" />
               <xs:element name="NGAYTHI" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnNGAYTHI" msprop:Generator_ColumnPropNameInRow="NGAYTHI" msprop:Generator_ColumnPropNameInTable="NGAYTHIColumn" msprop:Generator_UserColumnName="NGAYTHI" type="xs:dateTime" minOccurs="0" />
               <xs:element name="DATHI" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDATHI" msprop:Generator_ColumnPropNameInRow="DATHI" msprop:Generator_ColumnPropNameInTable="DATHIColumn" msprop:Generator_UserColumnName="DATHI" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
+                    <xs:maxLength value="1" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="COSO" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnCOSO" msprop:Generator_ColumnPropNameInRow="COSO" msprop:Generator_ColumnPropNameInTable="COSOColumn" msprop:Generator_UserColumnName="COSO" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

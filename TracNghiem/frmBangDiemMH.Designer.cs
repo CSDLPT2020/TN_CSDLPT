@@ -35,6 +35,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.gcBangDiem = new DevExpress.XtraEditors.GroupControl();
+            this.cbboxMH = new System.Windows.Forms.ComboBox();
+            this.bdsMH = new System.Windows.Forms.BindingSource(this.components);
+            this.DS = new TracNghiem.DS();
+            this.cbboxLOP = new System.Windows.Forms.ComboBox();
+            this.bdsLop = new System.Windows.Forms.BindingSource(this.components);
             this.spinEditLAN = new DevExpress.XtraEditors.SpinEdit();
             this.btnPreview = new System.Windows.Forms.Button();
             this.btnInBC = new System.Windows.Forms.Button();
@@ -49,31 +54,26 @@
             this.colDIEMCHU = new DevExpress.XtraGrid.Columns.GridColumn();
             this.sP_BANGDIEMMHTableAdapter = new TracNghiem.DSReportTableAdapters.SP_BANGDIEMMHTableAdapter();
             this.tableAdapterManager = new TracNghiem.DSReportTableAdapters.TableAdapterManager();
-            this.DS = new TracNghiem.DS();
-            this.bdsLop = new System.Windows.Forms.BindingSource(this.components);
             this.lOPTableAdapter = new TracNghiem.DSTableAdapters.LOPTableAdapter();
             this.tableAdapterManager1 = new TracNghiem.DSTableAdapters.TableAdapterManager();
-            this.cbboxLOP = new System.Windows.Forms.ComboBox();
-            this.bdsMH = new System.Windows.Forms.BindingSource(this.components);
             this.mONHOCTableAdapter = new TracNghiem.DSTableAdapters.MONHOCTableAdapter();
-            this.cbboxMH = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.gcBangDiem)).BeginInit();
             this.gcBangDiem.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsMH)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsLop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEditLAN.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dSReport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sP_BANGDIEMMHGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsBANGDIEMMH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsLop)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsMH)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBox_TenCN
             // 
             this.comboBox_TenCN.DisplayMember = "TENCN";
             this.comboBox_TenCN.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_TenCN.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox_TenCN.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox_TenCN.FormattingEnabled = true;
             this.comboBox_TenCN.Location = new System.Drawing.Point(267, 39);
             this.comboBox_TenCN.Name = "comboBox_TenCN";
@@ -96,7 +96,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(609, 104);
+            this.label6.Location = new System.Drawing.Point(640, 104);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(56, 19);
@@ -107,7 +107,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(295, 103);
+            this.label5.Location = new System.Drawing.Point(305, 103);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(68, 19);
@@ -144,6 +144,49 @@
             this.gcBangDiem.TabIndex = 2;
             this.gcBangDiem.Text = "Thông Tin";
             // 
+            // cbboxMH
+            // 
+            this.cbboxMH.DataSource = this.bdsMH;
+            this.cbboxMH.DisplayMember = "TENMH";
+            this.cbboxMH.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbboxMH.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbboxMH.FormattingEnabled = true;
+            this.cbboxMH.Location = new System.Drawing.Point(380, 101);
+            this.cbboxMH.Name = "cbboxMH";
+            this.cbboxMH.Size = new System.Drawing.Size(224, 27);
+            this.cbboxMH.TabIndex = 47;
+            this.cbboxMH.ValueMember = "MAMH";
+            this.cbboxMH.SelectedIndexChanged += new System.EventHandler(this.cbboxMH_SelectedIndexChanged);
+            // 
+            // bdsMH
+            // 
+            this.bdsMH.DataMember = "MONHOC";
+            this.bdsMH.DataSource = this.DS;
+            // 
+            // DS
+            // 
+            this.DS.DataSetName = "DS";
+            this.DS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // cbboxLOP
+            // 
+            this.cbboxLOP.DataSource = this.bdsLop;
+            this.cbboxLOP.DisplayMember = "TENLOP";
+            this.cbboxLOP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbboxLOP.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbboxLOP.FormattingEnabled = true;
+            this.cbboxLOP.Location = new System.Drawing.Point(94, 102);
+            this.cbboxLOP.Name = "cbboxLOP";
+            this.cbboxLOP.Size = new System.Drawing.Size(160, 27);
+            this.cbboxLOP.TabIndex = 46;
+            this.cbboxLOP.ValueMember = "MALOP";
+            this.cbboxLOP.SelectedIndexChanged += new System.EventHandler(this.cbboxLOP_SelectedIndexChanged);
+            // 
+            // bdsLop
+            // 
+            this.bdsLop.DataMember = "LOP";
+            this.bdsLop.DataSource = this.DS;
+            // 
             // spinEditLAN
             // 
             this.spinEditLAN.EditValue = new decimal(new int[] {
@@ -151,7 +194,7 @@
             0,
             0,
             0});
-            this.spinEditLAN.Location = new System.Drawing.Point(682, 101);
+            this.spinEditLAN.Location = new System.Drawing.Point(713, 101);
             this.spinEditLAN.Margin = new System.Windows.Forms.Padding(2);
             this.spinEditLAN.Name = "spinEditLAN";
             this.spinEditLAN.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -286,16 +329,6 @@
             this.tableAdapterManager.Connection = null;
             this.tableAdapterManager.UpdateOrder = TracNghiem.DSReportTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // DS
-            // 
-            this.DS.DataSetName = "DS";
-            this.DS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // bdsLop
-            // 
-            this.bdsLop.DataMember = "LOP";
-            this.bdsLop.DataSource = this.DS;
-            // 
             // lOPTableAdapter
             // 
             this.lOPTableAdapter.ClearBeforeFill = true;
@@ -315,42 +348,9 @@
             this.tableAdapterManager1.SINHVIENTableAdapter = null;
             this.tableAdapterManager1.UpdateOrder = TracNghiem.DSTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // cbboxLOP
-            // 
-            this.cbboxLOP.DataSource = this.bdsLop;
-            this.cbboxLOP.DisplayMember = "TENLOP";
-            this.cbboxLOP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbboxLOP.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbboxLOP.FormattingEnabled = true;
-            this.cbboxLOP.Location = new System.Drawing.Point(94, 102);
-            this.cbboxLOP.Name = "cbboxLOP";
-            this.cbboxLOP.Size = new System.Drawing.Size(160, 27);
-            this.cbboxLOP.TabIndex = 46;
-            this.cbboxLOP.ValueMember = "MALOP";
-            this.cbboxLOP.SelectedIndexChanged += new System.EventHandler(this.cbboxLOP_SelectedIndexChanged);
-            // 
-            // bdsMH
-            // 
-            this.bdsMH.DataMember = "MONHOC";
-            this.bdsMH.DataSource = this.DS;
-            // 
             // mONHOCTableAdapter
             // 
             this.mONHOCTableAdapter.ClearBeforeFill = true;
-            // 
-            // cbboxMH
-            // 
-            this.cbboxMH.DataSource = this.bdsMH;
-            this.cbboxMH.DisplayMember = "TENMH";
-            this.cbboxMH.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbboxMH.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbboxMH.FormattingEnabled = true;
-            this.cbboxMH.Location = new System.Drawing.Point(370, 101);
-            this.cbboxMH.Name = "cbboxMH";
-            this.cbboxMH.Size = new System.Drawing.Size(213, 27);
-            this.cbboxMH.TabIndex = 47;
-            this.cbboxMH.ValueMember = "MAMH";
-            this.cbboxMH.SelectedIndexChanged += new System.EventHandler(this.cbboxMH_SelectedIndexChanged);
             // 
             // frmBangDiemMH
             // 
@@ -366,14 +366,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.gcBangDiem)).EndInit();
             this.gcBangDiem.ResumeLayout(false);
             this.gcBangDiem.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsMH)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsLop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEditLAN.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dSReport)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sP_BANGDIEMMHGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsBANGDIEMMH)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsLop)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsMH)).EndInit();
             this.ResumeLayout(false);
 
         }

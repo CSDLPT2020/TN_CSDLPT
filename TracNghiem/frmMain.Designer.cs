@@ -289,19 +289,16 @@
             // 
             this.ribbonPageGroup_BT.ItemLinks.Add(this.btnBaiThi);
             this.ribbonPageGroup_BT.Name = "ribbonPageGroup_BT";
-            this.ribbonPageGroup_BT.Text = "Bài thi";
             // 
             // ribbonPageGroup_BD
             // 
             this.ribbonPageGroup_BD.ItemLinks.Add(this.btnBangDiem);
             this.ribbonPageGroup_BD.Name = "ribbonPageGroup_BD";
-            this.ribbonPageGroup_BD.Text = "Bảng điểm";
             // 
             // ribbonPageGroup_DSDKT
             // 
             this.ribbonPageGroup_DSDKT.ItemLinks.Add(this.btnDSDK);
             this.ribbonPageGroup_DSDKT.Name = "ribbonPageGroup_DSDKT";
-            this.ribbonPageGroup_DSDKT.Text = "Danh sách đăng ký thi";
             // 
             // popupMenu1
             // 

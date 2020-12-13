@@ -371,6 +371,7 @@
             this.gridView1.FixedLineWidth = 1;
             this.gridView1.GridControl = this.sP_INBAITHIGridControl;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.Editable = false;
             // 
             // colSTTTRONGBAI
             // 

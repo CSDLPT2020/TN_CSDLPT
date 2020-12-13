@@ -21,50 +21,7 @@ namespace TracNghiem
 
         private void frmDsDkThi_Load(object sender, EventArgs e)
         {
-
             dSReport.EnforceConstraints = false;
-            // Lấy kết danh sách phân mảnh đổ vào combobox
-            macn = Program.GetMaCS();
-            cbbCoso.DataSource = Program.bds_dspm;  // sao chép bds_dspm đã load ở form đăng nhập  qua
-            cbbCoso.DisplayMember = "TENCN";
-            cbbCoso.ValueMember = "TENSERVER";
-            cbbCoso.SelectedIndex = Program.mChinhanh;
-
-            if (Program.mGroup == "Truong")
-            {
-                cbbCoso.Enabled = true;
-                cbbCoso.SelectedIndex = 1;
-            }
-            else if (Program.mGroup == "Coso")
-            {
-                cbbCoso.Enabled = false;
-                cbbCoso.SelectedIndex = Program.mChinhanh;
-            }
-        }
-
-        private void cbbCoso_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbbCoso.SelectedIndex == -1) return;
-            if (cbbCoso.SelectedValue.ToString() == "System.Data.DataRowView")
-                return;
-            Program.servername = cbbCoso.SelectedValue.ToString();
-
-            if (cbbCoso.SelectedIndex != Program.mChinhanh)
-            {
-                Program.mlogin = Program.remotelogin;
-                Program.password = Program.remotepassword;
-            }
-            else
-            {
-                Program.mlogin = Program.mloginDN;
-                Program.password = Program.passwordDN;
-            }
-            if (Program.KetNoi() == 0)
-                MessageBox.Show("Lỗi kết nối về chi nhánh mới", "", MessageBoxButtons.OK);
-            else
-            {
-                macn = Program.GetMaCS();
-            }
         }
 
         private void btnPreview_Click(object sender, EventArgs e)
@@ -81,8 +38,8 @@ namespace TracNghiem
                 return;
             }
 
-            var FromDate = dateFrom.DateTime;
-            var ToDate = dateTo.DateTime;
+            var FromDate = dateFrom.DateTime.Date;
+            var ToDate = dateTo.DateTime.Date;
             int compare = DateTime.Compare(FromDate, ToDate);
             if (compare > 0)
             {
@@ -101,11 +58,6 @@ namespace TracNghiem
             }
         }
 
-        private void btnThoat_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void btnInBC_Click(object sender, EventArgs e)
         {
             if (dateFrom.Text.ToString().Trim().Equals(""))
@@ -120,9 +72,9 @@ namespace TracNghiem
                 return;
             }
 
-            var FromDate = dateFrom.DateTime;
-            var ToDate = dateTo.DateTime;
-            /*XrpDSDKTHI xrp = new XrpDSDKTHI(FromDate, ToDate);
+            var FromDate = dateFrom.DateTime.Date;
+            var ToDate = dateTo.DateTime.Date;
+            XrpDSDKTHI xrp = new XrpDSDKTHI(FromDate, ToDate);
             int compare = DateTime.Compare(FromDate, ToDate);
             if (compare > 0)
             {
@@ -142,15 +94,13 @@ namespace TracNghiem
                 }
                 else
                 {
-
-                    xrp.lbCoso.Text = (cbbCoso.SelectedIndex + 1).ToString();
                     xrp.lbDateFrom.Text = FromDate.ToString("dd/MM/yyyy");
                     xrp.lbDateTo.Text = ToDate.ToString("dd/MM/yyyy");
 
                     ReportPrintTool report = new ReportPrintTool(xrp);
                     report.ShowPreviewDialog();
                 }
-            }*/
+            }
         }
     }
 }

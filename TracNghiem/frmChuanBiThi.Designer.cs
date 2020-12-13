@@ -402,6 +402,7 @@
             this.gridView1.GridControl = this.GridControl_GVDK;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridView1_RowClick);
             // 
             // colMAGV
             // 

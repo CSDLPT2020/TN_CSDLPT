@@ -180,6 +180,12 @@
     <Compile Include="XrpBANGDIEM.Designer.cs">
       <DependentUpon>XrpBANGDIEM.cs</DependentUpon>
     </Compile>
+    <Compile Include="XrpDSDKTHI.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="XrpDSDKTHI.Designer.cs">
+      <DependentUpon>XrpDSDKTHI.cs</DependentUpon>
+    </Compile>
     <Compile Include="XrpKQTHI.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -237,6 +243,9 @@
     </Compile>
     <EmbeddedResource Include="XrpBANGDIEM.resx">
       <DependentUpon>XrpBANGDIEM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XrpDSDKTHI.resx">
+      <DependentUpon>XrpDSDKTHI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="XrpKQTHI.resx">
       <DependentUpon>XrpKQTHI.cs</DependentUpon>

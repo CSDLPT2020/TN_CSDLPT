@@ -50,7 +50,7 @@ namespace TracNghiem
                 short.Parse(spin_Lanthi.Value.ToString()));
             rpKQT.lbLop.Text = labelLop.Text;
             rpKQT.lbHoTen.Text = Program.mHoten;
-            rpKQT.lbMH.Text = cbbMH.SelectedValue.ToString();
+            rpKQT.lbMH.Text = cbbMH.Text;
             rpKQT.lbNgayThi.Text = ngay.ToString();
             rpKQT.lbLan.Text = spin_Lanthi.Text;
             ReportPrintTool report = new ReportPrintTool(rpKQT);

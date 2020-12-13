@@ -1047,6 +1047,8 @@ namespace TracNghiem {
             
             private global::System.Data.DataColumn columnDATHI;
             
+            private global::System.Data.DataColumn columnCOSO;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public SP_DSDANGKYTHIDataTable() {
@@ -1130,6 +1132,14 @@ namespace TracNghiem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn COSOColumn {
+                get {
+                    return this.columnCOSO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1165,7 +1175,7 @@ namespace TracNghiem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public SP_DSDANGKYTHIRow AddSP_DSDANGKYTHIRow(string TENLOP, string TENMH, string HOTEN, short SOCAUTHI, System.DateTime NGAYTHI, string DATHI) {
+            public SP_DSDANGKYTHIRow AddSP_DSDANGKYTHIRow(string TENLOP, string TENMH, string HOTEN, short SOCAUTHI, System.DateTime NGAYTHI, string DATHI, int COSO) {
                 SP_DSDANGKYTHIRow rowSP_DSDANGKYTHIRow = ((SP_DSDANGKYTHIRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         TENLOP,
@@ -1173,7 +1183,8 @@ namespace TracNghiem {
                         HOTEN,
                         SOCAUTHI,
                         NGAYTHI,
-                        DATHI};
+                        DATHI,
+                        COSO};
                 rowSP_DSDANGKYTHIRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSP_DSDANGKYTHIRow);
                 return rowSP_DSDANGKYTHIRow;
@@ -1202,6 +1213,7 @@ namespace TracNghiem {
                 this.columnSOCAUTHI = base.Columns["SOCAUTHI"];
                 this.columnNGAYTHI = base.Columns["NGAYTHI"];
                 this.columnDATHI = base.Columns["DATHI"];
+                this.columnCOSO = base.Columns["COSO"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1219,14 +1231,19 @@ namespace TracNghiem {
                 base.Columns.Add(this.columnNGAYTHI);
                 this.columnDATHI = new global::System.Data.DataColumn("DATHI", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDATHI);
-                this.columnTENLOP.AllowDBNull = false;
+                this.columnCOSO = new global::System.Data.DataColumn("COSO", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCOSO);
+                this.columnTENLOP.ReadOnly = true;
                 this.columnTENLOP.MaxLength = 40;
+                this.columnTENMH.ReadOnly = true;
                 this.columnTENMH.MaxLength = 40;
                 this.columnHOTEN.ReadOnly = true;
                 this.columnHOTEN.MaxLength = 51;
+                this.columnSOCAUTHI.ReadOnly = true;
                 this.columnNGAYTHI.ReadOnly = true;
                 this.columnDATHI.ReadOnly = true;
-                this.columnDATHI.MaxLength = 50;
+                this.columnDATHI.MaxLength = 1;
+                this.columnCOSO.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1759,7 +1776,12 @@ namespace TracNghiem {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string TENLOP {
                 get {
-                    return ((string)(this[this.tableSP_DSDANGKYTHI.TENLOPColumn]));
+                    try {
+                        return ((string)(this[this.tableSP_DSDANGKYTHI.TENLOPColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TENLOP\' in table \'SP_DSDANGKYTHI\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableSP_DSDANGKYTHI.TENLOPColumn] = value;
@@ -1848,6 +1870,34 @@ namespace TracNghiem {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int COSO {
+                get {
+                    try {
+                        return ((int)(this[this.tableSP_DSDANGKYTHI.COSOColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'COSO\' in table \'SP_DSDANGKYTHI\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSP_DSDANGKYTHI.COSOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsTENLOPNull() {
+                return this.IsNull(this.tableSP_DSDANGKYTHI.TENLOPColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetTENLOPNull() {
+                this[this.tableSP_DSDANGKYTHI.TENLOPColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsTENMHNull() {
                 return this.IsNull(this.tableSP_DSDANGKYTHI.TENMHColumn);
             }
@@ -1904,6 +1954,18 @@ namespace TracNghiem {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetDATHINull() {
                 this[this.tableSP_DSDANGKYTHI.DATHIColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsCOSONull() {
+                return this.IsNull(this.tableSP_DSDANGKYTHI.COSOColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetCOSONull() {
+                this[this.tableSP_DSDANGKYTHI.COSOColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -2566,6 +2628,7 @@ namespace TracNghiem.DSReportTableAdapters {
             tableMapping.ColumnMappings.Add("SOCAUTHI", "SOCAUTHI");
             tableMapping.ColumnMappings.Add("NGAYTHI", "NGAYTHI");
             tableMapping.ColumnMappings.Add("DATHI", "DATHI");
+            tableMapping.ColumnMappings.Add("COSO", "COSO");
             this._adapter.TableMappings.Add(tableMapping);
         }
         

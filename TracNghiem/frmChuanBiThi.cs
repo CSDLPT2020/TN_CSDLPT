@@ -180,15 +180,19 @@ namespace TracNghiem
             }
             else //sua
             {
+                int i = bdsGVDK.Position;
+
                 //check da co sv thi ko cho sua
+                string chuoi = khoaChinh[i];
+                string[] mangChuoi = chuoi.Split(';');
                 string strLenh2 = "EXEC SP_CHECKSVDATHI N'"
-                        + ComboBox_MALOP.SelectedValue.ToString() + "', N'"
-                        + ComboBox_MAMH.SelectedValue.ToString() + "', "
-                        + SpinEdit_LAN.Value;
+                        + mangChuoi[1] + "', N'"
+                        + mangChuoi[0] + "', "
+                        + mangChuoi[2];
                 int kq2 = Program.ExecSqlNonQuery(strLenh2);
                 if (kq2 != 0) return;
+
                 //check 3 khoa chinh
-                int i = bdsGVDK.Position;
                 string str = ComboBox_MAMH.SelectedValue.ToString().Trim()
                     + ";" + ComboBox_MALOP.SelectedValue.ToString().Trim()
                     + ";" + SpinEdit_LAN.Value;
@@ -247,12 +251,17 @@ namespace TracNghiem
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            int i = bdsGVDK.Position;
+            //check da co sv thi ko cho sua
+            string chuoi = khoaChinh[i];
+            string[] mangChuoi = chuoi.Split(';');
             string strLenh = "EXEC SP_CHECKSVDATHI N'"
-                        + ComboBox_MALOP.SelectedValue.ToString() + "', N'"
-                        + ComboBox_MAMH.SelectedValue.ToString() + "', "
-                        + SpinEdit_LAN.Value;
+                    + mangChuoi[1] + "', N'"
+                    + mangChuoi[0] + "', "
+                    + mangChuoi[2];
             int kq = Program.ExecSqlNonQuery(strLenh);
-            if (kq == 1) return;//da co sv thi ko the xoa
+            if (kq != 0) return;
+
             if (MessageBox.Show("Bạn có thật sự muốn xóa GVDK này ? ", "Xác nhận",
                        MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
@@ -329,6 +338,11 @@ namespace TracNghiem
                 btnGhi.Enabled = false;
                 btnXoa.Enabled = false;
             }
+        }
+
+        private void gridView1_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
+        {
+
         }
     }
 }

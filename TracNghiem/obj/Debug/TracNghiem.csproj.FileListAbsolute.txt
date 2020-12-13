@@ -256,3 +256,4 @@ C:\Users\Administrator\Source\Repos\TN_CSDLPT_2020\TracNghiem\obj\Debug\TracNghi
 C:\Users\Administrator\Source\Repos\TN_CSDLPT_2020\TracNghiem\obj\Debug\TracNghiem.csproj.CopyComplete
 C:\Users\Administrator\Source\Repos\TN_CSDLPT_2020\TracNghiem\obj\Debug\TracNghiem.exe
 C:\Users\Administrator\Source\Repos\TN_CSDLPT_2020\TracNghiem\obj\Debug\TracNghiem.pdb
+C:\Users\Administrator\Source\Repos\TN_CSDLPT_2020\TracNghiem\obj\Debug\TracNghiem.XrpDSDKTHI.resources

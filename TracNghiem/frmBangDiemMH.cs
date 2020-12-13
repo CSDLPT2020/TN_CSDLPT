@@ -37,6 +37,7 @@ namespace TracNghiem
             comboBox_TenCN.SelectedIndex = Program.mChinhanh;
 
             btnInBC.Enabled = false;
+            //coso,truong,gv dc truy cap
             if (Program.mGroup == "Coso")
             {
                 comboBox_TenCN.Enabled = false;
@@ -77,8 +78,8 @@ namespace TracNghiem
             XrpBANGDIEM rpBD = new XrpBANGDIEM(cbboxLOP.SelectedValue.ToString(),
                 cbboxMH.SelectedValue.ToString(), 
                 short.Parse(spinEditLAN.Value.ToString()));
-            rpBD.lbLop.Text = cbboxLOP.SelectedValue.ToString();
-            rpBD.lbMH.Text = cbboxMH.SelectedValue.ToString();
+            rpBD.lbLop.Text = cbboxLOP.Text;
+            rpBD.lbMH.Text = cbboxMH.Text;
             rpBD.lbLanThi.Text = spinEditLAN.Value.ToString();
             ReportPrintTool report = new ReportPrintTool(rpBD);
             report.ShowPreviewDialog();
@@ -97,7 +98,7 @@ namespace TracNghiem
                + cbboxLOP.SelectedValue.ToString() + "', N'"
                + cbboxMH.SelectedValue.ToString() + "', "
                + spinEditLAN.Value;
-            int kq=Program.ExecSqlNonQuery(strLenh);
+            int kq = Program.ExecSqlNonQuery(strLenh);
             if (kq == 0)
             {
                 MessageBox.Show("Không có sinh viên đã thi!", "",
