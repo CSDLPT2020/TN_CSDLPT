@@ -22,6 +22,7 @@ namespace TracNghiem
         private void frmDsDkThi_Load(object sender, EventArgs e)
         {
             dSReport.EnforceConstraints = false;
+            btnInBC.Enabled = false;
         }
 
         private void btnPreview_Click(object sender, EventArgs e)
@@ -55,23 +56,12 @@ namespace TracNghiem
                     MessageBox.Show("Danh sách trống!!", "Thông báo", MessageBoxButtons.OK);
                     return;
                 }
+                btnInBC.Enabled = true;
             }
         }
 
         private void btnInBC_Click(object sender, EventArgs e)
         {
-            if (dateFrom.Text.ToString().Trim().Equals(""))
-            {
-                MessageBox.Show("Bạn chưa nhập ngày bắt đầu", "Thông báo", MessageBoxButtons.OK);
-                return;
-            }
-
-            if (dateTo.Text.ToString().Trim().Equals(""))
-            {
-                MessageBox.Show("Bạn chưa nhập ngày kết thúc", "Thông báo", MessageBoxButtons.OK);
-                return;
-            }
-
             var FromDate = dateFrom.DateTime.Date;
             var ToDate = dateTo.DateTime.Date;
             XrpDSDKTHI xrp = new XrpDSDKTHI(FromDate, ToDate);
@@ -101,6 +91,16 @@ namespace TracNghiem
                     report.ShowPreviewDialog();
                 }
             }
+        }
+
+        private void dateFrom_EditValueChanged(object sender, EventArgs e)
+        {
+            btnInBC.Enabled = false;
+        }
+
+        private void dateTo_EditValueChanged(object sender, EventArgs e)
+        {
+            btnInBC.Enabled = false;
         }
     }
 }

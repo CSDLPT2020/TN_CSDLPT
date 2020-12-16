@@ -104,25 +104,26 @@
             // dateFrom
             // 
             this.dateFrom.EditValue = new System.DateTime(2020, 12, 1, 0, 0, 0, 0);
-            this.dateFrom.Location = new System.Drawing.Point(327, 67);
+            this.dateFrom.Location = new System.Drawing.Point(341, 64);
             this.dateFrom.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.dateFrom.Name = "dateFrom";
-            this.dateFrom.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateFrom.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateFrom.Properties.Appearance.Options.UseFont = true;
             this.dateFrom.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateFrom.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateFrom.Size = new System.Drawing.Size(103, 20);
+            this.dateFrom.Size = new System.Drawing.Size(125, 28);
             this.dateFrom.TabIndex = 23;
+            this.dateFrom.EditValueChanged += new System.EventHandler(this.dateFrom_EditValueChanged);
             // 
             // dateTo
             // 
-            this.dateTo.EditValue = new System.DateTime(2020, 12, 13, 0, 0, 0, 0);
-            this.dateTo.Location = new System.Drawing.Point(593, 68);
+            this.dateTo.EditValue = new System.DateTime(2020, 12, 31, 0, 0, 0, 0);
+            this.dateTo.Location = new System.Drawing.Point(607, 67);
             this.dateTo.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.dateTo.Name = "dateTo";
-            this.dateTo.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTo.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTo.Properties.Appearance.Options.UseFont = true;
             this.dateTo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -131,28 +132,29 @@
             this.dateTo.Properties.EditFormat.FormatString = "dd/MM/yyyy";
             this.dateTo.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.dateTo.Properties.Mask.EditMask = "dd/MM/yyyy";
-            this.dateTo.Size = new System.Drawing.Size(103, 20);
+            this.dateTo.Size = new System.Drawing.Size(121, 28);
             this.dateTo.TabIndex = 22;
+            this.dateTo.EditValueChanged += new System.EventHandler(this.dateTo_EditValueChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(516, 70);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(74, 17);
+            this.label3.Size = new System.Drawing.Size(87, 22);
             this.label3.TabIndex = 17;
             this.label3.Text = "Đến ngày";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(259, 69);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 17);
+            this.label1.Size = new System.Drawing.Size(78, 22);
             this.label1.TabIndex = 16;
             this.label1.Text = "Từ ngày";
             // 

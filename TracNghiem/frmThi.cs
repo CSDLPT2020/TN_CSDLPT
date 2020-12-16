@@ -231,7 +231,7 @@ namespace TracNghiem
             }
         }
 
-        private float tinhDiem()
+        private double tinhDiem()
         {
             int soCauDung = 0;
             foreach (itemCauHoi x in list)
@@ -248,10 +248,10 @@ namespace TracNghiem
                 }
             }
 
-            return (soCauDung * 10) / sct;
+            return (soCauDung * 10) * 1.0 / sct;
         }
 
-        private void ghiBangDiem(float diem)
+        private void ghiBangDiem(double diem)
         {
             //ghi vao bang diem
             string strLenh = "EXEC SP_THEMBANGDIEM N'"
@@ -332,7 +332,7 @@ namespace TracNghiem
                 {
                     button_NOPBAI.Text = "Bắt đầu thi";
                     timer1.Stop();
-                    float diem = tinhDiem();
+                    double diem = tinhDiem();
                     if (Program.mGroup == "Sinhvien")
                     {
                         //ghi bang diem
