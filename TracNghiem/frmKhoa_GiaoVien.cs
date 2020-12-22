@@ -270,8 +270,8 @@ namespace TracNghiem
 
         private void xoaGVToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            String magv = "";
-            if(Program.username.Trim() == ((DataRowView)bdsGV[bdsGV.Position])["MAGV"].ToString().Trim())
+            String magv = ((DataRowView)bdsGV[bdsGV.Position])["MAGV"].ToString();// giữ lại để khi xóa bij lỗi thì ta sẽ quay về lại
+            if (Program.username.Trim() == magv)
             {
                 MessageBox.Show("Không thể xóa vì bạn đang đăng nhập!", "",
                        MessageBoxButtons.OK);
@@ -294,7 +294,6 @@ namespace TracNghiem
             {
                 try
                 {
-                    magv = ((DataRowView)bdsGV[bdsGV.Position])["MAGV"].ToString(); // giữ lại để khi xóa bij lỗi thì ta sẽ quay về lại
                     bdsGV.RemoveCurrent();
                     this.gIAOVIENTableAdapter.Connection.ConnectionString = Program.connstr;
                     this.gIAOVIENTableAdapter.Update(this.DS.GIAOVIEN);

@@ -251,7 +251,7 @@ namespace TracNghiem
             return Math.Round((soCauDung * 10) * 1.0 / sct, 1);
         }
 
-        private void ghiBangDiem(double diem)
+        private int ghiBangDiem(double diem)
         {
             //ghi vao bang diem
             string strLenh = "EXEC SP_THEMBANGDIEM N'"
@@ -265,6 +265,7 @@ namespace TracNghiem
             {
                 MessageBox.Show("Lỗi ghi bảng điểm!", "", MessageBoxButtons.OK);
             }
+            return kq;
         }
 
         private void ghiCTBT()
@@ -336,9 +337,11 @@ namespace TracNghiem
                     if (Program.mGroup == "Sinhvien")
                     {
                         //ghi bang diem
-                        ghiBangDiem(diem);
-                        //ghi chi tiet bai thi
-                        ghiCTBT();
+                        if (ghiBangDiem(diem) == 0)
+                        {
+                            //ghi chi tiet bai thi
+                            ghiCTBT();
+                        }
                     }
                     MessageBox.Show("Bạn đã đạt được " + diem + " điểm!", "", MessageBoxButtons.OK);
                     timeOut = false;
