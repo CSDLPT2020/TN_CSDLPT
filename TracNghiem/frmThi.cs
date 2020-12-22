@@ -248,7 +248,7 @@ namespace TracNghiem
                 }
             }
 
-            return (soCauDung * 10) * 1.0 / sct;
+            return Math.Round((soCauDung * 10) * 1.0 / sct, 1);
         }
 
         private void ghiBangDiem(double diem)

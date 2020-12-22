@@ -66,30 +66,20 @@ namespace TracNghiem
             var ToDate = dateTo.DateTime.Date;
             XrpDSDKTHI xrp = new XrpDSDKTHI(FromDate, ToDate);
             int compare = DateTime.Compare(FromDate, ToDate);
-            if (compare > 0)
+            this.sP_DSDANGKYTHITableAdapter.Connection.ConnectionString = Program.connstr;
+            this.sP_DSDANGKYTHITableAdapter.Fill(this.dSReport.SP_DSDANGKYTHI, FromDate, ToDate);
+            if (bdsDSDKTHI.Count == 0)
             {
-                // ngày bắt đầu không thể lớn hơn ngày kết thúc
-                MessageBox.Show("Ngày bắt đầu không thể lớn hơn ngày kết thúc");
+                MessageBox.Show("Danh sách trống!!", "Thông báo", MessageBoxButtons.OK);
                 return;
-
             }
-            else if (compare <= 0)
+            else
             {
-                this.sP_DSDANGKYTHITableAdapter.Connection.ConnectionString = Program.connstr;
-                this.sP_DSDANGKYTHITableAdapter.Fill(this.dSReport.SP_DSDANGKYTHI, FromDate, ToDate);
-                if (bdsDSDKTHI.Count == 0)
-                {
-                    MessageBox.Show("Danh sách trống!!", "Thông báo", MessageBoxButtons.OK);
-                    return;
-                }
-                else
-                {
-                    xrp.lbDateFrom.Text = FromDate.ToString("dd/MM/yyyy");
-                    xrp.lbDateTo.Text = ToDate.ToString("dd/MM/yyyy");
+                xrp.lbDateFrom.Text = FromDate.ToString("dd/MM/yyyy");
+                xrp.lbDateTo.Text = ToDate.ToString("dd/MM/yyyy");
 
-                    ReportPrintTool report = new ReportPrintTool(xrp);
-                    report.ShowPreviewDialog();
-                }
+                ReportPrintTool report = new ReportPrintTool(xrp);
+                report.ShowPreviewDialog();
             }
         }
 
