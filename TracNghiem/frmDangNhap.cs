@@ -85,7 +85,7 @@ namespace TracNghiem
 
             if(Program.isGV == true)
             {
-                string strLenh = "EXEC SP_THONGTINDANGNHAP_GV '" + Program.mlogin + "'";
+                string strLenh = "EXEC SP_THONGTINDANGNHAP_GV N'" + Program.mlogin + "'";
 
                 Program.myReader = Program.ExecSqlDataReader(strLenh);
                 if (Program.myReader == null) return;
@@ -93,7 +93,7 @@ namespace TracNghiem
             }
             else
             {
-                string strLenh = "EXEC SP_THONGTINDANGNHAP_SV '" + Program.mlogin + "', " + "'" + masv + "'";
+                string strLenh = "EXEC SP_THONGTINDANGNHAP_SV N'" + Program.mlogin + "', N'" + masv + "'";
 
                 Program.myReader = Program.ExecSqlDataReader(strLenh);
                 if (Program.myReader == null) return;

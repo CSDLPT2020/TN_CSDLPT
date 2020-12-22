@@ -77,7 +77,7 @@ namespace TracNghiem
                 string strLenh = "EXEC SP_CHECKMONHOC N'" + TextBox_MaMH.Text.Trim() + "', N'"
                     + TextBox_TenMH.Text.Trim() + "'";
                 int kq = Program.ExecSqlNonQuery(strLenh);
-                if (kq == 1 || kq == 2) return;
+                if (kq != 0) return;
             }
             else //sua
             {

@@ -332,10 +332,5 @@ namespace TracNghiem
                 btnXoa.Enabled = false;
             }
         }
-
-        private void gridView1_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
-        {
-
-        }
     }
 }

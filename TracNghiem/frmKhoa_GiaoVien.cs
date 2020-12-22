@@ -15,6 +15,8 @@ namespace TracNghiem
     {
         int vitri = 0;
         string macn = "";
+        string mgv = "";
+        int soLanSua = 0;
         public frmKhoa_GiaoVien()
         {
             InitializeComponent();
@@ -131,7 +133,7 @@ namespace TracNghiem
                 string strLenh = "EXEC SP_CHECKKHOA_TRACUU N'" + TextBox_MaKH.Text.Trim() + "', N'"
                     + TextBox_TenKH.Text.Trim() + "'";
                 int kq = Program.ExecSqlNonQuery(strLenh);
-                if (kq == 1 || kq == 2) return;
+                if (kq != 0) return;
             }
             else //sua
             {
@@ -153,7 +155,7 @@ namespace TracNghiem
                 string strLenh = "EXEC SP_CHECKKHOA_PM N'" + TextBox_MaKH.Text.Trim() + "', N'"
                     + TextBox_TenKH.Text.Trim() + "'";
                 int kq = Program.ExecSqlNonQuery(strLenh);
-                if (kq == 1 || kq == 2) return;
+                if (kq != 0) return;
             }
             //bat dau ghi
             try
@@ -195,6 +197,8 @@ namespace TracNghiem
                 this.kHOATableAdapter.Fill(this.DS.KHOA);
                 this.gIAOVIENTableAdapter.Fill(this.DS.GIAOVIEN);
                 soLanSua = 0;
+                mgv = "";
+                GridControl_Khoa.Enabled = true;
             }
             catch (Exception ex)
             {
@@ -267,6 +271,12 @@ namespace TracNghiem
         private void xoaGVToolStripMenuItem_Click(object sender, EventArgs e)
         {
             String magv = "";
+            if(Program.username.Trim() == ((DataRowView)bdsGV[bdsGV.Position])["MAGV"].ToString().Trim())
+            {
+                MessageBox.Show("Không thể xóa vì bạn đang đăng nhập!", "",
+                       MessageBoxButtons.OK);
+                return;
+            }
             if (bdsBoDe.Count > 0)
             {
                 MessageBox.Show("Không thể xóa giảng viên này vì đã soạn đề", "",
@@ -339,7 +349,7 @@ namespace TracNghiem
 
                 string strLenh = "EXEC SP_CHECKGV N'" + maGV.Trim() + "'";
                 int kq = Program.ExecSqlNonQuery(strLenh);
-                if (kq == 1)
+                if (kq != 0)
                 {
                     DataGridView_GiaoVien.CurrentCell = this.DataGridView_GiaoVien.Rows[index].Cells[0];
                     DataGridView_GiaoVien.BeginEdit(true);
@@ -373,7 +383,7 @@ namespace TracNghiem
                     Program.myReader.Close();
                     if (!string.IsNullOrEmpty(logName.Trim()))
                     {
-                        MessageBox.Show("Giáo viên đã có tài khoản không thể sửa mã GV! " + logName);
+                        MessageBox.Show("Giáo viên đã có tài khoản không thể sửa mã GV! ","",MessageBoxButtons.OK);
                         DataGridView_GiaoVien.CurrentCell = this.DataGridView_GiaoVien.Rows[bdsGV.Position].Cells[0];
                         DataGridView_GiaoVien.BeginEdit(true);
                         return;
@@ -388,6 +398,8 @@ namespace TracNghiem
                 this.gIAOVIENTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.gIAOVIENTableAdapter.Update(this.DS.GIAOVIEN);
                 soLanSua = 0;
+                mgv = "";
+                GridControl_Khoa.Enabled = true;
             }
             catch (Exception ex)
             {
@@ -437,14 +449,13 @@ namespace TracNghiem
             groupControl2.Enabled = true;
         }
 
-        string mgv = "";
-        int soLanSua = 0;
         private void DataGridView_GiaoVien_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
             soLanSua++;
-            if (bdsGV.Count > 0 && soLanSua == 1)
+            if (bdsGV.Count > 0 && soLanSua == 1 && mgv == "")
             {
                 mgv = ((DataRowView)bdsGV[bdsGV.Position])["MAGV"].ToString();
+                GridControl_Khoa.Enabled = false;
             }
         }
     }

@@ -85,7 +85,6 @@ namespace TracNghiem
             report.ShowPreviewDialog();
         }
 
-
         private void btnPreview_Click(object sender, EventArgs e)
         {
             this.sP_BANGDIEMMHTableAdapter.Connection.ConnectionString = Program.connstr;

@@ -160,7 +160,7 @@ namespace TracNghiem
                 + "', N'" + ComboBox_MAMH.SelectedValue.ToString() +
                 "', " + spinEdit_LAN.Value;
             int kq = Program.ExecSqlNonQuery(strLenh1);
-            if (kq == 1) return;
+            if (kq != 0) return;
             //get gvdk
             string strLenh = "EXEC SP_CHECKTHONGTINTHI_SV N'" + label_MALOP.Text
                 + "', N'" + ComboBox_MAMH.SelectedValue.ToString() +

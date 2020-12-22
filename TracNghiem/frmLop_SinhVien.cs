@@ -21,7 +21,6 @@ namespace TracNghiem
 
         private void frmLop_SinhVien_Load(object sender, EventArgs e)
         {
-            //nhac nho chuyen ve trang thai cu truoc khi mo form loi nhom Truong
             DS.EnforceConstraints = false;
 
             this.lOPTableAdapter.Connection.ConnectionString = Program.connstr;
