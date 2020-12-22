@@ -176,7 +176,7 @@ namespace TracNghiem
                         + ComboBox_MAMH.SelectedValue.ToString() + "', "
                         + SpinEdit_LAN.Value;
                 int kq = Program.ExecSqlNonQuery(strLenh);
-                if (kq == 1 || kq == 2) return;
+                if (kq != 0) return;
             }
             else //sua
             {
@@ -202,13 +202,6 @@ namespace TracNghiem
                     MessageBox.Show("Thông tin đã tồn tại!", "", MessageBoxButtons.OK);
                     return;
                 }
-                //check tiep site pm
-                string strLenh = "EXEC SP_CHECKGVDK_PM N'"
-                        + ComboBox_MALOP.SelectedValue.ToString() + "', N'"
-                        + ComboBox_MAMH.SelectedValue.ToString() + "', "
-                        + SpinEdit_LAN.Value;
-                int kq = Program.ExecSqlNonQuery(strLenh);
-                if (kq == 1) return;
             }
 
             //check sp so cau thi

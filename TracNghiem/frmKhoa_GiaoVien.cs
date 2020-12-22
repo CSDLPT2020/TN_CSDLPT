@@ -194,6 +194,7 @@ namespace TracNghiem
             {
                 this.kHOATableAdapter.Fill(this.DS.KHOA);
                 this.gIAOVIENTableAdapter.Fill(this.DS.GIAOVIEN);
+                soLanSua = 0;
             }
             catch (Exception ex)
             {
@@ -335,6 +336,15 @@ namespace TracNghiem
                     DataGridView_GiaoVien.BeginEdit(true);
                     return;
                 }
+
+                string strLenh = "EXEC SP_CHECKGV N'" + maGV.Trim() + "'";
+                int kq = Program.ExecSqlNonQuery(strLenh);
+                if (kq == 1)
+                {
+                    DataGridView_GiaoVien.CurrentCell = this.DataGridView_GiaoVien.Rows[index].Cells[0];
+                    DataGridView_GiaoVien.BeginEdit(true);
+                    return;
+                }
             }
             else
             {
@@ -347,6 +357,28 @@ namespace TracNghiem
                     DataGridView_GiaoVien.BeginEdit(true);
                     return;
                 }
+
+                //check ko sua magv khi da co tai khoan theo magv
+                if (maGV.Trim() != mgv.Trim())
+                {
+                    //check giang vien co tk
+                    string logName = "";
+                    string strLenh = "EXEC SP_CHECKTAIKHOAN N'" + mgv + "'";
+                    Program.myReader = Program.ExecSqlDataReader(strLenh);
+                    if (Program.myReader == null) return;
+                    if (Program.myReader.Read() == true)
+                    {
+                        logName = Program.myReader.GetString(0);
+                    }
+                    Program.myReader.Close();
+                    if (!string.IsNullOrEmpty(logName.Trim()))
+                    {
+                        MessageBox.Show("Giáo viên đã có tài khoản không thể sửa mã GV! " + logName);
+                        DataGridView_GiaoVien.CurrentCell = this.DataGridView_GiaoVien.Rows[bdsGV.Position].Cells[0];
+                        DataGridView_GiaoVien.BeginEdit(true);
+                        return;
+                    }
+                }
             }
             //ghi
             try
@@ -355,6 +387,7 @@ namespace TracNghiem
                 bdsGV.ResetCurrentItem();
                 this.gIAOVIENTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.gIAOVIENTableAdapter.Update(this.DS.GIAOVIEN);
+                soLanSua = 0;
             }
             catch (Exception ex)
             {
@@ -402,6 +435,17 @@ namespace TracNghiem
             btnGhi.Enabled = btnUndo.Enabled = true;
             GridControl_Khoa.Enabled = true;
             groupControl2.Enabled = true;
+        }
+
+        string mgv = "";
+        int soLanSua = 0;
+        private void DataGridView_GiaoVien_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            soLanSua++;
+            if (bdsGV.Count > 0 && soLanSua == 1)
+            {
+                mgv = ((DataRowView)bdsGV[bdsGV.Position])["MAGV"].ToString();
+            }
         }
     }
 }

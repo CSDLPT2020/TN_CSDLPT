@@ -445,6 +445,7 @@
             this.DataGridView_GiaoVien.Name = "DataGridView_GiaoVien";
             this.DataGridView_GiaoVien.Size = new System.Drawing.Size(286, 346);
             this.DataGridView_GiaoVien.TabIndex = 7;
+            this.DataGridView_GiaoVien.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.DataGridView_GiaoVien_CellBeginEdit);
             // 
             // dataGridViewTextBoxColumn1
             // 

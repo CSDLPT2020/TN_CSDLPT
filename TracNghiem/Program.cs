@@ -50,7 +50,7 @@ namespace TracNghiem
                       Program.database + ";User ID=" +
                       Program.mlogin + ";password=" + Program.password;
                 Program.conn.ConnectionString = Program.connstr;
-                MessageBox.Show(Program.connstr);
+                //MessageBox.Show(Program.connstr);
                 Program.conn.Open();
                 return 1;
             }
